@@ -84,28 +84,34 @@
   }
 
   function updateCountdown() {
-    var now = new Date();
-    if (now >= WEDDING_DATE) {
-      document.getElementById('countdown-days').textContent = '0';
-      document.getElementById('countdown-hours').textContent = '00';
-      document.getElementById('countdown-mins').textContent = '00';
-      document.getElementById('countdown-secs').textContent = '00';
-      return;
-    }
-    var diff = WEDDING_DATE - now;
-    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    var secs = Math.floor((diff % (1000 * 60)) / 1000);
+    try {
+      var now = new Date();
+      if (now >= WEDDING_DATE) {
+        var elD = document.getElementById('countdown-days');
+        var elH = document.getElementById('countdown-hours');
+        var elM = document.getElementById('countdown-mins');
+        var elS = document.getElementById('countdown-secs');
+        if (elD) elD.textContent = '0';
+        if (elH) elH.textContent = '00';
+        if (elM) elM.textContent = '00';
+        if (elS) elS.textContent = '00';
+        return;
+      }
+      var diff = WEDDING_DATE - now;
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-    var elDays = document.getElementById('countdown-days');
-    var elHours = document.getElementById('countdown-hours');
-    var elMins = document.getElementById('countdown-mins');
-    var elSecs = document.getElementById('countdown-secs');
-    if (elDays) elDays.textContent = days;
-    if (elHours) elHours.textContent = pad(hours);
-    if (elMins) elMins.textContent = pad(mins);
-    if (elSecs) elSecs.textContent = pad(secs);
+      var elDays = document.getElementById('countdown-days');
+      var elHours = document.getElementById('countdown-hours');
+      var elMins = document.getElementById('countdown-mins');
+      var elSecs = document.getElementById('countdown-secs');
+      if (elDays) elDays.textContent = isNaN(days) ? '—' : days;
+      if (elHours) elHours.textContent = isNaN(hours) ? '—' : pad(hours);
+      if (elMins) elMins.textContent = isNaN(mins) ? '—' : pad(mins);
+      if (elSecs) elSecs.textContent = isNaN(secs) ? '—' : pad(secs);
+    } catch (e) {}
   }
 
   function initCountdown() {
