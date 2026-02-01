@@ -35,6 +35,7 @@ body {
   font-weight: 400;
   color: var(--color-text);
   background: var(--color-bg);
+  background-image: linear-gradient(180deg, rgba(240,245,250,0.98) 0%, rgba(232,240,248,0.95) 100%);
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
@@ -236,12 +237,7 @@ img {
   transition: opacity 0.3s ease;
 }
 
-/* Desktop: borítékot ne mutassa (opcionális, vagy mutassa egyszer) – JS dönti el */
-@media (min-width: 768px) {
-  .envelope-overlay.envelope-desktop-hide {
-    display: none;
-  }
-}
+/* Boríték mobilon és gépen is megjelenik első látogatáskor (JS + localStorage) */
 
 /* ===== Main content – kezdetben rejtve mobilon, ha van boríték ===== */
 .main-content {
@@ -401,12 +397,78 @@ img {
   margin: 0 0 0.25rem;
 }
 
-/* ===== Sections ===== */
-.section {
+/* ===== Section dividers – professzionális elválasztók ===== */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   padding: 2rem 1rem;
   max-width: 900px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  max-width: 140px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(74,124,158,0.35) 20%, rgba(74,124,158,0.35) 80%, transparent);
+}
+
+.section-divider-icon {
+  font-size: 0.65rem;
+  color: var(--color-yellow-dark);
+  opacity: 0.9;
+  letter-spacing: 0.2em;
+}
+
+/* ===== Sections – több levegő, professzionális megjelenés ===== */
+.section {
+  padding: 3rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Alternáló háttér a szekciók között – üresnek ne tűnjön (countdown saját háttere van) */
+.section:not(.countdown-section):nth-of-type(odd) {
+  background: rgba(255,255,255,0.6);
+}
+
+.section:not(.countdown-section):nth-of-type(even) {
+  background: rgba(232,240,245,0.5);
+}
+
+.section.accommodation,
+.section.welcome,
+.section.couple,
+.section.program,
+.section.venue,
+.section.faq,
+.section.gallery,
+.section.rsvp {
+  border-radius: var(--radius);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0 2px 24px rgba(74,124,158,0.06);
+  border: 1px solid rgba(74,124,158,0.08);
+}
+
+@media (min-width: 768px) {
+  .section.accommodation,
+  .section.welcome,
+  .section.couple,
+  .section.program,
+  .section.venue,
+  .section.faq,
+  .section.gallery,
+  .section.rsvp {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .section h2 {
@@ -418,12 +480,28 @@ img {
   margin: 0 0 1.5rem;
 }
 
+/* Cím alatti díszvonal – pro megjelenés */
 .section h2.script-title {
   font-family: var(--font-script);
   font-weight: 400;
   font-size: clamp(1.75rem, 5vw, 2.25rem);
   color: var(--color-blue-dark);
   word-wrap: break-word;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.section h2.script-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-yellow-dark), transparent);
+  border-radius: 1px;
+  opacity: 0.85;
 }
 
 .welcome-image-wrap {
@@ -1106,17 +1184,20 @@ img {
   box-shadow: 0 6px 20px rgba(74,124,158,0.35);
 }
 
-/* Footer */
+/* Footer – professzionális lezárás */
 .footer {
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   text-align: center;
   color: var(--color-text-soft);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   background: var(--color-bg-countdown);
+  border-top: 1px solid rgba(74,124,158,0.15);
+  margin-top: 0;
 }
 
 .footer p {
   margin: 0;
+  letter-spacing: 0.02em;
 }
 
 /* ===== Tablet / Desktop ===== */

@@ -7,10 +7,6 @@
 
   var WEDDING_DATE = new Date('2026-08-22T14:00:00');
 
-  function isMobile() {
-    return window.matchMedia('(max-width: 767px)').matches;
-  }
-
   function marMegnyitottak() {
     try {
       return localStorage.getItem(STORAGE_KEY) === '1';
@@ -49,20 +45,15 @@
   function initEnvelope() {
     if (!overlay || !mainContent) return;
 
-    if (isMobile()) {
-      if (marMegnyitottak()) {
-        overlay.style.display = 'none';
-        mainContent.classList.remove('content-hidden');
-        return;
-      }
-      mainContent.classList.add('content-hidden');
-      overlay.classList.remove('envelope-desktop-hide');
-      overlay.setAttribute('aria-hidden', 'false');
-    } else {
-      overlay.classList.add('envelope-desktop-hide');
+    /* Mobilon és gépen is: első látogatáskor boríték, utána már az oldal */
+    if (marMegnyitottak()) {
+      overlay.style.display = 'none';
       mainContent.classList.remove('content-hidden');
       return;
     }
+
+    mainContent.classList.add('content-hidden');
+    overlay.setAttribute('aria-hidden', 'false');
 
     overlay.addEventListener('click', function handleOpen() {
       overlay.removeEventListener('click', handleOpen);
