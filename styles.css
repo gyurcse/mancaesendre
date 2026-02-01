@@ -122,13 +122,13 @@ img {
   }
 
   .envelope-seal {
-    width: 56px;
-    height: 56px;
-    padding: 0 8px;
+    width: 92px;
+    height: 92px;
+    padding: 0 12px;
   }
 
   .envelope-seal-initials {
-    font-size: 0.88rem;
+    font-size: 1.4rem;
     letter-spacing: 0.1em;
   }
 
@@ -161,13 +161,13 @@ img {
   }
 
   .envelope-seal {
-    width: 46px;
-    height: 46px;
-    padding: 0 6px;
+    width: 72px;
+    height: 72px;
+    padding: 0 10px;
   }
 
   .envelope-seal-initials {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     letter-spacing: 0.1em;
   }
 }
@@ -284,25 +284,25 @@ img {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  width: 44px;
-  height: 44px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #f5ecd8, #e8dcc4 50%, #d4c4a0);
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.6), inset 0 -1px 2px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 6px;
+  padding: 0 8px;
   line-height: 1;
   box-sizing: border-box;
   pointer-events: none;
 }
 
-/* Pecsét betűk – középen, egyenlő távolságra az oldaltól */
+/* Pecsét betűk – középen, arányosan a pecsét méretéhez */
 .envelope-seal-initials {
   display: block;
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--color-text);
   letter-spacing: 0.08em;
