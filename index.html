@@ -125,24 +125,34 @@
       <p class="program-subtitle">Amit nektek készítettünk</p>
       <ul class="program-list">
         <li class="program-item">
-          <span class="program-icon" aria-hidden="true">💒</span>
-          <span class="time">14:00</span>
-          <div><strong>Polgári szertartás</strong><br><span class="program-desc">A polgári ünnepély</span></div>
+          <span class="program-icon" aria-hidden="true">🍳</span>
+          <span class="time">08:00–10:00</span>
+          <div><strong>Reggeli</strong><br><span class="program-desc">Reggeli</span></div>
         </li>
         <li class="program-item">
           <span class="program-icon" aria-hidden="true">⛪</span>
-          <span class="time">15:30</span>
-          <div><strong>Templomi szertartás</strong><br><span class="program-desc">A templomban</span></div>
+          <span class="time">16:00–17:00</span>
+          <div><strong>Egyházi esküvő</strong><br><span class="program-desc">A templomban</span></div>
+        </li>
+        <li class="program-item">
+          <span class="program-icon" aria-hidden="true">📷</span>
+          <span class="time">17:30–19:00</span>
+          <div><strong>Fotózás</strong><br><span class="program-desc">Fotózás</span></div>
         </li>
         <li class="program-item">
           <span class="program-icon" aria-hidden="true">🥂</span>
-          <span class="time">17:00</span>
-          <div><strong>Vacsora & fogadás</strong><br><span class="program-desc">Fogadás és vacsora</span></div>
+          <span class="time">19:00</span>
+          <div><strong>Vacsora</strong><br><span class="program-desc">Vacsora</span></div>
         </li>
         <li class="program-item">
-          <span class="program-icon" aria-hidden="true">🎂</span>
-          <span class="time">20:00</span>
-          <div><strong>Torta & mulatság</strong><br><span class="program-desc">Torta és buli</span></div>
+          <span class="program-icon" aria-hidden="true">💃</span>
+          <span class="time">21:00</span>
+          <div><strong>Első tánc, menyasszonytánc</strong><br><span class="program-desc">Első tánc és buli</span></div>
+        </li>
+        <li class="program-item">
+          <span class="program-icon" aria-hidden="true">🌙</span>
+          <span class="time">Éjfél</span>
+          <div><strong>Éjféli menü</strong><br><span class="program-desc">Éjféli menü</span></div>
         </li>
       </ul>
     </section>
@@ -211,7 +221,9 @@
       <div class="rsvp-inner">
         <h2 class="script-title">Erősítsd meg részvételed</h2>
         <p class="rsvp-subtitle">Szeretnénk, ha velünk lennél</p>
-        <form class="rsvp-form" action="mailto:rsvp@example.com" method="get" enctype="text/plain">
+        <form class="rsvp-form" action="https://formspree.io/f/maqboozp" method="POST">
+          <input type="hidden" name="_subject" value="Esküvői részvétel – meghívó oldal" />
+          <input type="hidden" name="_next" value="https://gyurcse.github.io/mancaesendre/#rsvp" />
           <label class="form-label">Teljes név *</label>
           <input type="text" name="name" class="form-input" placeholder="A neved" required />
           <label class="form-label">Email (opcionális)</label>

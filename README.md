@@ -31,6 +31,18 @@ Mobilos nézet teszteléséhez nyisd meg ugyanazt a címet mobilon (ugyanabban a
 - `styles.css` – stílusok, boríték animáció, reszponzív elrendezés
 - `script.js` – boríték megnyitás (első látogatás, kattintás), localStorage
 
+## Részvételi űrlap – levelek a Gmailbe (mancaendre@gmail.com)
+
+Az űrlap a [Formspree](https://formspree.io) szolgáltatáson keresztül küldi a válaszokat. Beállítás:
+
+1. Menj a **https://formspree.io/create** oldalra.
+2. Add meg a **mancaendre@gmail.com** címet (ide érkeznek majd a részvételi válaszok).
+3. Hozz létre egy formot; a Formspree kiad egy **form ID**-t (pl. `xjvqyqwe`).
+4. Az `index.html`-ben keresd meg a form `action` attribútumát és cseréld ki a **YOUR_FORM_ID** részt a kapott ID-ra, pl.:
+   `action="https://formspree.io/f/xjvqyqwe"`
+
+Ezután minden kitöltött űrlap a mancaendre@gmail.com postafiókba érkezik.
+
 ## Későbbi módosítások
 
 - Képek: cseréld a `.placeholder-img` osztályú elemeket valódi `<img>` tagre, vagy töltsd fel a háttérképeket.

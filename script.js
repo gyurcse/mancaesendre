@@ -28,10 +28,21 @@
   function mutasdAzOldalt() {
     overlay.classList.add('open');
     mainContent.classList.remove('content-hidden');
+    mainContent.classList.add('content-zoom-in');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        mainContent.classList.add('zoom-done');
+      });
+    });
+    setTimeout(function () {
+      overlay.classList.add('zoom-phase');
+    }, 450);
     setTimeout(function () {
       overlay.classList.add('hidden');
       overlay.setAttribute('aria-hidden', 'true');
-    }, 900);
+      overlay.classList.remove('zoom-phase');
+      mainContent.classList.remove('content-zoom-in', 'zoom-done');
+    }, 1700);
     megnyitvaMent();
   }
 

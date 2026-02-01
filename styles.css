@@ -88,6 +88,11 @@ img {
   pointer-events: none;
 }
 
+.envelope-overlay.open.zoom-phase .envelope-container {
+  transform: scale(0.2);
+  opacity: 0;
+}
+
 .envelope-overlay.hidden {
   opacity: 0;
   visibility: hidden;
@@ -96,10 +101,27 @@ img {
 
 .envelope-container {
   position: relative;
-  width: 220px;
-  height: 154px;
+  width: 280px;
+  height: 196px;
   perspective: 700px;
   z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .envelope-container {
+    width: min(85vw, 320px);
+    height: auto;
+    aspect-ratio: 220 / 154;
+  }
+
+  .envelope-seal {
+    width: 44px;
+    height: 44px;
+  }
+
+  .envelope-seal-initials {
+    font-size: 0.9rem;
+  }
 }
 
 .envelope {
@@ -144,6 +166,15 @@ img {
   transform: rotateX(-180deg);
 }
 
+/* Megnyitáskor a boríték „beleolvad” – kicsinyül, eltűnik */
+.envelope-overlay.open .envelope-container {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease 0.2s;
+}
+
+.envelope-overlay.open .envelope-text {
+  transition: opacity 0.25s ease;
+}
+
 .envelope-front {
   position: absolute;
   bottom: 0;
@@ -179,15 +210,25 @@ img {
 }
 
 .envelope-text {
-  margin-top: 2rem;
-  font-family: var(--font-script);
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: var(--color-text);
+  margin-top: 1.75rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-blue-dark);
   letter-spacing: 0.02em;
   text-align: center;
   line-height: 1.5;
   z-index: 1;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  .envelope-text {
+    font-size: 1.05rem;
+    margin-top: 2rem;
+  }
 }
 
 .envelope-overlay.open .envelope-text {
@@ -207,11 +248,25 @@ img {
   min-height: 100vh;
   opacity: 1;
   transition: opacity 0.6s ease;
+  transform-origin: center top;
 }
 
 .main-content.content-hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+/* Zoom-in: a meghívó tartalma „belezoomol” és ez lesz az oldal */
+.main-content.content-zoom-in {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(0.45);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+}
+
+.main-content.content-zoom-in.zoom-done {
+  transform: scale(1);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ===== Animációk ===== */
@@ -392,13 +447,16 @@ img {
   margin: 0;
 }
 
-/* Countdown – világoskék blokkok mint a képen */
+/* Countdown – full site széles, világoskék blokkok */
 .countdown-section {
   text-align: center;
   background: var(--color-bg-countdown);
-  border-radius: var(--radius);
+  border-radius: 0;
   margin: 0;
   padding: 2.5rem 1rem;
+  max-width: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .countdown-subtitle {
@@ -692,6 +750,8 @@ img {
 .program-item:nth-child(2) { transition-delay: 0.12s; }
 .program-item:nth-child(3) { transition-delay: 0.19s; }
 .program-item:nth-child(4) { transition-delay: 0.26s; }
+.program-item:nth-child(5) { transition-delay: 0.33s; }
+.program-item:nth-child(6) { transition-delay: 0.4s; }
 
 .program-item:hover {
   background: rgba(74,124,158,0.06);
@@ -891,7 +951,7 @@ img {
 .rsvp-subtitle {
   text-align: center;
   margin: -0.5rem 0 1.5rem;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   color: var(--color-text-soft);
 }
 
@@ -903,18 +963,18 @@ img {
 
 .form-label {
   display: block;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--color-text);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .form-input {
   width: 100%;
   max-width: 100%;
-  padding: 0.65rem 0.85rem;
+  padding: 0.75rem 0.9rem;
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   border: 1px solid rgba(74,124,158,0.3);
   border-radius: 8px;
   background: var(--color-white);
@@ -939,7 +999,7 @@ img {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   cursor: pointer;
 }
 
@@ -955,7 +1015,7 @@ img {
 }
 
 .form-legend {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--color-text);
   padding: 0 0.5rem;
@@ -975,9 +1035,9 @@ img {
 .form-textarea {
   width: 100%;
   max-width: 100%;
-  padding: 0.65rem 0.85rem;
+  padding: 0.75rem 0.9rem;
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   border: 1px solid rgba(74,124,158,0.3);
   border-radius: 8px;
   background: var(--color-white);
@@ -1000,7 +1060,7 @@ img {
 }
 
 .form-hint {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--color-text-soft);
   margin: 0 0 0.75rem;
 }
@@ -1009,7 +1069,7 @@ img {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
 }
@@ -1027,13 +1087,13 @@ img {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.85rem 1.5rem;
+  padding: 1rem 1.5rem;
   background: var(--color-blue-dark);
   color: #fff;
   border: none;
   border-radius: 8px;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
   text-align: center;
@@ -1131,21 +1191,22 @@ img {
     gap: 0.35rem 1.5rem;
   }
 
-  /* Program desktop: horizontális idővonal – mind a 4 egy sorban */
+  /* Program desktop: horizontális idővonal – mind a 6 egy sorban */
   .program-list {
     max-width: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem 0.75rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem 0.5rem;
     position: relative;
     padding-top: 2rem;
     list-style: none;
   }
 
+  /* Vonal a time pillék alatt, az ikonok fölött – több levegő */
   .program-list::before {
     content: "";
     position: absolute;
-    top: 3.25rem;
+    top: 5.25rem;
     left: 0;
     right: 0;
     height: 2px;
@@ -1164,7 +1225,7 @@ img {
 
   .program-item .time {
     order: 1;
-    margin: 0 auto;
+    margin: 0 auto 0.75rem;
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
     font-size: 0.85rem;
@@ -1172,6 +1233,7 @@ img {
 
   .program-item .program-icon {
     order: 2;
+    margin-top: 0.75rem;
     width: 44px;
     height: 44px;
     display: flex;
