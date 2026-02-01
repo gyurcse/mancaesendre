@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esküvőnk meghívója</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Boríték overlay – csak mobilon, első megnyitáskor -->
+  <div id="envelope-overlay" class="envelope-overlay" aria-hidden="true">
+    <div class="envelope-container">
+      <div class="envelope">
+        <div class="envelope-body"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-seal" aria-hidden="true"><span class="envelope-seal-initials">M & E</span></div>
+        <div class="envelope-front"></div>
+      </div>
+      <p class="envelope-text">Ez a meghívó csak Neked szól.<br>Érintsd meg a megnyitáshoz.</p>
+    </div>
+  </div>
+
+  <main id="main-content" class="main-content">
+    <!-- Hero / Címsor -->
+    <header class="hero animate-in">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80" alt="" class="hero-bg-img" />
+      </div>
+      <div class="hero-content">
+        <p class="hero-badge">ÖSSZEHÁZASODUNK</p>
+        <h1><span class="hero-name hero-name-a">Manca</span> <span class="hero-amp">&</span> <span class="hero-name hero-name-b">Endre</span></h1>
+        <p class="hero-date"><span class="hero-star" aria-hidden="true">✦</span> 2026. augusztus 22.</p>
+        <a href="#rsvp" class="hero-cta">ERŐSÍTSD MEG RÉSZVÉTELED</a>
+        <a href="#countdown" class="hero-scroll" aria-label="Lapozás le">⌄</a>
+      </div>
+      <div class="hero-mute" aria-label="Hang ki/be" title="Hang">🔇</div>
+    </header>
+
+    <!-- Countdown -->
+    <section id="countdown" class="section countdown-section animate-on-scroll">
+      <h2 class="script-title">Visszaszámlálás</h2>
+      <p class="countdown-subtitle">A legszebb napunkra az életünkben</p>
+      <div class="countdown-grid">
+        <div class="countdown-block">
+          <span class="countdown-num" id="countdown-days">—</span>
+          <span class="countdown-label">nap</span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-num" id="countdown-hours">—</span>
+          <span class="countdown-label">óra</span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-num" id="countdown-mins">—</span>
+          <span class="countdown-label">perc</span>
+        </div>
+        <div class="countdown-block">
+          <span class="countdown-num" id="countdown-secs">—</span>
+          <span class="countdown-label">másodperc</span>
+        </div>
+      </div>
+      <a href="#program" class="countdown-detail-link">Részletek</a>
+    </section>
+
+    <!-- Szállás (mint Alojamiento) -->
+    <section class="section accommodation animate-on-scroll">
+      <span class="section-icon accommodation-icon" aria-hidden="true">🛏</span>
+      <h2 class="script-title">Szállás</h2>
+      <p class="accommodation-subtitle">Ajánlások a tartózkodásodra</p>
+      <div class="accommodation-cards">
+        <div class="accommodation-card">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Panzió" class="accommodation-card-img" />
+          <div class="accommodation-card-body">
+            <h3>Példa Panzió</h3>
+            <p>Közelebb az esküvőhöz</p>
+            <a href="#" target="_blank" rel="noopener" class="btn-details"><span class="btn-details-icon" aria-hidden="true">↗</span> Részletek</a>
+          </div>
+        </div>
+        <div class="accommodation-card">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80" alt="Hotel" class="accommodation-card-img" />
+          <div class="accommodation-card-body">
+            <h3>Példa Hotel</h3>
+            <p>Ajánlott szállás</p>
+            <a href="#" target="_blank" rel="noopener" class="btn-details"><span class="btn-details-icon" aria-hidden="true">↗</span> Részletek</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Üdvözlő szöveg -->
+    <section class="section welcome animate-on-scroll">
+      <h2 class="script-title">Szeretettel várunk</h2>
+      <div class="welcome-image-wrap">
+        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80" alt="" class="welcome-image" />
+      </div>
+      <p class="intro">
+        Kedves Vendégeink! Örömmel szeretnénk meghívni Önöket a nagy napunkra.
+        Készüljetek egy felejthetetlen ünnepre – várunk Titeket szeretettel.
+      </p>
+    </section>
+
+    <!-- Párunk -->
+    <section class="section couple animate-on-scroll">
+      <h2 class="script-title">Mi vagyunk</h2>
+      <div class="couple-grid">
+        <div class="couple-card">
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80" alt="Vőlegény" class="couple-image" />
+          <h3>Endre</h3>
+          <p>Vőlegény</p>
+        </div>
+        <div class="couple-card">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Menyasszony" class="couple-image" />
+          <h3>Manca</h3>
+          <p>Menyasszony</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program (mint a Boda Mar & Jaume „Programa del dia”) -->
+    <section id="program" class="section program animate-on-scroll">
+      <h2 class="script-title">Program</h2>
+      <p class="program-subtitle">Amit nektek készítettünk</p>
+      <ul class="program-list">
+        <li class="program-item">
+          <span class="program-icon" aria-hidden="true">💒</span>
+          <span class="time">14:00</span>
+          <div><strong>Polgári szertartás</strong><br><span class="program-desc">A polgári ünnepély</span></div>
+        </li>
+        <li class="program-item">
+          <span class="program-icon" aria-hidden="true">⛪</span>
+          <span class="time">15:30</span>
+          <div><strong>Templomi szertartás</strong><br><span class="program-desc">A templomban</span></div>
+        </li>
+        <li class="program-item">
+          <span class="program-icon" aria-hidden="true">🥂</span>
+          <span class="time">17:00</span>
+          <div><strong>Vacsora & fogadás</strong><br><span class="program-desc">Fogadás és vacsora</span></div>
+        </li>
+        <li class="program-item">
+          <span class="program-icon" aria-hidden="true">🎂</span>
+          <span class="time">20:00</span>
+          <div><strong>Torta & mulatság</strong><br><span class="program-desc">Torta és buli</span></div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Helyszín -->
+    <section class="section venue animate-on-scroll">
+      <h2 class="script-title">Helyszín</h2>
+      <div class="venue-card">
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=80" alt="Helyszín" class="venue-image" />
+        <div class="venue-info">
+          <div class="venue-header">
+            <span class="venue-icon" aria-hidden="true">📍</span>
+            <h3>Villabogart</h3>
+          </div>
+          <p class="venue-address">Alsóbogáton</p>
+          <p class="venue-time"><span class="venue-clock" aria-hidden="true">🕐</span> 17:00 – 01:00</p>
+          <div class="venue-map-wrap">
+            <iframe class="venue-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2722.127!2d19.5!3d47.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDEyJzAwLjAiTiAxOcKwMzAnMDAuMCJF!5e0!3m2!1shu!2shu!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Térkép"></iframe>
+          </div>
+          <a href="https://www.google.com/maps/search/Villabogart+Als%C3%B3bog%C3%A1ton" target="_blank" rel="noopener" class="btn-map">Maps megnyitása</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GYIK (mint Preguntas frecuentes) -->
+    <section class="section faq animate-on-scroll">
+      <span class="section-icon faq-icon" aria-hidden="true">?</span>
+      <h2 class="script-title">Gyakori kérdések</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Hozhatok kísérőt?</summary>
+          <p class="faq-answer">Igen, kérjük jelezd a vendégek számát a részvételi űrlapon.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Lesz parkoló?</summary>
+          <p class="faq-answer">Igen, a helyszínnél ingyenes parkoló áll a vendégek rendelkezésére.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Milyen öltözék a megfelelő?</summary>
+          <p class="faq-answer">Ünnepélyes, de kellemes: öltöny / elegáns ruha.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Fényképezhetek a szertartás alatt?</summary>
+          <p class="faq-answer">A ceremónia alatt kérjük, ne használj telefont. A fogadás és mulatság alatt szívesen várjuk a fotókat.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Galéria -->
+    <section class="section gallery animate-on-scroll">
+      <h2 class="script-title">Galéria</h2>
+      <p class="gallery-note">A képek hamarosan cserélhetők a saját fotóira.</p>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80" alt="" class="gallery-item" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1478146896981-b80fe463330d?w=500&q=80" alt="" class="gallery-item" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&q=80" alt="" class="gallery-item" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1545237327-ea35db04164d?w=500&q=80" alt="" class="gallery-item" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=500&q=80" alt="" class="gallery-item" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500&q=80" alt="" class="gallery-item" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- RSVP (gépes: sötét sáv, krémes kártya, két oszlop checkbox, üzenet mező) -->
+    <section id="rsvp" class="section rsvp animate-on-scroll">
+      <div class="rsvp-banner"></div>
+      <div class="rsvp-inner">
+        <h2 class="script-title">Erősítsd meg részvételed</h2>
+        <p class="rsvp-subtitle">Szeretnénk, ha velünk lennél</p>
+        <form class="rsvp-form" action="mailto:rsvp@example.com" method="get" enctype="text/plain">
+          <label class="form-label">Teljes név *</label>
+          <input type="text" name="name" class="form-input" placeholder="A neved" required />
+          <label class="form-label">Email (opcionális)</label>
+          <input type="email" name="email" class="form-input" placeholder="email@pelda.hu" />
+          <label class="form-label">Részveszel? *</label>
+          <div class="form-radio-group">
+            <label class="form-radio"><input type="radio" name="asistir" value="igen" required /> Igen, részt veszek</label>
+            <label class="form-radio"><input type="radio" name="asistir" value="nem" /> Nem tudok jönni</label>
+          </div>
+          <label class="form-label">Vendégek száma (magad is beleszámít)</label>
+          <input type="number" name="guests" class="form-input" min="1" value="1" />
+          <fieldset class="form-fieldset">
+            <legend class="form-legend"><span class="form-legend-icon" aria-hidden="true">⚠</span> Ételállergia / intolerancia</legend>
+            <p class="form-hint">Fontos, hogy tudjuk. Jelöld be, ami igaz rád.</p>
+            <div class="form-check-grid">
+              <label class="form-check"><input type="checkbox" name="diet" value="gluten" /> Gluténmentes / celiák</label>
+              <label class="form-check"><input type="checkbox" name="diet" value="lactose" /> Laktózmentes</label>
+              <label class="form-check"><input type="checkbox" name="diet" value="vegetarian" /> Vegetáriánus</label>
+              <label class="form-check"><input type="checkbox" name="diet" value="vegan" /> Vegán</label>
+              <label class="form-check"><input type="checkbox" name="diet" value="nuts" /> Mogyoróallergia</label>
+              <label class="form-check"><input type="checkbox" name="diet" value="shellfish" /> Rákállergia</label>
+            </div>
+          </fieldset>
+          <label class="form-label">Egyéb allergia vagy restrikció</label>
+          <input type="text" name="other_diet" class="form-input" placeholder="Pl. tojásallergia, fruktóz intolerancia…" />
+          <label class="form-label">Üzenet a párnak (opcionális)</label>
+          <textarea name="message" class="form-textarea" rows="4" placeholder="Írj nekünk pár sort…"></textarea>
+          <button type="submit" class="btn-rsvp"><span class="btn-rsvp-icon" aria-hidden="true">✈</span> Válasz küldése</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Manca & Endre · 2026</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
