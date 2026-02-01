@@ -1,6 +1,18 @@
-# Esküvői meghívó weboldal
+# Esküvői meghívó weboldal – Manca & Endre
 
 Mobilon első megnyitáskor egy boríték animáció jelenik meg; kattintásra kinyílik, majd az oldal láthatóvá válik. A vendég legközelebbi látogatásától már nem jelenik meg a boríték (localStorage).
+
+## Élő oldal (GitHub Pages)
+
+A webről való eléréshez engedélyezd a **GitHub Pages**-t:
+
+1. Nyisd meg a repót: [github.com/gyurcse/mancaesendre](https://github.com/gyurcse/mancaesendre)
+2. **Settings** → bal oldalon **Pages**
+3. **Source**: „Deploy from a branch”
+4. **Branch**: `main`, **Folder**: `/ (root)` → **Save**
+
+Néhány perc múlva az oldal elérhető lesz itt:  
+**https://gyurcse.github.io/mancaesendre/**
 
 ## Lokális futtatás
 
