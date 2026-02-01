@@ -113,16 +113,57 @@ img {
   text-align: center;
 }
 
+/* Gépes nézet: jóval nagyobb boríték */
+@media (min-width: 768px) {
+  .envelope-container {
+    width: 420px;
+    height: auto;
+    aspect-ratio: 280 / 196;
+  }
+
+  .envelope-seal {
+    width: 56px;
+    height: 56px;
+    padding: 0 8px;
+  }
+
+  .envelope-seal-initials {
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+  }
+
+  .envelope-text {
+    font-size: 1.15rem;
+    margin-top: 2rem;
+    max-width: 420px;
+  }
+
+  .envelope-letter {
+    max-width: 280px;
+    padding: 0.75rem 1rem;
+    bottom: 10px;
+  }
+
+  .envelope-letter-names {
+    font-size: 1.35rem;
+  }
+
+  .envelope-letter-date {
+    font-size: 0.8rem;
+  }
+}
+
 @media (max-width: 767px) {
   .envelope-container {
     width: min(85vw, 320px);
     height: auto;
-    aspect-ratio: 220 / 154;
+    aspect-ratio: 280 / 196;
   }
 
   .envelope-seal {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
+    padding: 0 6px;
   }
 
   .envelope-seal-initials {
@@ -140,12 +181,13 @@ img {
 }
 /* Fedél tengelye: felső él (transform-origin: top center) – a fedél erre a vonalra hajlik le */
 
+/* Alsó téglalap (test) magasabb; háromszög felső vonala = test teteje (éles illesztés) */
 .envelope-body {
   position: absolute;
-  bottom: 0;
+  top: 38%;
   left: 0;
   right: 0;
-  height: 110px;
+  bottom: 0;
   background: linear-gradient(180deg, #e8f0f6 0%, #dce8f0 30%, #d0e0ea 100%);
   border: 1px solid rgba(74,124,158,0.3);
   border-top: none;
@@ -153,21 +195,22 @@ img {
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.7), 0 4px 12px rgba(74,124,158,0.1);
 }
 
-/* Boríték fedél – háromszög (igazi boríték), nem vízszintes vonal */
+/* Boríték fedél – háromszög; felső vonala a boríték tetején, alsó csúcsa a test tetejénél */
 .envelope-flap {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 88px;
+  height: 38%;
   transform-origin: top center;
   transform-style: preserve-3d;
   backface-visibility: visible;
   transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-  clip-path: polygon(0 100%, 50% 0, 100% 100%);
-  -webkit-clip-path: polygon(0 100%, 50% 0, 100% 100%);
-  background: linear-gradient(160deg, #eef4f8 0%, #e4ecf2 30%, #dae4ec 70%, #d0dce8 100%);
-  box-shadow: 0 -2px 8px rgba(74,124,158,0.08), inset 0 2px 4px rgba(255,255,255,0.5);
+  /* Csúcs lefelé: felső él = tengely (0 0, 100% 0), csúcs lent középen (50% 100%) */
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  -webkit-clip-path: polygon(0 0, 50% 100%, 100% 0);
+  background: linear-gradient(180deg, #eef4f8 0%, #e4ecf2 40%, #dae4ec 100%);
+  box-shadow: 0 2px 8px rgba(74,124,158,0.08), inset 0 -1px 2px rgba(255,255,255,0.5);
 }
 
 .envelope-flap::after {
@@ -175,7 +218,7 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(74,124,158,0.3) 15%, rgba(74,124,158,0.3) 85%, transparent);
   pointer-events: none;
@@ -197,22 +240,22 @@ img {
 
 .envelope-front {
   position: absolute;
-  bottom: 0;
+  top: 38%;
   left: 0;
   right: 0;
-  height: 70px;
+  bottom: 0;
   background: transparent;
   pointer-events: none;
 }
 
-/* Viaszpecsény jellegű dísz a borítékon – M & és E két sorban, középre */
+/* Pecsét a háromszög csúcsánál, nagyobb – betűk egyenlő távolságra az oldaltól */
 .envelope-seal {
   position: absolute;
-  bottom: 50%;
+  top: 38%;
   left: 50%;
-  transform: translate(-50%, 50%);
-  width: 38px;
-  height: 38px;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #f5ecd8, #e8dcc4 50%, #d4c4a0);
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.6), inset 0 -1px 2px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.1);
@@ -220,25 +263,26 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 2px;
+  padding: 0 6px;
   line-height: 1;
+  box-sizing: border-box;
 }
 
-/* Pecsét betűk – egy sor, középre, nem csúszik el */
-/* Pecsét: egyenes betű, hogy M & E ugyanazon a vonalon legyen (script eltolja) */
+/* Pecsét betűk – középen, egyenlő távolságra az oldaltól */
 .envelope-seal-initials {
   display: block;
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--color-text);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-align: center;
   white-space: nowrap;
   width: 100%;
+  max-width: 100%;
   line-height: 1;
   margin: 0;
-  padding: 0 2px;
+  padding: 0;
   box-sizing: border-box;
 }
 
