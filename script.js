@@ -121,10 +121,107 @@
     setInterval(updateCountdown, 1000);
   }
 
+  function initImageFallbacks() {
+    var images = document.querySelectorAll('img');
+    if (!images.length) return;
+
+    var fallbackSvg =
+      "data:image/svg+xml;utf8," +
+      encodeURIComponent(
+        "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'>" +
+          "<defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'>" +
+          "<stop offset='0%' stop-color='%23d7e6ef'/><stop offset='100%' stop-color='%23b9d3e3'/>" +
+          "</linearGradient></defs>" +
+          "<rect width='1200' height='800' fill='url(%23g)'/>" +
+          "<circle cx='1030' cy='130' r='180' fill='rgba(255,255,255,0.35)'/>" +
+          "<circle cx='220' cy='700' r='220' fill='rgba(212,168,75,0.25)'/>" +
+          "<text x='50%' y='48%' dominant-baseline='middle' text-anchor='middle' fill='%233d6a87' font-size='56' font-family='Arial, sans-serif'>Esküvői fotó</text>" +
+          "<text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' fill='%235a6c7d' font-size='30' font-family='Arial, sans-serif'>Kép feltöltés alatt</text>" +
+        "</svg>"
+      );
+
+    images.forEach(function (img) {
+      img.addEventListener('error', function handleImageError() {
+        if (img.dataset.fallbackApplied === '1') return;
+        img.dataset.fallbackApplied = '1';
+        img.src = fallbackSvg;
+        if (!img.alt || !img.alt.trim()) {
+          img.alt = 'Esküvői helyettesítő kép';
+        }
+      });
+    });
+  }
+
+  function initSectionTimeline() {
+    var timelinePoints = document.getElementById('timeline-points');
+    var progress = document.getElementById('timeline-progress');
+    if (!timelinePoints || !progress) return;
+
+    var trackedSections = [
+      'countdown',
+      'welcome',
+      'couple',
+      'program',
+      'venue',
+      'faq',
+      'gallery',
+      'rsvp'
+    ]
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+
+    if (!trackedSections.length) return;
+
+    var points = trackedSections.map(function (section, index) {
+      var point = document.createElement('a');
+      point.href = '#' + section.id;
+      point.className = 'page-timeline-point';
+      point.setAttribute('aria-label', 'Ugrás: ' + section.id);
+      if (index === 0) point.classList.add('is-active');
+      timelinePoints.appendChild(point);
+      return point;
+    });
+
+    function setActive(index) {
+      points.forEach(function (point, i) {
+        point.classList.toggle('is-active', i === index);
+      });
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var idx = trackedSections.indexOf(entry.target);
+          if (idx >= 0) setActive(idx);
+        });
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0.01 }
+    );
+
+    trackedSections.forEach(function (section) {
+      observer.observe(section);
+    });
+
+    function updateProgress() {
+      var doc = document.documentElement;
+      var maxScroll = doc.scrollHeight - window.innerHeight;
+      var ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+      var percent = Math.max(0, Math.min(100, ratio * 100));
+      progress.style.height = percent + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  }
+
   function init() {
     initEnvelope();
     initScrollAnimations();
     initCountdown();
+    initImageFallbacks();
+    initSectionTimeline();
   }
 
   if (document.readyState === 'loading') {
