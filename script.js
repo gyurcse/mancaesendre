@@ -152,70 +152,11 @@
     });
   }
 
-  function initSectionTimeline() {
-    var timelinePoints = document.getElementById('timeline-points');
-    var progress = document.getElementById('timeline-progress');
-    if (!timelinePoints || !progress) return;
-
-    var trackedSections = [
-      'countdown',
-      'welcome',
-      'couple',
-      'program',
-      'venue',
-      'faq',
-      'gallery',
-      'rsvp'
-    ]
-      .map(function (id) { return document.getElementById(id); })
-      .filter(Boolean);
-
-    if (!trackedSections.length) return;
-
-    var points = trackedSections.map(function (section, index) {
-      var point = document.createElement('a');
-      point.href = '#' + section.id;
-      point.className = 'page-timeline-point';
-      point.setAttribute('aria-label', 'Ugrás: ' + section.id);
-      point.title = section.id;
-      if (index === 0) point.classList.add('is-active');
-      timelinePoints.appendChild(point);
-      return point;
-    });
-
-    function setActive(index) {
-      points.forEach(function (point, i) {
-        point.classList.toggle('is-active', i === index);
-        point.classList.toggle('is-passed', i < index);
-      });
-
-      var stepRatio = trackedSections.length > 1 ? index / (trackedSections.length - 1) : 0;
-      progress.style.height = stepRatio * 100 + '%';
-    }
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var idx = trackedSections.indexOf(entry.target);
-          if (idx >= 0) setActive(idx);
-        });
-      },
-      { rootMargin: '-40% 0px -40% 0px', threshold: 0.01 }
-    );
-
-    trackedSections.forEach(function (section) {
-      observer.observe(section);
-    });
-    setActive(0);
-  }
-
   function init() {
     initEnvelope();
     initScrollAnimations();
     initCountdown();
     initImageFallbacks();
-    initSectionTimeline();
   }
 
   if (document.readyState === 'loading') {
