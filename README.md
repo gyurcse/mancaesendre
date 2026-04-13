@@ -48,3 +48,41 @@ Ezután minden kitöltött űrlap a mancaendre@gmail.com postafiókba érkezik.
 - Képek: cseréld a `.placeholder-img` osztályú elemeket valódi `<img>` tagre, vagy töltsd fel a háttérképeket.
 - Szövegek: neveket, dátumot, helyszínt, programot közvetlenül az `index.html`-ben tudod módosítani.
 - Boríték újramutatása: mobilon a böngészőben töröld a helyi adatokat az oldalhoz, vagy localStorage-ból töröld a `eskuvo_boritek_megnyitva` kulcsot.
+
+## Merge conflict feloldás + hogyan dolgozzunk `main` branchen
+
+Ha a GitHub PR képernyőn azt látod, hogy **“Unable to merge – Conflicts must be resolved”**, akkor ezeket a lépéseket futtasd lokálisan:
+
+```bash
+git fetch origin
+git checkout main
+git pull origin main
+git checkout <sajat-branch-nev>
+git rebase origin/main
+```
+
+Konfliktus esetén javítsd a fájlokat, majd:
+
+```bash
+git add .
+git rebase --continue
+```
+
+Ha kész:
+
+```bash
+git push --force-with-lease origin <sajat-branch-nev>
+```
+
+### Ha közvetlenül `main`-re szeretnél dolgozni
+
+```bash
+git checkout main
+git pull origin main
+# módosítások...
+git add .
+git commit -m "Leíró commit üzenet"
+git push origin main
+```
+
+> Fontos: a közvetlen `main` push csak akkor ajánlott, ha nincs branch protection szabály (kötelező review / kötelező PR / kötelező check).
