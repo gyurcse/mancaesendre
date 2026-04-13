@@ -1,0 +1,6 @@
+* text=auto eol=lf
+
+# Keep static web files normalized to reduce noisy diffs and merge conflicts
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
