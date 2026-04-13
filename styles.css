@@ -40,6 +40,33 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   min-height: 100dvh;
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  border-radius: 999px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+body::before {
+  width: 320px;
+  height: 320px;
+  top: -100px;
+  right: -80px;
+  background: rgba(168, 204, 224, 0.45);
+}
+
+body::after {
+  width: 260px;
+  height: 260px;
+  bottom: -100px;
+  left: -100px;
+  background: rgba(212, 168, 75, 0.22);
 }
 
 main {
@@ -455,7 +482,14 @@ img {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(240,245,250,0.85) 0%, rgba(232,240,248,0.92) 100%);
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 31, 44, 0.15) 0%, rgba(21, 52, 72, 0.48) 100%);
+  z-index: 1;
 }
 
 .hero-bg-img {
@@ -466,12 +500,20 @@ img {
   object-fit: cover;
   object-position: center;
   z-index: 0;
+  transform: scale(1.03);
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  z-index: 2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  background: linear-gradient(180deg, rgba(10, 25, 36, 0.38) 0%, rgba(10, 25, 36, 0.26) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  padding: 1rem 1rem 1.25rem;
+  max-width: min(92vw, 760px);
 }
 
 .hero-badge {
@@ -491,18 +533,25 @@ img {
 
 .hero-cta {
   display: inline-block;
-  margin-top: 1rem;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  margin-top: 1.2rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-text-soft);
+  color: #fff;
   text-decoration: none;
-  transition: color 0.2s ease;
+  background: linear-gradient(135deg, var(--color-blue-dark), var(--color-blue));
+  border: 1px solid rgba(255,255,255,0.28);
+  padding: 0.72rem 1.15rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(28, 57, 78, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .hero-cta:hover {
-  color: var(--color-blue-dark);
+  background: linear-gradient(135deg, #3b6885, #4f87a8);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(28, 57, 78, 0.4);
 }
 
 .hero-scroll {
@@ -538,9 +587,9 @@ img {
   line-height: 1.2;
 }
 
-.hero-name-a { color: var(--color-blue-dark); }
-.hero-amp { color: var(--color-yellow-dark); margin: 0 0.1em; }
-.hero-name-b { color: var(--color-yellow-dark); }
+.hero-name-a,
+.hero-name-b { color: #fff; }
+.hero-amp { color: #ffd979; margin: 0 0.1em; }
 
 .hero-date {
   font-family: var(--font-display);
@@ -666,7 +715,7 @@ img {
 
 .countdown-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(110px, 1fr));
   gap: 0.75rem;
   max-width: min(520px, 96%);
   width: 100%;
@@ -912,6 +961,16 @@ img {
   margin: -0.75rem 0 1.25rem;
   font-size: 0.9rem;
   color: var(--color-text-soft);
+}
+
+.section-lead-image {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 1.4rem;
+  border-radius: var(--radius);
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  box-shadow: var(--shadow);
 }
 
 .program-list {
@@ -1341,6 +1400,10 @@ img {
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
+
+  .countdown-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media (min-width: 768px) {
@@ -1350,6 +1413,7 @@ img {
 
   .hero-content {
     color: #fff;
+    padding: 1.4rem 1.8rem 1.7rem;
   }
 
   .hero-badge,
@@ -1400,7 +1464,7 @@ img {
   .program-list {
     max-width: none;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem 0.5rem;
     position: relative;
     padding-top: 2rem;
@@ -1458,5 +1522,11 @@ img {
     margin: 0;
     padding: 0 0.5rem 1rem;
     background: transparent;
+  }
+}
+
+@media (min-width: 1100px) {
+  .program-list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
