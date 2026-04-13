@@ -121,10 +121,42 @@
     setInterval(updateCountdown, 1000);
   }
 
+  function initImageFallbacks() {
+    var images = document.querySelectorAll('img');
+    if (!images.length) return;
+
+    var fallbackSvg =
+      "data:image/svg+xml;utf8," +
+      encodeURIComponent(
+        "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'>" +
+          "<defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'>" +
+          "<stop offset='0%' stop-color='%23d7e6ef'/><stop offset='100%' stop-color='%23b9d3e3'/>" +
+          "</linearGradient></defs>" +
+          "<rect width='1200' height='800' fill='url(%23g)'/>" +
+          "<circle cx='1030' cy='130' r='180' fill='rgba(255,255,255,0.35)'/>" +
+          "<circle cx='220' cy='700' r='220' fill='rgba(212,168,75,0.25)'/>" +
+          "<text x='50%' y='48%' dominant-baseline='middle' text-anchor='middle' fill='%233d6a87' font-size='56' font-family='Arial, sans-serif'>Esküvői fotó</text>" +
+          "<text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' fill='%235a6c7d' font-size='30' font-family='Arial, sans-serif'>Kép feltöltés alatt</text>" +
+        "</svg>"
+      );
+
+    images.forEach(function (img) {
+      img.addEventListener('error', function handleImageError() {
+        if (img.dataset.fallbackApplied === '1') return;
+        img.dataset.fallbackApplied = '1';
+        img.src = fallbackSvg;
+        if (!img.alt || !img.alt.trim()) {
+          img.alt = 'Esküvői helyettesítő kép';
+        }
+      });
+    });
+  }
+
   function init() {
     initEnvelope();
     initScrollAnimations();
     initCountdown();
+    initImageFallbacks();
   }
 
   if (document.readyState === 'loading') {

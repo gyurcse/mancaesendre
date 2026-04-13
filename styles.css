@@ -505,8 +505,15 @@ img {
 
 .hero-content {
   position: relative;
-  z-index: 1;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  z-index: 2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  background: linear-gradient(180deg, rgba(10, 25, 36, 0.38) 0%, rgba(10, 25, 36, 0.26) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  padding: 1rem 1rem 1.25rem;
+  max-width: min(92vw, 760px);
 }
 
 .hero-badge {
@@ -580,9 +587,9 @@ img {
   line-height: 1.2;
 }
 
-.hero-name-a { color: var(--color-blue-dark); }
-.hero-amp { color: var(--color-yellow-dark); margin: 0 0.1em; }
-.hero-name-b { color: var(--color-yellow-dark); }
+.hero-name-a,
+.hero-name-b { color: #fff; }
+.hero-amp { color: #ffd979; margin: 0 0.1em; }
 
 .hero-date {
   font-family: var(--font-display);
@@ -954,6 +961,16 @@ img {
   margin: -0.75rem 0 1.25rem;
   font-size: 0.9rem;
   color: var(--color-text-soft);
+}
+
+.section-lead-image {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 1.4rem;
+  border-radius: var(--radius);
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  box-shadow: var(--shadow);
 }
 
 .program-list {
@@ -1396,6 +1413,7 @@ img {
 
   .hero-content {
     color: #fff;
+    padding: 1.4rem 1.8rem 1.7rem;
   }
 
   .hero-badge,
