@@ -152,76 +152,11 @@
     });
   }
 
-  function initSectionTimeline() {
-    var timelinePoints = document.getElementById('timeline-points');
-    var progress = document.getElementById('timeline-progress');
-    if (!timelinePoints || !progress) return;
-
-    var trackedSections = [
-      'countdown',
-      'welcome',
-      'couple',
-      'program',
-      'venue',
-      'faq',
-      'gallery',
-      'rsvp'
-    ]
-      .map(function (id) { return document.getElementById(id); })
-      .filter(Boolean);
-
-    if (!trackedSections.length) return;
-
-    var points = trackedSections.map(function (section, index) {
-      var point = document.createElement('a');
-      point.href = '#' + section.id;
-      point.className = 'page-timeline-point';
-      point.setAttribute('aria-label', 'Ugrás: ' + section.id);
-      if (index === 0) point.classList.add('is-active');
-      timelinePoints.appendChild(point);
-      return point;
-    });
-
-    function setActive(index) {
-      points.forEach(function (point, i) {
-        point.classList.toggle('is-active', i === index);
-      });
-    }
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var idx = trackedSections.indexOf(entry.target);
-          if (idx >= 0) setActive(idx);
-        });
-      },
-      { rootMargin: '-40% 0px -40% 0px', threshold: 0.01 }
-    );
-
-    trackedSections.forEach(function (section) {
-      observer.observe(section);
-    });
-
-    function updateProgress() {
-      var doc = document.documentElement;
-      var maxScroll = doc.scrollHeight - window.innerHeight;
-      var ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-      var percent = Math.max(0, Math.min(100, ratio * 100));
-      progress.style.height = percent + '%';
-    }
-
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener('resize', updateProgress);
-    updateProgress();
-  }
-
   function init() {
     initEnvelope();
     initScrollAnimations();
     initCountdown();
     initImageFallbacks();
-    initSectionTimeline();
   }
 
   if (document.readyState === 'loading') {
