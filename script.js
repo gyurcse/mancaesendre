@@ -81,6 +81,101 @@
     });
   }
 
+  /** Oldalsó timeline: szekciók = pontok, görgetés + aktív állapot + kitöltött sáv */
+  function initPageTimeline() {
+    var pointsRoot = document.getElementById('timeline-points');
+    var progressEl = document.getElementById('timeline-progress');
+    var main = document.getElementById('main-content');
+    if (!pointsRoot || !progressEl || !main) return;
+
+    var steps = [
+      { id: 'hero', label: 'Kezdőlap' },
+      { id: 'countdown', label: 'Visszaszámlálás' },
+      { id: 'welcome', label: 'Üdvözlő' },
+      { id: 'couple', label: 'Mi vagyunk' },
+      { id: 'program', label: 'Program' },
+      { id: 'venue', label: 'Helyszín' },
+      { id: 'faq', label: 'GYIK' },
+      { id: 'gallery', label: 'Galéria' },
+      { id: 'rsvp', label: 'RSVP' }
+    ];
+
+    var segments = [];
+    for (var s = 0; s < steps.length; s++) {
+      var el = document.getElementById(steps[s].id);
+      if (el) segments.push({ id: steps[s].id, label: steps[s].label, el: el });
+    }
+    if (!segments.length) return;
+
+    pointsRoot.innerHTML = '';
+    var pointEls = [];
+
+    for (var i = 0; i < segments.length; i++) {
+      (function (seg, index) {
+        var a = document.createElement('a');
+        a.href = '#' + seg.id;
+        a.className = 'page-timeline-point';
+        a.title = seg.label;
+        a.setAttribute('aria-label', seg.label + ' szekció');
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          seg.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (history.replaceState) {
+            history.replaceState(null, '', '#' + seg.id);
+          }
+        });
+        pointsRoot.appendChild(a);
+        pointEls.push(a);
+      })(segments[i], i);
+    }
+
+    function sectionTop(el) {
+      return el.getBoundingClientRect().top + window.scrollY;
+    }
+
+    function updateTimeline() {
+      var triggerY = window.scrollY + window.innerHeight * 0.32;
+      var activeIndex = 0;
+      for (var j = segments.length - 1; j >= 0; j--) {
+        if (sectionTop(segments[j].el) <= triggerY) {
+          activeIndex = j;
+          break;
+        }
+      }
+
+      var docEl = document.documentElement;
+      var maxScroll = docEl.scrollHeight - window.innerHeight;
+      var scrollPct = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
+      progressEl.style.height = scrollPct + '%';
+
+      for (var k = 0; k < pointEls.length; k++) {
+        var p = pointEls[k];
+        p.classList.toggle('is-active', k === activeIndex);
+        p.classList.toggle('is-passed', k < activeIndex);
+        if (k === activeIndex) {
+          p.setAttribute('aria-current', 'true');
+        } else {
+          p.removeAttribute('aria-current');
+        }
+      }
+    }
+
+    var ticking = false;
+    function onScrollOrResize() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        updateTimeline();
+      });
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize);
+    window.addEventListener('hashchange', onScrollOrResize);
+    updateTimeline();
+  }
+
   function pad(n) {
     return n < 10 ? '0' + n : String(n);
   }
@@ -155,6 +250,7 @@
   function init() {
     initEnvelope();
     initScrollAnimations();
+    initPageTimeline();
     initCountdown();
     initImageFallbacks();
   }
