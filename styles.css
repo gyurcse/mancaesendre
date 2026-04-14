@@ -695,7 +695,7 @@ img {
 
 /* ===== Sections – több levegő, professzionális megjelenés ===== */
 .section {
-  padding: 3rem clamp(1.25rem, 3vw, 2.5rem);
+  padding: 2.5rem clamp(1.25rem, 3vw, 2.25rem);
   max-width: var(--content-max);
   margin: 0 auto;
   box-sizing: border-box;
@@ -743,8 +743,8 @@ img {
 }
 
 .welcome-image-wrap {
-  max-width: 480px;
-  margin: 0 auto 1.5rem;
+  max-width: 420px;
+  margin: 0 auto 1.25rem;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -769,7 +769,7 @@ img {
   background: var(--color-bg-countdown);
   border-radius: 0;
   margin: 0;
-  padding: 3rem 1.5rem;
+  padding: 2.5rem 1.25rem;
   max-width: none;
   width: 100%;
   box-sizing: border-box;
@@ -1056,8 +1056,8 @@ img {
 
 .section-lead-image {
   width: 100%;
-  max-width: min(640px, 100%);
-  margin: 0 auto 1.4rem;
+  max-width: min(520px, 100%);
+  margin: 0 auto 1.15rem;
   border-radius: var(--radius);
   aspect-ratio: 16/9;
   object-fit: cover;
@@ -1488,7 +1488,7 @@ img {
 /* ===== Tablet / Desktop ===== */
 @media (min-width: 600px) {
   .section {
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1.5rem;
   }
 
   .couple-grid {
@@ -1548,9 +1548,10 @@ img {
     align-items: stretch;
   }
 
+  /* Kép abszolút pozíciója + height:auto miatt ne omoljon össze az oszlop a térkép mellett */
   .venue-image-wrap {
-    aspect-ratio: unset;
-    min-height: 0;
+    aspect-ratio: 16 / 10;
+    min-height: 240px;
     align-self: stretch;
     height: auto;
   }
@@ -1627,98 +1628,6 @@ img {
     margin: 0;
     padding: 0 0.5rem 1rem;
     background: transparent;
-  }
-}
-
-/* Asztali: szélesebb tartalom, nagyobb képernyő-kitöltés, finom háttér */
-@media (min-width: 1024px) {
-  :root {
-    --content-max: min(1180px, 91vw);
-  }
-
-  body::before {
-    width: min(440px, 34vw);
-    height: min(440px, 48vh);
-    filter: blur(48px);
-    opacity: 0.95;
-  }
-
-  body::after {
-    width: min(380px, 30vw);
-    height: min(380px, 42vh);
-    filter: blur(44px);
-    opacity: 0.95;
-  }
-
-  .main-content {
-    background-image: radial-gradient(
-      ellipse 85% 42% at 50% 0%,
-      rgba(255, 255, 255, 0.42) 0%,
-      transparent 58%
-    );
-  }
-
-  .hero-content {
-    max-width: min(1000px, 92vw);
-    padding: 1.6rem 2rem 1.9rem;
-  }
-
-  .section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
-
-  .section-divider::before,
-  .section-divider::after {
-    max-width: min(220px, 26vw);
-  }
-
-  .welcome-image-wrap {
-    max-width: min(720px, 100%);
-  }
-
-  .section-lead-image {
-    max-width: min(1020px, 100%);
-  }
-
-  .faq-list {
-    max-width: min(820px, 100%);
-  }
-
-  .rsvp {
-    max-width: var(--content-max);
-  }
-
-  .rsvp-form {
-    max-width: min(520px, 100%);
-  }
-
-  .couple-grid {
-    max-width: min(920px, 100%);
-  }
-
-  .footer {
-    padding-left: clamp(1.5rem, 4vw, 3rem);
-    padding-right: clamp(1.5rem, 4vw, 3rem);
-  }
-}
-
-@media (min-width: 1400px) {
-  :root {
-    --content-max: min(1320px, 90vw);
-  }
-
-  .hero-content {
-    max-width: min(1080px, 88vw);
-  }
-
-  .section-lead-image {
-    max-width: min(1120px, 100%);
-  }
-
-  .section-divider::before,
-  .section-divider::after {
-    max-width: min(260px, 28vw);
   }
 }
 
