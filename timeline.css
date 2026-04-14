@@ -16,7 +16,7 @@ body .main-content {
   --timeline-h: min(58vh, 440px);
   --tl-blossom: #f0c8d4;
   --tl-blossom-deep: #e0a8bc;
-  --tl-bud: rgba(255, 252, 250, 0.75);
+  --tl-bud: rgba(255, 255, 255, 0.22);
   position: fixed;
   top: 50%;
   left: 0;
@@ -25,23 +25,8 @@ body .main-content {
   width: 3.15rem;
   height: var(--timeline-h);
   pointer-events: none;
-  /* Beleolvadás az oldal hátterébe */
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.55) 22%,
-    #000 48%,
-    #000 100%
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.55) 22%,
-    #000 48%,
-    #000 100%
-  );
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  background: transparent;
+  box-shadow: none;
 }
 
 .page-timeline-inner {
@@ -53,6 +38,7 @@ body .main-content {
   justify-content: flex-start;
   gap: 0;
   pointer-events: auto;
+  background: transparent;
 }
 
 /* Csak SVG hullám – nincs egyenes oszlop */
@@ -62,6 +48,7 @@ body .main-content {
   flex-shrink: 0;
   height: 100%;
   margin-right: 0.05rem;
+  background: transparent;
 }
 
 .page-timeline-branch-svg {
@@ -72,7 +59,8 @@ body .main-content {
   height: 100%;
   display: block;
   pointer-events: none;
-  opacity: 0.88;
+  opacity: 1;
+  background: transparent;
 }
 
 #timeline-progress-path {
@@ -90,6 +78,7 @@ body .main-content {
   height: 100%;
   padding: 6px 0 8px;
   box-sizing: border-box;
+  background: transparent;
 }
 
 /* Rügy a gyökér mentén – A: virág a vonal felé (jobbra), B: kifelé (balra), váltakozva */
@@ -100,9 +89,9 @@ body .main-content {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  border: 1px solid rgba(122, 144, 158, 0.22);
+  border: 1px solid rgba(42, 58, 72, 0.38);
   background: var(--tl-bud);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45);
+  box-shadow: none;
   transition:
     transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
     background 0.45s ease,
@@ -190,16 +179,14 @@ body .main-content {
 
 .page-timeline-point.is-active {
   transform: scale(1.15);
-  background: linear-gradient(160deg, #fffdfb 0%, var(--tl-blossom) 42%, var(--tl-blossom-deep) 100%);
-  border-color: rgba(184, 146, 63, 0.32);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.65),
-    0 0 18px rgba(232, 184, 200, 0.35);
+  background: linear-gradient(160deg, rgba(255, 253, 251, 0.55) 0%, var(--tl-blossom) 42%, var(--tl-blossom-deep) 100%);
+  border-color: rgba(42, 58, 72, 0.42);
+  box-shadow: 0 0 12px rgba(232, 184, 200, 0.28);
 }
 
 .page-timeline-point.is-passed {
-  background: rgba(255, 252, 253, 0.82);
-  border-color: rgba(122, 144, 158, 0.16);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(42, 58, 72, 0.32);
 }
 
 /* Finom második réteg virágnál – csak aktívnál */
