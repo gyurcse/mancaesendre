@@ -1140,10 +1140,22 @@ img {
   box-shadow: var(--shadow);
 }
 
+/* Mobilon fix képarány; gépen a wrapper kitölti a kártya magasságát */
+.venue-image-wrap {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #e8eef3 0%, #dce6ee 100%);
+  aspect-ratio: 16 / 10;
+}
+
 .venue-image {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 16/10;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .venue-card {
@@ -1495,11 +1507,14 @@ img {
   .venue-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: stretch;
   }
 
-  .venue-image {
-    aspect-ratio: auto;
-    min-height: 220px;
+  .venue-image-wrap {
+    aspect-ratio: unset;
+    min-height: 0;
+    align-self: stretch;
+    height: auto;
   }
 
   .accommodation-cards {
