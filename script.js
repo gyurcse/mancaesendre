@@ -110,12 +110,57 @@
     pointsRoot.innerHTML = '';
     var pointEls = [];
 
+    var TL_FLOWER_ICON =
+      '<svg class="tl-flower-icon" width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+      '<g class="tl-flower-icon__g">' +
+      '<circle cx="12" cy="5.4" r="2.75" fill="currentColor"/>' +
+      '<circle cx="17.35" cy="10.65" r="2.75" fill="currentColor"/>' +
+      '<circle cx="15" cy="17.25" r="2.75" fill="currentColor"/>' +
+      '<circle cx="9" cy="17.25" r="2.75" fill="currentColor"/>' +
+      '<circle cx="6.65" cy="10.65" r="2.75" fill="currentColor"/>' +
+      '<circle cx="12" cy="12" r="2.05" fill="currentColor"/>' +
+      '</g></svg>';
+
+    function layoutPointsOnPath() {
+      var anchor = document.getElementById('timeline-anchor-path');
+      var branch = document.querySelector('.page-timeline-branch');
+      if (!anchor || !branch || !pointEls.length) return;
+      try {
+        var len = anchor.getTotalLength();
+        if (!isFinite(len) || len <= 0) return;
+        var n = pointEls.length;
+        var branchRect = branch.getBoundingClientRect();
+        var svg = anchor.ownerSVGElement;
+        if (!svg || branchRect.width <= 0 || branchRect.height <= 0) return;
+        var ctm = anchor.getScreenCTM();
+        if (!ctm) return;
+        for (var pi = 0; pi < n; pi++) {
+          var t = n === 1 ? 0.5 : pi / (n - 1);
+          var pt = anchor.getPointAtLength(t * len);
+          var svgPt = svg.createSVGPoint();
+          svgPt.x = pt.x;
+          svgPt.y = pt.y;
+          var scr = svgPt.matrixTransform(ctm);
+          var lx = ((scr.x - branchRect.left) / branchRect.width) * 100;
+          var ty = ((scr.y - branchRect.top) / branchRect.height) * 100;
+          pointEls[pi].style.left = lx + '%';
+          pointEls[pi].style.top = ty + '%';
+        }
+      } catch (e) {}
+    }
+
+    function scheduleLayoutPoints() {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(layoutPointsOnPath);
+      });
+    }
+
     for (var i = 0; i < segments.length; i++) {
       (function (seg, index) {
         var a = document.createElement('a');
         a.href = '#' + seg.id;
-        a.className =
-          'page-timeline-point ' + (index % 2 === 0 ? 'page-timeline-point--stem-a' : 'page-timeline-point--stem-b');
+        a.className = 'page-timeline-node';
+        a.innerHTML = TL_FLOWER_ICON;
         a.title = seg.label;
         a.setAttribute('aria-label', seg.label + ' szekció');
         a.addEventListener('click', function (e) {
@@ -163,20 +208,32 @@
       }
     }
 
-    var ticking = false;
-    function onScrollOrResize() {
-      if (ticking) return;
-      ticking = true;
+    var scrollTick = false;
+    function onScroll() {
+      if (scrollTick) return;
+      scrollTick = true;
       requestAnimationFrame(function () {
-        ticking = false;
+        scrollTick = false;
         updateTimeline();
       });
     }
 
-    window.addEventListener('scroll', onScrollOrResize, { passive: true });
-    window.addEventListener('resize', onScrollOrResize);
-    window.addEventListener('hashchange', onScrollOrResize);
+    var resizeTick = false;
+    function onResize() {
+      if (resizeTick) return;
+      resizeTick = true;
+      requestAnimationFrame(function () {
+        resizeTick = false;
+        layoutPointsOnPath();
+        updateTimeline();
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    window.addEventListener('hashchange', onResize);
     updateTimeline();
+    scheduleLayoutPoints();
   }
 
   function pad(n) {

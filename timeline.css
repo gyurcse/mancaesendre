@@ -1,31 +1,48 @@
-/* Timeline: hullámzó gyökér, beleolvad a háttérbe; egyenes sáv nincs; virág váltakozva nyílik */
+/* Timeline: hullám + virág ikonok (szín = szekció); hero kitölti a guttert */
 
-body .main-content {
-  padding-left: 3.35rem;
-  padding-right: 0;
-  box-sizing: border-box;
+:root {
+  --timeline-gutter: 3.35rem;
 }
 
 @media (min-width: 768px) {
-  body .main-content {
-    padding-left: 3.95rem;
+  :root {
+    --timeline-gutter: 3.95rem;
   }
 }
 
+@media (max-width: 767px) {
+  :root {
+    --timeline-gutter: 2.85rem;
+  }
+}
+
+body .main-content {
+  padding-left: var(--timeline-gutter);
+  padding-right: 0;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+/* Hero képe kitölti a bal padding zónát – ne maradjon „fehér sáv” */
+#hero.hero {
+  margin-left: calc(-1 * var(--timeline-gutter));
+  width: calc(100% + var(--timeline-gutter));
+  box-sizing: border-box;
+}
+
 .page-timeline {
-  --timeline-h: min(58vh, 440px);
+  --timeline-h: min(68vh, 520px);
   --tl-blossom: #f0c8d4;
   --tl-blossom-deep: #e0a8bc;
-  --tl-bud: rgba(255, 255, 255, 0.22);
   position: fixed;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
   z-index: 50;
-  width: 3.15rem;
+  width: 2.35rem;
   height: var(--timeline-h);
   pointer-events: none;
-  background: transparent;
+  background: transparent !important;
   box-shadow: none;
 }
 
@@ -33,33 +50,29 @@ body .main-content {
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-start;
-  gap: 0;
   pointer-events: auto;
   background: transparent;
 }
 
-/* Csak SVG hullám – nincs egyenes oszlop */
 .page-timeline-branch {
   position: relative;
-  width: 1.55rem;
-  flex-shrink: 0;
+  width: 100%;
   height: 100%;
-  margin-right: 0.05rem;
+  background: transparent;
+}
+
+.page-timeline-svg-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background: transparent;
 }
 
 .page-timeline-branch-svg {
-  position: absolute;
-  left: -0.35rem;
-  top: 0;
-  width: 2rem;
+  width: 100%;
   height: 100%;
   display: block;
   pointer-events: none;
-  opacity: 1;
   background: transparent;
 }
 
@@ -68,160 +81,74 @@ body .main-content {
 }
 
 .page-timeline-points {
-  position: relative;
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  padding: 6px 0 8px;
-  box-sizing: border-box;
+  pointer-events: none;
   background: transparent;
 }
 
-/* Rügy a gyökér mentén – A: virág a vonal felé (jobbra), B: kifelé (balra), váltakozva */
-.page-timeline-point {
-  position: relative;
-  display: block;
-  flex-shrink: 0;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  border: 1px solid rgba(42, 58, 72, 0.38);
-  background: var(--tl-bud);
-  box-shadow: none;
-  transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.45s ease,
-    border-color 0.45s ease,
-    box-shadow 0.45s ease;
-  box-sizing: border-box;
-  padding: 0;
+/* Virág ikon – currentColor a szekció szerint */
+.page-timeline-node {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
   margin: 0;
+  padding: 6px;
+  margin-left: -6px;
+  margin-top: -6px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(74, 108, 128, 0.42);
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  transition:
+    color 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
+  box-sizing: content-box;
   cursor: pointer;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
 }
 
-.page-timeline-point--stem-a {
-  align-self: flex-end;
-  margin-right: 1px;
+.page-timeline-node .tl-flower-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
 
-.page-timeline-point--stem-b {
-  align-self: flex-start;
-  margin-left: 0;
+.page-timeline-node:focus-visible {
+  outline: 2px solid rgba(61, 106, 135, 0.45);
+  outline-offset: 2px;
 }
 
-/* Virág szirmok – zárt rügy → nyílás */
-.page-timeline-point::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 26px;
-  height: 26px;
-  pointer-events: none;
-  opacity: 0.22;
-  transform: translate(-50%, -50%) scale(0.28);
-  transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-  background:
-    radial-gradient(ellipse 44% 17% at 50% 10%, var(--tl-blossom) 0%, transparent 70%),
-    radial-gradient(ellipse 44% 17% at 50% 90%, var(--tl-blossom-deep) 0%, transparent 70%),
-    radial-gradient(ellipse 17% 44% at 10% 50%, var(--tl-blossom) 0%, transparent 70%),
-    radial-gradient(ellipse 17% 44% at 90% 50%, var(--tl-blossom-deep) 0%, transparent 70%),
-    radial-gradient(ellipse 36% 15% at 24% 24%, rgba(255, 250, 252, 0.95) 0%, transparent 68%),
-    radial-gradient(ellipse 36% 15% at 76% 76%, rgba(255, 248, 250, 0.9) 0%, transparent 68%);
-  filter: blur(0.15px);
+.page-timeline-node.is-passed {
+  color: rgba(61, 106, 135, 0.72);
 }
 
-/* A oldal: virág jobbra „nyílik” a gyökérről */
-.page-timeline-point--stem-a::before {
-  transform: translate(calc(-50% + 4px), -50%) scale(0.26);
+.page-timeline-node.is-active {
+  color: var(--color-yellow, #d4a84b);
+  transform: translate(-50%, -50%) scale(1.12);
+  filter: drop-shadow(0 0 6px rgba(212, 168, 75, 0.45));
 }
 
-.page-timeline-point--stem-b::before {
-  transform: translate(calc(-50% - 9px), -50%) scale(0.26);
-}
-
-.page-timeline-point.is-passed::before {
-  opacity: 0.52;
-}
-
-.page-timeline-point--stem-a.is-passed::before {
-  transform: translate(calc(-50% + 6px), -50%) scale(0.78);
-}
-
-.page-timeline-point--stem-b.is-passed::before {
-  transform: translate(calc(-50% - 11px), -50%) scale(0.78);
-}
-
-.page-timeline-point.is-active::before {
-  opacity: 0.98;
-}
-
-.page-timeline-point--stem-a.is-active::before {
-  transform: translate(calc(-50% + 8px), -50%) scale(1.12);
-}
-
-.page-timeline-point--stem-b.is-active::before {
-  transform: translate(calc(-50% - 13px), -50%) scale(1.12);
-}
-
-.page-timeline-point:focus-visible {
-  outline: 2px solid rgba(61, 106, 135, 0.35);
-  outline-offset: 3px;
-}
-
-.page-timeline-point.is-active {
-  transform: scale(1.15);
-  background: linear-gradient(160deg, rgba(255, 253, 251, 0.55) 0%, var(--tl-blossom) 42%, var(--tl-blossom-deep) 100%);
-  border-color: rgba(42, 58, 72, 0.42);
-  box-shadow: 0 0 12px rgba(232, 184, 200, 0.28);
-}
-
-.page-timeline-point.is-passed {
-  background: rgba(255, 255, 255, 0.28);
-  border-color: rgba(42, 58, 72, 0.32);
-}
-
-/* Finom második réteg virágnál – csak aktívnál */
-.page-timeline-point::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95), rgba(255, 228, 236, 0.5) 45%, transparent 70%);
-  pointer-events: none;
-  transition: transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.45s ease;
-}
-
-.page-timeline-point--stem-a.is-active::after {
-  transform: translate(calc(-50% + 7px), -50%) scale(1);
-  opacity: 0.75;
-}
-
-.page-timeline-point--stem-b.is-active::after {
-  transform: translate(calc(-50% - 10px), -50%) scale(1);
-  opacity: 0.75;
-}
-
-/* Háttér szirmok – nagyon halvány */
 .page-timeline-petals {
   position: absolute;
   inset: 0;
   overflow: visible;
   pointer-events: none;
-  opacity: 0.45;
+  opacity: 0.4;
+  background: transparent;
 }
 
 .page-timeline-petal {
@@ -230,40 +157,40 @@ body .main-content {
   width: 5px;
   height: 7px;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  background: linear-gradient(165deg, rgba(255, 248, 250, 0.7), var(--tl-blossom));
+  background: linear-gradient(165deg, rgba(255, 248, 250, 0.65), var(--tl-blossom));
 }
 
 .page-timeline-petal--1 {
-  left: 0;
-  top: 22%;
+  left: 18%;
+  top: 20%;
   animation: tl-petal-drift-1 18s ease-in-out infinite;
 }
 
 .page-timeline-petal--2 {
-  left: 6px;
-  top: 52%;
+  left: 55%;
+  top: 48%;
   animation: tl-petal-drift-2 20s ease-in-out infinite;
   animation-delay: -6s;
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
 .page-timeline-petal--3 {
-  left: 0;
-  top: 76%;
+  left: 22%;
+  top: 74%;
   animation: tl-petal-drift-3 17s ease-in-out infinite;
-  animation-delay: -10s;
-  opacity: 0.42;
+  animation-delay: -9s;
+  opacity: 0.38;
 }
 
 @keyframes tl-petal-drift-1 {
   0%,
   100% {
-    transform: translateY(0) rotate(-12deg);
-    opacity: 0.22;
+    transform: translateY(0) rotate(-10deg);
+    opacity: 0.2;
   }
   50% {
-    transform: translateY(4px) rotate(6deg);
-    opacity: 0.38;
+    transform: translateY(3px) rotate(5deg);
+    opacity: 0.36;
   }
 }
 
@@ -274,8 +201,8 @@ body .main-content {
     opacity: 0.18;
   }
   50% {
-    transform: translateY(-5px) rotate(-5deg);
-    opacity: 0.34;
+    transform: translateY(-4px) rotate(-4deg);
+    opacity: 0.32;
   }
 }
 
@@ -286,8 +213,8 @@ body .main-content {
     opacity: 0.16;
   }
   50% {
-    transform: translateY(5px) rotate(10deg);
-    opacity: 0.3;
+    transform: translateY(4px) rotate(8deg);
+    opacity: 0.28;
   }
 }
 
@@ -298,9 +225,7 @@ body .main-content {
 
 @media (prefers-reduced-motion: reduce) {
   #timeline-progress-path,
-  .page-timeline-point,
-  .page-timeline-point::before,
-  .page-timeline-point::after {
+  .page-timeline-node {
     transition: none;
   }
 
@@ -308,38 +233,25 @@ body .main-content {
   .page-timeline-petal--2,
   .page-timeline-petal--3 {
     animation: none;
-    opacity: 0.15;
+    opacity: 0.14;
     transform: none;
   }
 }
 
 @media (max-width: 767px) {
-  body .main-content {
-    padding-left: 2.85rem;
-  }
-
   .page-timeline {
-    --timeline-h: min(52vh, 300px);
-    width: 2.75rem;
+    --timeline-h: min(62vh, 360px);
+    width: 2.1rem;
   }
 
-  .page-timeline-branch {
-    width: 1.35rem;
+  .page-timeline-node .tl-flower-icon {
+    width: 19px;
+    height: 19px;
   }
 
-  .page-timeline-branch-svg {
-    width: 1.75rem;
-    left: -0.28rem;
-  }
-
-  .page-timeline-point {
-    width: 8px;
-    height: 8px;
-  }
-
-  .page-timeline-point::before {
-    width: 22px;
-    height: 22px;
+  .page-timeline-node {
+    width: 19px;
+    height: 19px;
   }
 }
 
@@ -350,5 +262,10 @@ body .main-content {
 
   body .main-content {
     padding-left: 0;
+  }
+
+  #hero.hero {
+    margin-left: 0;
+    width: 100%;
   }
 }

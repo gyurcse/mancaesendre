@@ -34,31 +34,34 @@
   <main id="main-content" class="main-content">
     <nav class="page-timeline" aria-label="Oldal szakaszai">
       <div class="page-timeline-inner">
-        <div class="page-timeline-branch" aria-hidden="true">
-          <svg class="page-timeline-branch-svg" viewBox="0 0 56 520" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="tl-root-fade" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="rgba(52,72,88,0.72)"/>
-                <stop offset="50%" stop-color="rgba(42,58,72,0.82)"/>
-                <stop offset="100%" stop-color="rgba(52,72,88,0.72)"/>
-              </linearGradient>
-              <linearGradient id="tl-progress-stroke" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="rgba(72,98,118,0.75)"/>
-                <stop offset="50%" stop-color="rgba(45,68,86,0.88)"/>
-                <stop offset="100%" stop-color="rgba(38,58,74,0.72)"/>
-              </linearGradient>
-            </defs>
-            <path class="page-timeline-root-main" d="M28 4 Q38 96 22 178 Q10 258 30 338 Q46 418 24 508" fill="none" stroke="url(#tl-root-fade)" stroke-width="1.65" stroke-linecap="round"/>
-            <path class="page-timeline-root-hair" d="M28 4 Q38 96 22 178 Q10 258 30 338 Q46 418 24 508" fill="none" stroke="rgba(30,44,56,0.38)" stroke-width="0.9" stroke-linecap="round" transform="translate(0.6, 0)"/>
-            <path id="timeline-progress-path" pathLength="100" d="M28 4 Q38 96 22 178 Q10 258 30 338 Q46 418 24 508" fill="none" stroke="url(#tl-progress-stroke)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"/>
-          </svg>
+        <div class="page-timeline-branch">
+          <div class="page-timeline-svg-wrap" aria-hidden="true">
+            <svg class="page-timeline-branch-svg" viewBox="0 0 56 720" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="tl-root-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="rgba(38,54,68,0.78)"/>
+                  <stop offset="50%" stop-color="rgba(28,42,54,0.9)"/>
+                  <stop offset="100%" stop-color="rgba(38,54,68,0.78)"/>
+                </linearGradient>
+                <linearGradient id="tl-progress-stroke" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(58,82,102,0.85)"/>
+                  <stop offset="50%" stop-color="rgba(36,56,72,0.92)"/>
+                  <stop offset="100%" stop-color="rgba(30,48,62,0.8)"/>
+                </linearGradient>
+              </defs>
+              <!-- TL_PATH: hosszabb hullám – pontok ehhez illeszkednek (JS) -->
+              <path id="timeline-anchor-path" class="page-timeline-root-main" d="M28 6 Q42 140 18 268 Q6 396 36 508 Q52 600 20 668 Q8 708 28 714" fill="none" stroke="url(#tl-root-fade)" stroke-width="1.75" stroke-linecap="round"/>
+              <path class="page-timeline-root-hair" d="M28 6 Q42 140 18 268 Q6 396 36 508 Q52 600 20 668 Q8 708 28 714" fill="none" stroke="rgba(22,36,48,0.42)" stroke-width="0.95" stroke-linecap="round" transform="translate(0.5, 0)"/>
+              <path id="timeline-progress-path" pathLength="100" d="M28 6 Q42 140 18 268 Q6 396 36 508 Q52 600 20 668 Q8 708 28 714" fill="none" stroke="url(#tl-progress-stroke)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"/>
+            </svg>
+          </div>
+          <div class="page-timeline-petals" aria-hidden="true">
+            <span class="page-timeline-petal page-timeline-petal--1"></span>
+            <span class="page-timeline-petal page-timeline-petal--2"></span>
+            <span class="page-timeline-petal page-timeline-petal--3"></span>
+          </div>
+          <div class="page-timeline-points" id="timeline-points"></div>
         </div>
-        <div class="page-timeline-points" id="timeline-points"></div>
-      </div>
-      <div class="page-timeline-petals" aria-hidden="true">
-        <span class="page-timeline-petal page-timeline-petal--1"></span>
-        <span class="page-timeline-petal page-timeline-petal--2"></span>
-        <span class="page-timeline-petal page-timeline-petal--3"></span>
       </div>
     </nav>
     <!-- Hero / Címsor -->
@@ -203,8 +206,15 @@
           <p class="faq-answer">Igen, kérjük jelezd a vendégek számát a részvételi űrlapon.</p>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">Lesz parkoló?</summary>
-          <p class="faq-answer">Igen, a helyszínnél ingyenes parkoló áll a vendégek rendelkezésére.</p>
+          <summary class="faq-question">Hogyan lehet a leggyorsabban, legjobban eljutni a Villabogart-hoz?</summary>
+          <div class="faq-answer">
+            <p>Három útvonalat javasolunk:</p>
+            <ul class="faq-route-list">
+              <li>M7-esről Balatonszemesnél át kell térni a 67-es útra, majd Mernyeszentmiklósnál letérve egy kövezett úton át Somogygesztin keresztül eljutni Alsóbogát központjába, onnan legurulni a domboldalról és megérkezni a Magtárhoz;</li>
+              <li>vagy továbbmenni a 67-es úton egészen Kaposfüredig, ott egy körforgalomból kitérve Juta–Somogyjád útvonalon elérve Alsóbogátot a táblánál jobbra fordulva megérkezni a Magtárhoz;</li>
+              <li>vagy az M7-esről a 142-es km-nél letérve Lengyeltóti–Somogyvár–Osztopán–Somogyjád falvakon keresztül érnek el Alsóbogátra (ez a leghosszabb, de a legjobb minőségű út a falvak között).</li>
+            </ul>
+          </div>
         </details>
         <details class="faq-item">
           <summary class="faq-question">Milyen öltözék a megfelelő?</summary>
