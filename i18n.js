@@ -300,7 +300,6 @@
   function getTimelineLabels(lang) {
     if (lang === 'en') {
       return [
-        'Home',
         'Countdown',
         'Welcome',
         'The two of us',
@@ -312,7 +311,6 @@
       ];
     }
     return [
-      'Kezdőlap',
       'Visszaszámlálás',
       'Üdvözlő',
       'Mi vagyunk',

@@ -96,7 +96,6 @@
         return window.EskuvoI18n.getTimelineLabels(lang);
       }
       return [
-        'Kezdőlap',
         'Visszaszámlálás',
         'Üdvözlő',
         'Mi vagyunk',
@@ -108,7 +107,8 @@
       ];
     }
 
-    var ids = ['hero', 'countdown', 'welcome', 'couple', 'program', 'venue', 'faq', 'gallery', 'rsvp'];
+    /* Hero nincs a timeline-on; a pontok a főág két oldalára váltakoznak */
+    var ids = ['countdown', 'welcome', 'couple', 'program', 'venue', 'faq', 'gallery', 'rsvp'];
     var labelsArr = timelineLabelsFromI18n();
     var steps = ids.map(function (id, i) {
       return { id: id, label: labelsArr[i] || id };
@@ -178,13 +178,8 @@
           var pA = anchor.getPointAtLength(Math.max(0, L - delta));
           var pB = anchor.getPointAtLength(Math.min(len, L + delta));
           var pathAng = Math.atan2(pB.y - pA.y, pB.x - pA.x);
-          /* Mindig a „jobbra” mutató merőleges (a tartalom felé), ne váltogasson az oldal szélére */
-          var angOut = pathAng + Math.PI / 2;
-          var angIn = pathAng - Math.PI / 2;
-          var perpAng = Math.cos(angOut) >= Math.cos(angIn) ? angOut : angIn;
-          if (Math.cos(perpAng) < 0.08) {
-            perpAng += Math.PI;
-          }
+          /* Váltakozó merőleges: szárak a törzs két oldalán */
+          var perpAng = pi % 2 === 0 ? pathAng + Math.PI / 2 : pathAng - Math.PI / 2;
           var perpDeg = perpAng * (180 / Math.PI);
           pointEls[pi].style.setProperty('--stem-deg', perpDeg + 'deg');
         }
@@ -234,7 +229,7 @@
 
     function updateTimeline() {
       var triggerY = window.scrollY + window.innerHeight * 0.32;
-      var activeIndex = 0;
+      var activeIndex = -1;
       for (var j = segments.length - 1; j >= 0; j--) {
         if (sectionTop(segments[j].el) <= triggerY) {
           activeIndex = j;
@@ -251,9 +246,9 @@
 
       for (var k = 0; k < pointEls.length; k++) {
         var p = pointEls[k];
-        p.classList.toggle('is-active', k === activeIndex);
-        p.classList.toggle('is-passed', k < activeIndex);
-        if (k === activeIndex) {
+        p.classList.toggle('is-active', activeIndex >= 0 && k === activeIndex);
+        p.classList.toggle('is-passed', activeIndex >= 0 && k < activeIndex);
+        if (activeIndex >= 0 && k === activeIndex) {
           p.setAttribute('aria-current', 'true');
         } else {
           p.removeAttribute('aria-current');
