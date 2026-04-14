@@ -1,0 +1,364 @@
+(function () {
+  'use strict';
+
+  var STORAGE_KEY = 'eskuvo_lang';
+
+  var T = {
+    hu: {
+      docTitle: 'Esküvőnk meghívója',
+      envelopeText: 'Ez a meghívó csak Neked szól.<br>Érintsd meg a megnyitáshoz.',
+      heroBadge: 'ÖSSZEHÁZASODUNK',
+      heroCta: 'ERŐSÍTSD MEG RÉSZVÉTELED',
+      heroDate: '2026. augusztus 22.',
+      heroScrollAria: 'Lapozás le',
+      heroMuteAria: 'Hang ki/be',
+      heroMuteTitle: 'Hang',
+      countdownTitle: 'Visszaszámlálás',
+      countdownSubtitle: 'A legszebb napunkra az életünkben',
+      countdownDays: 'nap',
+      countdownHours: 'óra',
+      countdownMins: 'perc',
+      countdownSecs: 'másodperc',
+      countdownDetails: 'Részletek',
+      welcomeTitle: 'Szeretettel várunk',
+      welcomeIntro:
+        'Kedves Vendégeink! Örömmel szeretnénk meghívni Önöket a nagy napunkra. Készüljetek egy felejthetetlen ünnepre – várunk Titeket szeretettel.',
+      welcomeImgAlt: 'Manca és Endre',
+      coupleTitle: 'Mi vagyunk',
+      coupleGroom: 'Vőlegény',
+      coupleBride: 'Menyasszony',
+      coupleImgGroomAlt: 'Endre – vőlegény',
+      coupleImgBrideAlt: 'Manca – menyasszony',
+      programTitle: 'Program',
+      programSubtitle: 'Amit nektek készítettünk',
+      programLeadAlt: 'Esküvői program – hangulatkép',
+      program1t: 'Reggeli',
+      program1d: 'Reggeli',
+      program2t: 'Egyházi esküvő',
+      program2d: 'A templomban',
+      program3t: 'Fotózás',
+      program3d: 'Fotózás',
+      program4t: 'Vacsora',
+      program4d: 'Vacsora',
+      program5t: 'Első tánc, menyasszonytánc',
+      program5d: 'Első tánc és buli',
+      program6t: 'Éjféli menü',
+      program6d: 'Éjféli menü',
+      programMidnight: 'Éjfél',
+      venueTitle: 'Helyszín',
+      venueImgAlt: 'Villabogart – helyszín',
+      venueTime: '17:00 – 01:00',
+      venueMap: 'Térkép',
+      venueMapBtn: 'Maps megnyitása',
+      faqTitle: 'Gyakori kérdések',
+      faqLeadAlt: 'Gyakori kérdések – hangulatkép',
+      faq1q: 'Hozhatok kísérőt?',
+      faq1a: 'Igen, kérjük jelezd a vendégek számát a részvételi űrlapon.',
+      faq2q: 'Hogyan lehet a leggyorsabban, legjobban eljutni a Villabogart-hoz?',
+      faq2p: 'Három útvonalat javasolunk:',
+      faq2l1:
+        'M7-esről Balatonszemesnél át kell térni a 67-es útra, majd Mernyeszentmiklósnál letérve egy kövezett úton át Somogygesztin keresztül eljutni Alsóbogát központjába, onnan legurulni a domboldalról és megérkezni a Magtárhoz;',
+      faq2l2:
+        'vagy továbbmenni a 67-es úton egészen Kaposfüredig, ott egy körforgalomból kitérve Juta–Somogyjád útvonalon elérve Alsóbogátot a táblánál jobbra fordulva megérkezni a Magtárhoz;',
+      faq2l3:
+        'vagy az M7-esről a 142-es km-nél letérve Lengyeltóti–Somogyvár–Osztopán–Somogyjád falvakon keresztül érnek el Alsóbogátra (ez a leghosszabb, de a legjobb minőségű út a falvak között).',
+      faq3q: 'Milyen öltözék a megfelelő?',
+      faq3a: 'Ünnepélyes, de kellemes: öltöny / elegáns ruha.',
+      faq4q: 'Fényképezhetek a szertartás alatt?',
+      faq4a:
+        'A ceremónia alatt kérjük, ne használj telefont. A fogadás és mulatság alatt szívesen várjuk a fotókat.',
+      galleryTitle: 'Galéria',
+      galleryNote: 'Közös pillanatok.',
+      galleryAlt1: 'Galéria 1.',
+      galleryAlt2: 'Galéria 2.',
+      galleryAlt3: 'Galéria 3.',
+      galleryAlt4: 'Galéria 4.',
+      galleryAlt5: 'Galéria 5.',
+      galleryAlt6: 'Galéria 6.',
+      galleryAlt7: 'Galéria 7.',
+      pageTimelineAria: 'Oldal szakaszai',
+      rsvpTitle: 'Erősítsd meg részvételed',
+      rsvpSubtitle: 'Szeretnénk, ha velünk lennél',
+      formSubject: 'Esküvői részvétel – meghívó oldal',
+      formName: 'Teljes név *',
+      formNamePh: 'A neved',
+      formEmail: 'Email (opcionális)',
+      formEmailPh: 'email@pelda.hu',
+      formAttend: 'Részt veszel? *',
+      formYes: 'Igen, részt veszek',
+      formNo: 'Nem tudok jönni',
+      formGuests: 'Vendégek száma (magad is beleszámít)',
+      formDietLegend: 'Ételallergia / intolerancia',
+      formDietHint: 'Fontos, hogy tudjuk. Jelöld be, ami igaz rád.',
+      formDietGluten: 'Gluténmentes / celiák',
+      formDietLactose: 'Laktózmentes',
+      formDietVeg: 'Vegetáriánus',
+      formDietVegan: 'Vegán',
+      formDietNuts: 'Mogyoróallergia',
+      formDietShellfish: 'Rákallergia',
+      formOther: 'Egyéb allergia vagy restrikció',
+      formOtherPh: 'Pl. tojásallergia, fruktóz intolerancia…',
+      formMsg: 'Üzenet a párnak (opcionális)',
+      formMsgPh: 'Írj nekünk pár sort…',
+      formSubmit: 'Válasz küldése',
+      langSwitchAria: 'Nyelv választása',
+      langHu: 'Magyar',
+      langEn: 'English',
+      timelineAriaSuffix: ' szekció',
+      imgFallback1: 'Esküvői fotó',
+      imgFallback2: 'Kép feltöltés alatt',
+      imgFallbackAlt: 'Esküvői helyettesítő kép'
+    },
+    en: {
+      docTitle: 'Our wedding invitation',
+      envelopeText: 'This invitation is just for you.<br>Tap to open.',
+      heroBadge: 'WE ARE GETTING MARRIED',
+      heroCta: 'CONFIRM YOUR ATTENDANCE',
+      heroDate: 'August 22, 2026',
+      heroScrollAria: 'Scroll down',
+      heroMuteAria: 'Sound on/off',
+      heroMuteTitle: 'Sound',
+      countdownTitle: 'Countdown',
+      countdownSubtitle: 'To the most beautiful day of our lives',
+      countdownDays: 'days',
+      countdownHours: 'hours',
+      countdownMins: 'minutes',
+      countdownSecs: 'seconds',
+      countdownDetails: 'Details',
+      welcomeTitle: 'You are warmly invited',
+      welcomeIntro:
+        'Dear guests, we are delighted to invite you to our big day. Get ready for an unforgettable celebration — we cannot wait to celebrate with you.',
+      welcomeImgAlt: 'Manca and Endre',
+      coupleTitle: 'We are',
+      coupleGroom: 'Groom',
+      coupleBride: 'Bride',
+      coupleImgGroomAlt: 'Endre – groom',
+      coupleImgBrideAlt: 'Manca – bride',
+      programTitle: 'Schedule',
+      programSubtitle: 'What we have planned for you',
+      programLeadAlt: 'Wedding day – mood photo',
+      program1t: 'Breakfast',
+      program1d: 'Breakfast',
+      program2t: 'Church ceremony',
+      program2d: 'At the church',
+      program3t: 'Photos',
+      program3d: 'Photo session',
+      program4t: 'Dinner',
+      program4d: 'Dinner',
+      program5t: 'First dance & bridal dance',
+      program5d: 'First dance and party',
+      program6t: 'Midnight supper',
+      program6d: 'Midnight menu',
+      programMidnight: 'Midnight',
+      venueTitle: 'Venue',
+      venueImgAlt: 'Villabogart – venue',
+      venueTime: '5:00 p.m. – 1:00 a.m.',
+      venueMap: 'Map',
+      venueMapBtn: 'Open in Maps',
+      faqTitle: 'Frequently asked questions',
+      faqLeadAlt: 'FAQ – mood photo',
+      faq1q: 'May I bring a plus-one?',
+      faq1a: 'Yes — please let us know the number of guests on the RSVP form.',
+      faq2q: 'What is the best way to get to Villabogart?',
+      faq2p: 'We suggest three routes:',
+      faq2l1:
+        'From the M7, change to route 67 at Balatonszemes, then leave at Mernye and follow the paved road through Somogygeszti to Alsóbogát centre, then down the hillside to the Magtár;',
+      faq2l2:
+        'or continue on route 67 to Kaposfüred, leave at the roundabout towards Juta–Somogyjád, then Alsóbogát and turn right at the sign to reach the Magtár;',
+      faq2l3:
+        'or leave the M7 at km 142 via Lengyeltóti–Somogyvár–Osztopán–Somogyjád (the longest route, but the best quality between villages).',
+      faq3q: 'What should I wear?',
+      faq3a: 'Smart festive: suit / elegant dress.',
+      faq4q: 'May I take photos during the ceremony?',
+      faq4a:
+        'Please do not use your phone during the ceremony. Photos are welcome at the reception and party.',
+      galleryTitle: 'Gallery',
+      galleryNote: 'Moments together.',
+      galleryAlt1: 'Gallery 1.',
+      galleryAlt2: 'Gallery 2.',
+      galleryAlt3: 'Gallery 3.',
+      galleryAlt4: 'Gallery 4.',
+      galleryAlt5: 'Gallery 5.',
+      galleryAlt6: 'Gallery 6.',
+      galleryAlt7: 'Gallery 7.',
+      pageTimelineAria: 'Page sections',
+      rsvpTitle: 'Confirm your attendance',
+      rsvpSubtitle: 'We would love to have you with us',
+      formSubject: 'Wedding RSVP – invitation site',
+      formName: 'Full name *',
+      formNamePh: 'Your name',
+      formEmail: 'Email (optional)',
+      formEmailPh: 'you@example.com',
+      formAttend: 'Will you attend? *',
+      formYes: 'Yes, I will attend',
+      formNo: 'I cannot make it',
+      formGuests: 'Number of guests (including yourself)',
+      formDietLegend: 'Food allergies / intolerances',
+      formDietHint: 'Please tick anything that applies to you.',
+      formDietGluten: 'Gluten-free / coeliac',
+      formDietLactose: 'Lactose-free',
+      formDietVeg: 'Vegetarian',
+      formDietVegan: 'Vegan',
+      formDietNuts: 'Nut allergy',
+      formDietShellfish: 'Shellfish allergy',
+      formOther: 'Other allergy or restriction',
+      formOtherPh: 'E.g. egg allergy, fructose intolerance…',
+      formMsg: 'Message to the couple (optional)',
+      formMsgPh: 'Write us a few lines…',
+      formSubmit: 'Send reply',
+      langSwitchAria: 'Choose language',
+      langHu: 'Hungarian',
+      langEn: 'English',
+      timelineAriaSuffix: ' section',
+      imgFallback1: 'Wedding photo',
+      imgFallback2: 'Image uploading',
+      imgFallbackAlt: 'Wedding placeholder image'
+    }
+  };
+
+  function getLang() {
+    try {
+      var s = localStorage.getItem(STORAGE_KEY);
+      if (s === 'en' || s === 'hu') return s;
+    } catch (e) {}
+    return 'hu';
+  }
+
+  function setLang(lang) {
+    if (lang !== 'en' && lang !== 'hu') return;
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch (e) {}
+    apply(lang);
+  }
+
+  function txt(lang, key) {
+    var pack = T[lang] || T.hu;
+    return pack[key] != null ? pack[key] : T.hu[key] || '';
+  }
+
+  function apply(lang) {
+    if (lang !== 'en' && lang !== 'hu') lang = 'hu';
+    document.documentElement.lang = lang === 'en' ? 'en' : 'hu';
+
+    var pack = T[lang] || T.hu;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (!key || pack[key] == null) return;
+      el.textContent = pack[key];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (!key || pack[key] == null) return;
+      el.innerHTML = pack[key];
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (!key || pack[key] == null) return;
+      el.setAttribute('placeholder', pack[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria');
+      if (!key || pack[key] == null) return;
+      el.setAttribute('aria-label', pack[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-title');
+      if (!key || pack[key] == null) return;
+      el.setAttribute('title', pack[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-alt');
+      if (!key || pack[key] == null) return;
+      el.setAttribute('alt', pack[key]);
+    });
+
+    var subj = document.getElementById('form-subject');
+    if (subj) subj.value = pack.formSubject;
+
+    var tEl = document.querySelector('title');
+    if (tEl) tEl.textContent = pack.docTitle;
+
+    document.querySelectorAll('.lang-switch__btn').forEach(function (btn) {
+      var l = btn.getAttribute('data-set-lang');
+      var active = l === lang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    var langRoot = document.querySelector('.lang-switch');
+    if (langRoot) langRoot.setAttribute('aria-label', pack.langSwitchAria);
+
+    try {
+      window.dispatchEvent(new CustomEvent('eskuvo:lang', { detail: { lang: lang } }));
+    } catch (e) {}
+  }
+
+  function getTimelineLabels(lang) {
+    if (lang === 'en') {
+      return [
+        'Home',
+        'Countdown',
+        'Welcome',
+        'The two of us',
+        'Schedule',
+        'Venue',
+        'FAQ',
+        'Gallery',
+        'RSVP'
+      ];
+    }
+    return [
+      'Kezdőlap',
+      'Visszaszámlálás',
+      'Üdvözlő',
+      'Mi vagyunk',
+      'Program',
+      'Helyszín',
+      'GYIK',
+      'Galéria',
+      'RSVP'
+    ];
+  }
+
+  function wireLangSwitch() {
+    var root = document.querySelector('.lang-switch');
+    if (!root) return;
+    root.querySelectorAll('[data-set-lang]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var l = btn.getAttribute('data-set-lang');
+        setLang(l);
+      });
+    });
+  }
+
+  function init() {
+    wireLangSwitch();
+    apply(getLang());
+  }
+
+  function getTimelineAriaSuffix(lang) {
+    return (lang === 'en' ? T.en : T.hu).timelineAriaSuffix;
+  }
+
+  window.EskuvoI18n = {
+    getLang: getLang,
+    setLang: setLang,
+    apply: apply,
+    init: init,
+    getTimelineLabels: getTimelineLabels,
+    getTimelineAriaSuffix: getTimelineAriaSuffix,
+    t: function (key) {
+      return txt(getLang(), key);
+    },
+    imgFallbackStrings: function () {
+      var l = getLang();
+      return { line1: txt(l, 'imgFallback1'), line2: txt(l, 'imgFallback2'), alt: txt(l, 'imgFallbackAlt') };
+    }
+  };
+})();

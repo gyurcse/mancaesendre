@@ -12,6 +12,16 @@
   <meta name="theme-color" content="#3d6a87">
 </head>
 <body>
+  <div class="lang-switch" role="group" aria-label="Nyelv választása">
+    <button type="button" class="lang-switch__btn lang-switch__btn--hu is-active" data-set-lang="hu" data-i18n-aria="langHu" data-i18n-title="langHu" title="Magyar" aria-label="Magyar" aria-pressed="true">
+      <span class="lang-switch__glyph" aria-hidden="true">A</span>
+      <span class="lang-switch__abbr" aria-hidden="true">HU</span>
+    </button>
+    <button type="button" class="lang-switch__btn lang-switch__btn--en" data-set-lang="en" data-i18n-aria="langEn" data-i18n-title="langEn" title="English" aria-label="English" aria-pressed="false">
+      <span class="lang-switch__glyph lang-switch__glyph--en" aria-hidden="true">🌐</span>
+      <span class="lang-switch__abbr" aria-hidden="true">EN</span>
+    </button>
+  </div>
   <!-- Boríték overlay – csak mobilon, első megnyitáskor -->
   <div id="envelope-overlay" class="envelope-overlay" aria-hidden="true">
     <div class="envelope-container">
@@ -19,7 +29,7 @@
         <div class="envelope-body"></div>
         <div class="envelope-letter" aria-hidden="true">
           <span class="envelope-letter-names">Manca & Endre</span>
-          <span class="envelope-letter-date">2026. augusztus 22.</span>
+          <span class="envelope-letter-date" data-i18n="heroDate">2026. augusztus 22.</span>
         </div>
         <div class="envelope-flap"></div>
         <div class="envelope-seal-wrapper" aria-hidden="true">
@@ -27,12 +37,12 @@
         </div>
         <div class="envelope-front"></div>
       </div>
-      <p class="envelope-text">Ez a meghívó csak Neked szól.<br>Érintsd meg a megnyitáshoz.</p>
+      <p class="envelope-text" data-i18n-html="envelopeText">Ez a meghívó csak Neked szól.<br>Érintsd meg a megnyitáshoz.</p>
     </div>
   </div>
 
   <main id="main-content" class="main-content">
-    <nav class="page-timeline" aria-label="Oldal szakaszai">
+    <nav class="page-timeline" data-i18n-aria="pageTimelineAria" aria-label="Oldal szakaszai" aria-hidden="true">
       <div class="page-timeline-inner">
         <div class="page-timeline-branch">
           <div class="page-timeline-svg-wrap" aria-hidden="true">
@@ -70,48 +80,48 @@
         <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80" alt="" class="hero-bg-img" referrerpolicy="no-referrer" />
       </div>
       <div class="hero-content">
-        <p class="hero-badge">ÖSSZEHÁZASODUNK</p>
+        <p class="hero-badge" data-i18n="heroBadge">ÖSSZEHÁZASODUNK</p>
         <h1><span class="hero-name hero-name-a">Manca</span> <span class="hero-amp">&</span> <span class="hero-name hero-name-b">Endre</span></h1>
-        <p class="hero-date"><span class="hero-star" aria-hidden="true">✦</span> 2026. augusztus 22.</p>
-        <a href="#rsvp" class="hero-cta">ERŐSÍTSD MEG RÉSZVÉTELED</a>
-        <a href="#countdown" class="hero-scroll" aria-label="Lapozás le">⌄</a>
+        <p class="hero-date"><span class="hero-star" aria-hidden="true">✦</span> <span data-i18n="heroDate">2026. augusztus 22.</span></p>
+        <a href="#rsvp" class="hero-cta" data-i18n="heroCta">ERŐSÍTSD MEG RÉSZVÉTELED</a>
+        <a href="#countdown" class="hero-scroll" data-i18n-aria="heroScrollAria" aria-label="Lapozás le">⌄</a>
       </div>
-      <div class="hero-mute" aria-label="Hang ki/be" title="Hang">🔇</div>
+      <div class="hero-mute" data-i18n-aria="heroMuteAria" data-i18n-title="heroMuteTitle" aria-label="Hang ki/be" title="Hang">🔇</div>
     </header>
 
 
     <!-- Countdown -->
     <section id="countdown" class="section countdown-section animate-on-scroll">
-      <h2 class="script-title">Visszaszámlálás</h2>
-      <p class="countdown-subtitle">A legszebb napunkra az életünkben</p>
+      <h2 class="script-title" data-i18n="countdownTitle">Visszaszámlálás</h2>
+      <p class="countdown-subtitle" data-i18n="countdownSubtitle">A legszebb napunkra az életünkben</p>
       <div class="countdown-grid">
         <div class="countdown-block">
           <span class="countdown-num" id="countdown-days">—</span>
-          <span class="countdown-label">nap</span>
+          <span class="countdown-label" data-i18n="countdownDays">nap</span>
         </div>
         <div class="countdown-block">
           <span class="countdown-num" id="countdown-hours">—</span>
-          <span class="countdown-label">óra</span>
+          <span class="countdown-label" data-i18n="countdownHours">óra</span>
         </div>
         <div class="countdown-block">
           <span class="countdown-num" id="countdown-mins">—</span>
-          <span class="countdown-label">perc</span>
+          <span class="countdown-label" data-i18n="countdownMins">perc</span>
         </div>
         <div class="countdown-block">
           <span class="countdown-num" id="countdown-secs">—</span>
-          <span class="countdown-label">másodperc</span>
+          <span class="countdown-label" data-i18n="countdownSecs">másodperc</span>
         </div>
       </div>
-      <a href="#program" class="countdown-detail-link">Részletek</a>
+      <a href="#program" class="countdown-detail-link" data-i18n="countdownDetails">Részletek</a>
     </section>
 
     <!-- Üdvözlő szöveg -->
     <section id="welcome" class="section welcome animate-on-scroll">
-      <h2 class="script-title">Szeretettel várunk</h2>
+      <h2 class="script-title" data-i18n="welcomeTitle">Szeretettel várunk</h2>
       <div class="welcome-image-wrap">
-        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80" alt="" class="welcome-image" referrerpolicy="no-referrer" loading="lazy" />
+        <img src="Fotok/IMG_8013.JPG" alt="Manca és Endre" data-i18n-alt="welcomeImgAlt" class="welcome-image" loading="lazy" />
       </div>
-      <p class="intro">
+      <p class="intro" data-i18n="welcomeIntro">
         Kedves Vendégeink! Örömmel szeretnénk meghívni Önöket a nagy napunkra.
         Készüljetek egy felejthetetlen ünnepre – várunk Titeket szeretettel.
       </p>
@@ -119,66 +129,66 @@
 
     <!-- Párunk -->
     <section id="couple" class="section couple animate-on-scroll">
-      <h2 class="script-title">Mi vagyunk</h2>
+      <h2 class="script-title" data-i18n="coupleTitle">Mi vagyunk</h2>
       <div class="couple-grid">
         <div class="couple-card">
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80" alt="Vőlegény" class="couple-image" referrerpolicy="no-referrer" loading="lazy" />
+          <img src="Fotok/IMG_8014.JPG" alt="Endre – vőlegény" data-i18n-alt="coupleImgGroomAlt" class="couple-image" loading="lazy" />
           <h3>Endre</h3>
-          <p>Vőlegény</p>
+          <p data-i18n="coupleGroom">Vőlegény</p>
         </div>
         <div class="couple-card">
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Menyasszony" class="couple-image" referrerpolicy="no-referrer" loading="lazy" />
+          <img src="Fotok/IMG_3759.JPG" alt="Manca – menyasszony" data-i18n-alt="coupleImgBrideAlt" class="couple-image" loading="lazy" />
           <h3>Manca</h3>
-          <p>Menyasszony</p>
+          <p data-i18n="coupleBride">Menyasszony</p>
         </div>
       </div>
     </section>
 
     <!-- Program (mint a Boda Mar & Jaume „Programa del dia”) -->
     <section id="program" class="section program animate-on-scroll">
-      <h2 class="script-title">Program</h2>
-      <p class="program-subtitle">Amit nektek készítettünk</p>
-      <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=1000&q=80" alt="Esküvői program hangulatkép" class="section-lead-image" referrerpolicy="no-referrer" loading="lazy" />
+      <h2 class="script-title" data-i18n="programTitle">Program</h2>
+      <p class="program-subtitle" data-i18n="programSubtitle">Amit nektek készítettünk</p>
+      <img src="Fotok/6e160c81-b882-4048-99b7-38218af36f15.JPG" alt="Esküvői program – hangulatkép" data-i18n-alt="programLeadAlt" class="section-lead-image" loading="lazy" />
       <ul class="program-list">
         <li class="program-item">
           <span class="program-icon" aria-hidden="true">🍳</span>
           <span class="time">08:00–10:00</span>
-          <div><strong>Reggeli</strong><br><span class="program-desc">Reggeli</span></div>
+          <div><strong data-i18n="program1t">Reggeli</strong><br><span class="program-desc" data-i18n="program1d">Reggeli</span></div>
         </li>
         <li class="program-item">
           <span class="program-icon" aria-hidden="true">⛪</span>
           <span class="time">16:00–17:00</span>
-          <div><strong>Egyházi esküvő</strong><br><span class="program-desc">A templomban</span></div>
+          <div><strong data-i18n="program2t">Egyházi esküvő</strong><br><span class="program-desc" data-i18n="program2d">A templomban</span></div>
         </li>
         <li class="program-item">
           <span class="program-icon" aria-hidden="true">📷</span>
           <span class="time">17:30–19:00</span>
-          <div><strong>Fotózás</strong><br><span class="program-desc">Fotózás</span></div>
+          <div><strong data-i18n="program3t">Fotózás</strong><br><span class="program-desc" data-i18n="program3d">Fotózás</span></div>
         </li>
         <li class="program-item">
           <span class="program-icon" aria-hidden="true">🥂</span>
           <span class="time">19:00</span>
-          <div><strong>Vacsora</strong><br><span class="program-desc">Vacsora</span></div>
+          <div><strong data-i18n="program4t">Vacsora</strong><br><span class="program-desc" data-i18n="program4d">Vacsora</span></div>
         </li>
         <li class="program-item">
           <span class="program-icon" aria-hidden="true">💃</span>
           <span class="time">21:00</span>
-          <div><strong>Első tánc, menyasszonytánc</strong><br><span class="program-desc">Első tánc és buli</span></div>
+          <div><strong data-i18n="program5t">Első tánc, menyasszonytánc</strong><br><span class="program-desc" data-i18n="program5d">Első tánc és buli</span></div>
         </li>
         <li class="program-item">
           <span class="program-icon" aria-hidden="true">🌙</span>
-          <span class="time">Éjfél</span>
-          <div><strong>Éjféli menü</strong><br><span class="program-desc">Éjféli menü</span></div>
+          <span class="time" data-i18n="programMidnight">Éjfél</span>
+          <div><strong data-i18n="program6t">Éjféli menü</strong><br><span class="program-desc" data-i18n="program6d">Éjféli menü</span></div>
         </li>
       </ul>
     </section>
 
     <!-- Helyszín -->
     <section id="venue" class="section venue animate-on-scroll">
-      <h2 class="script-title">Helyszín</h2>
+      <h2 class="script-title" data-i18n="venueTitle">Helyszín</h2>
       <div class="venue-card">
         <div class="venue-image-wrap">
-          <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=80" alt="Helyszín" class="venue-image" referrerpolicy="no-referrer" loading="lazy" />
+          <img src="Fotok/FullSizeRender.jpg" alt="Villabogart – helyszín" data-i18n-alt="venueImgAlt" class="venue-image" loading="lazy" />
         </div>
         <div class="venue-info">
           <div class="venue-header">
@@ -186,11 +196,11 @@
             <h3>Villabogart</h3>
           </div>
           <p class="venue-address">Alsóbogáton</p>
-          <p class="venue-time"><span class="venue-clock" aria-hidden="true">🕐</span> 17:00 – 01:00</p>
+          <p class="venue-time"><span class="venue-clock" aria-hidden="true">🕐</span> <span data-i18n="venueTime">17:00 – 01:00</span></p>
           <div class="venue-map-wrap">
-            <iframe class="venue-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2722.127!2d19.5!3d47.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDEyJzAwLjAiTiAxOcKwMzAnMDAuMCJF!5e0!3m2!1shu!2shu!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Térkép"></iframe>
+            <iframe class="venue-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2722.127!2d19.5!3d47.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDEyJzAwLjAiTiAxOcKwMzAnMDAuMCJF!5e0!3m2!1shu!2shu!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-i18n-title="venueMap" title="Térkép"></iframe>
           </div>
-          <a href="https://www.google.com/maps/search/Villabogart+Als%C3%B3bog%C3%A1ton" target="_blank" rel="noopener" class="btn-map">Maps megnyitása</a>
+          <a href="https://www.google.com/maps/search/Villabogart+Als%C3%B3bog%C3%A1ton" target="_blank" rel="noopener" class="btn-map" data-i18n="venueMapBtn">Maps megnyitása</a>
         </div>
       </div>
     </section>
@@ -198,46 +208,47 @@
     <!-- GYIK (mint Preguntas frecuentes) -->
     <section id="faq" class="section faq animate-on-scroll">
       <span class="section-icon faq-icon" aria-hidden="true">?</span>
-      <h2 class="script-title">Gyakori kérdések</h2>
-      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1000&q=80" alt="Esküvői dekoráció hangulatkép" class="section-lead-image" referrerpolicy="no-referrer" loading="lazy" />
+      <h2 class="script-title" data-i18n="faqTitle">Gyakori kérdések</h2>
+      <img src="Fotok/IMG_5486.jpg" alt="Gyakori kérdések – hangulatkép" data-i18n-alt="faqLeadAlt" class="section-lead-image" loading="lazy" />
       <div class="faq-list">
         <details class="faq-item">
-          <summary class="faq-question">Hozhatok kísérőt?</summary>
-          <p class="faq-answer">Igen, kérjük jelezd a vendégek számát a részvételi űrlapon.</p>
+          <summary class="faq-question" data-i18n="faq1q">Hozhatok kísérőt?</summary>
+          <p class="faq-answer" data-i18n="faq1a">Igen, kérjük jelezd a vendégek számát a részvételi űrlapon.</p>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">Hogyan lehet a leggyorsabban, legjobban eljutni a Villabogart-hoz?</summary>
+          <summary class="faq-question" data-i18n="faq2q">Hogyan lehet a leggyorsabban, legjobban eljutni a Villabogart-hoz?</summary>
           <div class="faq-answer">
-            <p>Három útvonalat javasolunk:</p>
+            <p data-i18n="faq2p">Három útvonalat javasolunk:</p>
             <ul class="faq-route-list">
-              <li>M7-esről Balatonszemesnél át kell térni a 67-es útra, majd Mernyeszentmiklósnál letérve egy kövezett úton át Somogygesztin keresztül eljutni Alsóbogát központjába, onnan legurulni a domboldalról és megérkezni a Magtárhoz;</li>
-              <li>vagy továbbmenni a 67-es úton egészen Kaposfüredig, ott egy körforgalomból kitérve Juta–Somogyjád útvonalon elérve Alsóbogátot a táblánál jobbra fordulva megérkezni a Magtárhoz;</li>
-              <li>vagy az M7-esről a 142-es km-nél letérve Lengyeltóti–Somogyvár–Osztopán–Somogyjád falvakon keresztül érnek el Alsóbogátra (ez a leghosszabb, de a legjobb minőségű út a falvak között).</li>
+              <li data-i18n="faq2l1">M7-esről Balatonszemesnél át kell térni a 67-es útra, majd Mernyeszentmiklósnál letérve egy kövezett úton át Somogygesztin keresztül eljutni Alsóbogát központjába, onnan legurulni a domboldalról és megérkezni a Magtárhoz;</li>
+              <li data-i18n="faq2l2">vagy továbbmenni a 67-es úton egészen Kaposfüredig, ott egy körforgalomból kitérve Juta–Somogyjád útvonalon elérve Alsóbogátot a táblánál jobbra fordulva megérkezni a Magtárhoz;</li>
+              <li data-i18n="faq2l3">vagy az M7-esről a 142-es km-nél letérve Lengyeltóti–Somogyvár–Osztopán–Somogyjád falvakon keresztül érnek el Alsóbogátra (ez a leghosszabb, de a legjobb minőségű út a falvak között).</li>
             </ul>
           </div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">Milyen öltözék a megfelelő?</summary>
-          <p class="faq-answer">Ünnepélyes, de kellemes: öltöny / elegáns ruha.</p>
+          <summary class="faq-question" data-i18n="faq3q">Milyen öltözék a megfelelő?</summary>
+          <p class="faq-answer" data-i18n="faq3a">Ünnepélyes, de kellemes: öltöny / elegáns ruha.</p>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">Fényképezhetek a szertartás alatt?</summary>
-          <p class="faq-answer">A ceremónia alatt kérjük, ne használj telefont. A fogadás és mulatság alatt szívesen várjuk a fotókat.</p>
+          <summary class="faq-question" data-i18n="faq4q">Fényképezhetek a szertartás alatt?</summary>
+          <p class="faq-answer" data-i18n="faq4a">A ceremónia alatt kérjük, ne használj telefont. A fogadás és mulatság alatt szívesen várjuk a fotókat.</p>
         </details>
       </div>
     </section>
 
     <!-- Galéria -->
     <section id="gallery" class="section gallery animate-on-scroll">
-      <h2 class="script-title">Galéria</h2>
-      <p class="gallery-note">A képek hamarosan cserélhetők a saját fotóira.</p>
+      <h2 class="script-title" data-i18n="galleryTitle">Galéria</h2>
+      <p class="gallery-note" data-i18n="galleryNote">Közös pillanatok.</p>
       <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80" alt="" class="gallery-item" referrerpolicy="no-referrer" loading="lazy" />
-        <img src="https://images.unsplash.com/photo-1478146896981-b80fe463330d?w=500&q=80" alt="" class="gallery-item" referrerpolicy="no-referrer" loading="lazy" />
-        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&q=80" alt="" class="gallery-item" referrerpolicy="no-referrer" loading="lazy" />
-        <img src="https://images.unsplash.com/photo-1545237327-ea35db04164d?w=500&q=80" alt="" class="gallery-item" referrerpolicy="no-referrer" loading="lazy" />
-        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=500&q=80" alt="" class="gallery-item" referrerpolicy="no-referrer" loading="lazy" />
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500&q=80" alt="" class="gallery-item" referrerpolicy="no-referrer" loading="lazy" />
+        <img src="Fotok/IMG_0307.jpg" alt="Galéria 1." data-i18n-alt="galleryAlt1" class="gallery-item" loading="lazy" />
+        <img src="Fotok/IMG_0402.jpg" alt="Galéria 2." data-i18n-alt="galleryAlt2" class="gallery-item" loading="lazy" />
+        <img src="Fotok/IMG_1416.jpg" alt="Galéria 3." data-i18n-alt="galleryAlt3" class="gallery-item" loading="lazy" />
+        <img src="Fotok/IMG_3560.jpg" alt="Galéria 4." data-i18n-alt="galleryAlt4" class="gallery-item" loading="lazy" />
+        <img src="Fotok/IMG_6127.jpg" alt="Galéria 5." data-i18n-alt="galleryAlt5" class="gallery-item" loading="lazy" />
+        <img src="Fotok/IMG_7426.jpg" alt="Galéria 6." data-i18n-alt="galleryAlt6" class="gallery-item" loading="lazy" />
+        <img src="Fotok/IMG_7431.jpg" alt="Galéria 7." data-i18n-alt="galleryAlt7" class="gallery-item" loading="lazy" />
       </div>
     </section>
 
@@ -245,39 +256,39 @@
     <section id="rsvp" class="section rsvp animate-on-scroll">
       <div class="rsvp-banner"></div>
       <div class="rsvp-inner">
-        <h2 class="script-title">Erősítsd meg részvételed</h2>
-        <p class="rsvp-subtitle">Szeretnénk, ha velünk lennél</p>
+        <h2 class="script-title" data-i18n="rsvpTitle">Erősítsd meg részvételed</h2>
+        <p class="rsvp-subtitle" data-i18n="rsvpSubtitle">Szeretnénk, ha velünk lennél</p>
         <form class="rsvp-form" action="https://formspree.io/f/maqboozp" method="POST">
-          <input type="hidden" name="_subject" value="Esküvői részvétel – meghívó oldal" />
+          <input type="hidden" name="_subject" id="form-subject" value="Esküvői részvétel – meghívó oldal" />
           <input type="hidden" name="_next" value="https://gyurcse.github.io/mancaesendre/#rsvp" />
-          <label class="form-label">Teljes név *</label>
-          <input type="text" name="name" class="form-input" placeholder="A neved" required />
-          <label class="form-label">Email (opcionális)</label>
-          <input type="email" name="email" class="form-input" placeholder="email@pelda.hu" />
-          <label class="form-label">Részt veszel? *</label>
+          <label class="form-label"><span data-i18n="formName">Teljes név *</span></label>
+          <input type="text" name="name" class="form-input" data-i18n-placeholder="formNamePh" placeholder="A neved" required />
+          <label class="form-label"><span data-i18n="formEmail">Email (opcionális)</span></label>
+          <input type="email" name="email" class="form-input" data-i18n-placeholder="formEmailPh" placeholder="email@pelda.hu" />
+          <label class="form-label"><span data-i18n="formAttend">Részt veszel? *</span></label>
           <div class="form-radio-group">
-            <label class="form-radio"><input type="radio" name="asistir" value="igen" required /> Igen, részt veszek</label>
-            <label class="form-radio"><input type="radio" name="asistir" value="nem" /> Nem tudok jönni</label>
+            <label class="form-radio"><input type="radio" name="asistir" value="igen" required /> <span data-i18n="formYes">Igen, részt veszek</span></label>
+            <label class="form-radio"><input type="radio" name="asistir" value="nem" /> <span data-i18n="formNo">Nem tudok jönni</span></label>
           </div>
-          <label class="form-label">Vendégek száma (magad is beleszámít)</label>
+          <label class="form-label"><span data-i18n="formGuests">Vendégek száma (magad is beleszámít)</span></label>
           <input type="number" name="guests" class="form-input" min="1" value="1" />
           <fieldset class="form-fieldset">
-            <legend class="form-legend"><span class="form-legend-icon" aria-hidden="true">⚠</span> Ételallergia / intolerancia</legend>
-            <p class="form-hint">Fontos, hogy tudjuk. Jelöld be, ami igaz rád.</p>
+            <legend class="form-legend"><span class="form-legend-icon" aria-hidden="true">⚠</span> <span data-i18n="formDietLegend">Ételallergia / intolerancia</span></legend>
+            <p class="form-hint" data-i18n="formDietHint">Fontos, hogy tudjuk. Jelöld be, ami igaz rád.</p>
             <div class="form-check-grid">
-              <label class="form-check"><input type="checkbox" name="diet" value="gluten" /> Gluténmentes / celiák</label>
-              <label class="form-check"><input type="checkbox" name="diet" value="lactose" /> Laktózmentes</label>
-              <label class="form-check"><input type="checkbox" name="diet" value="vegetarian" /> Vegetáriánus</label>
-              <label class="form-check"><input type="checkbox" name="diet" value="vegan" /> Vegán</label>
-              <label class="form-check"><input type="checkbox" name="diet" value="nuts" /> Mogyoróallergia</label>
-              <label class="form-check"><input type="checkbox" name="diet" value="shellfish" /> Rákallergia</label>
+              <label class="form-check"><input type="checkbox" name="diet" value="gluten" /> <span data-i18n="formDietGluten">Gluténmentes / celiák</span></label>
+              <label class="form-check"><input type="checkbox" name="diet" value="lactose" /> <span data-i18n="formDietLactose">Laktózmentes</span></label>
+              <label class="form-check"><input type="checkbox" name="diet" value="vegetarian" /> <span data-i18n="formDietVeg">Vegetáriánus</span></label>
+              <label class="form-check"><input type="checkbox" name="diet" value="vegan" /> <span data-i18n="formDietVegan">Vegán</span></label>
+              <label class="form-check"><input type="checkbox" name="diet" value="nuts" /> <span data-i18n="formDietNuts">Mogyoróallergia</span></label>
+              <label class="form-check"><input type="checkbox" name="diet" value="shellfish" /> <span data-i18n="formDietShellfish">Rákallergia</span></label>
             </div>
           </fieldset>
-          <label class="form-label">Egyéb allergia vagy restrikció</label>
-          <input type="text" name="other_diet" class="form-input" placeholder="Pl. tojásallergia, fruktóz intolerancia…" />
-          <label class="form-label">Üzenet a párnak (opcionális)</label>
-          <textarea name="message" class="form-textarea" rows="4" placeholder="Írj nekünk pár sort…"></textarea>
-          <button type="submit" class="btn-rsvp"><span class="btn-rsvp-icon" aria-hidden="true">✈</span> Válasz küldése</button>
+          <label class="form-label"><span data-i18n="formOther">Egyéb allergia vagy restrikció</span></label>
+          <input type="text" name="other_diet" class="form-input" data-i18n-placeholder="formOtherPh" placeholder="Pl. tojásallergia, fruktóz intolerancia…" />
+          <label class="form-label"><span data-i18n="formMsg">Üzenet a párnak (opcionális)</span></label>
+          <textarea name="message" class="form-textarea" rows="4" data-i18n-placeholder="formMsgPh" placeholder="Írj nekünk pár sort…"></textarea>
+          <button type="submit" class="btn-rsvp"><span class="btn-rsvp-icon" aria-hidden="true">✈</span> <span data-i18n="formSubmit">Válasz küldése</span></button>
         </form>
       </div>
     </section>
@@ -289,6 +300,7 @@
     </footer>
   </main>
 
+  <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

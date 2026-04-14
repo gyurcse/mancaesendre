@@ -86,19 +86,33 @@
     var pointsRoot = document.getElementById('timeline-points');
     var progressPath = document.getElementById('timeline-progress-path');
     var main = document.getElementById('main-content');
-    if (!pointsRoot || !main) return;
+    var nav = document.querySelector('.page-timeline');
+    var hero = document.getElementById('hero');
+    if (!pointsRoot || !main || !nav || !hero) return;
 
-    var steps = [
-      { id: 'hero', label: 'Kezdőlap' },
-      { id: 'countdown', label: 'Visszaszámlálás' },
-      { id: 'welcome', label: 'Üdvözlő' },
-      { id: 'couple', label: 'Mi vagyunk' },
-      { id: 'program', label: 'Program' },
-      { id: 'venue', label: 'Helyszín' },
-      { id: 'faq', label: 'GYIK' },
-      { id: 'gallery', label: 'Galéria' },
-      { id: 'rsvp', label: 'RSVP' }
-    ];
+    function timelineLabelsFromI18n() {
+      if (window.EskuvoI18n && typeof window.EskuvoI18n.getTimelineLabels === 'function') {
+        var lang = window.EskuvoI18n.getLang();
+        return window.EskuvoI18n.getTimelineLabels(lang);
+      }
+      return [
+        'Kezdőlap',
+        'Visszaszámlálás',
+        'Üdvözlő',
+        'Mi vagyunk',
+        'Program',
+        'Helyszín',
+        'GYIK',
+        'Galéria',
+        'RSVP'
+      ];
+    }
+
+    var ids = ['hero', 'countdown', 'welcome', 'couple', 'program', 'venue', 'faq', 'gallery', 'rsvp'];
+    var labelsArr = timelineLabelsFromI18n();
+    var steps = ids.map(function (id, i) {
+      return { id: id, label: labelsArr[i] || id };
+    });
 
     var segments = [];
     for (var s = 0; s < steps.length; s++) {
@@ -121,6 +135,13 @@
       '<circle cx="12" cy="12" r="2.05" fill="currentColor"/>' +
       '</g></svg>';
 
+    var TL_NODE_INNER =
+      '<span class="page-timeline-node__port">' +
+      '<span class="page-timeline-node__stem" aria-hidden="true"></span>' +
+      '<span class="page-timeline-node__flower">' +
+      TL_FLOWER_ICON +
+      '</span></span>';
+
     function layoutPointsOnPath() {
       var anchor = document.getElementById('timeline-anchor-path');
       var branch = document.querySelector('.page-timeline-branch');
@@ -136,7 +157,8 @@
         if (!ctm) return;
         for (var pi = 0; pi < n; pi++) {
           var t = n === 1 ? 0.5 : pi / (n - 1);
-          var pt = anchor.getPointAtLength(t * len);
+          var L = t * len;
+          var pt = anchor.getPointAtLength(L);
           var svgPt = svg.createSVGPoint();
           svgPt.x = pt.x;
           svgPt.y = pt.y;
@@ -145,6 +167,14 @@
           var ty = ((scr.y - branchRect.top) / branchRect.height) * 100;
           pointEls[pi].style.left = lx + '%';
           pointEls[pi].style.top = ty + '%';
+
+          var delta = Math.max(0.35, len * 0.0035);
+          var pA = anchor.getPointAtLength(Math.max(0, L - delta));
+          var pB = anchor.getPointAtLength(Math.min(len, L + delta));
+          var pathAng = Math.atan2(pB.y - pA.y, pB.x - pA.x);
+          var flip = pi % 2 === 0 ? 1 : -1;
+          var perpDeg = (pathAng + flip * (Math.PI / 2)) * (180 / Math.PI);
+          pointEls[pi].style.setProperty('--stem-deg', perpDeg + 'deg');
         }
       } catch (e) {}
     }
@@ -160,9 +190,13 @@
         var a = document.createElement('a');
         a.href = '#' + seg.id;
         a.className = 'page-timeline-node';
-        a.innerHTML = TL_FLOWER_ICON;
+        a.innerHTML = TL_NODE_INNER;
         a.title = seg.label;
-        a.setAttribute('aria-label', seg.label + ' szekció');
+        var ariaSuf =
+          window.EskuvoI18n && typeof window.EskuvoI18n.getTimelineAriaSuffix === 'function'
+            ? window.EskuvoI18n.getTimelineAriaSuffix(window.EskuvoI18n.getLang())
+            : ' szekció';
+        a.setAttribute('aria-label', seg.label + ariaSuf);
         a.addEventListener('click', function (e) {
           e.preventDefault();
           seg.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -177,6 +211,13 @@
 
     function sectionTop(el) {
       return el.getBoundingClientRect().top + window.scrollY;
+    }
+
+    /** Timeline csak a hero alá görgetve (hero alja a nézet teteje fölött) */
+    function updateTimelineVisibility() {
+      var pastHero = hero.getBoundingClientRect().bottom < 40;
+      nav.classList.toggle('page-timeline--revealed', pastHero);
+      nav.setAttribute('aria-hidden', pastHero ? 'false' : 'true');
     }
 
     function updateTimeline() {
@@ -214,6 +255,7 @@
       scrollTick = true;
       requestAnimationFrame(function () {
         scrollTick = false;
+        updateTimelineVisibility();
         updateTimeline();
       });
     }
@@ -225,6 +267,7 @@
       requestAnimationFrame(function () {
         resizeTick = false;
         layoutPointsOnPath();
+        updateTimelineVisibility();
         updateTimeline();
       });
     }
@@ -232,8 +275,20 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
     window.addEventListener('hashchange', onResize);
+    updateTimelineVisibility();
     updateTimeline();
     scheduleLayoutPoints();
+
+    window.addEventListener('eskuvo:lang', function (ev) {
+      var lang = ev.detail && ev.detail.lang;
+      if (!lang || !window.EskuvoI18n) return;
+      var nextLabels = window.EskuvoI18n.getTimelineLabels(lang);
+      var suf = window.EskuvoI18n.getTimelineAriaSuffix(lang);
+      for (var ti = 0; ti < pointEls.length && ti < nextLabels.length; ti++) {
+        pointEls[ti].title = nextLabels[ti];
+        pointEls[ti].setAttribute('aria-label', nextLabels[ti] + suf);
+      }
+    });
   }
 
   function pad(n) {
@@ -276,11 +331,12 @@
     setInterval(updateCountdown, 1000);
   }
 
-  function initImageFallbacks() {
-    var images = document.querySelectorAll('img');
-    if (!images.length) return;
-
-    var fallbackSvg =
+  function buildFallbackSvg() {
+    var s =
+      window.EskuvoI18n && typeof window.EskuvoI18n.imgFallbackStrings === 'function'
+        ? window.EskuvoI18n.imgFallbackStrings()
+        : { line1: 'Esküvői fotó', line2: 'Kép feltöltés alatt', alt: 'Esküvői helyettesítő kép' };
+    return (
       "data:image/svg+xml;utf8," +
       encodeURIComponent(
         "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'>" +
@@ -290,24 +346,41 @@
           "<rect width='1200' height='800' fill='url(%23g)'/>" +
           "<circle cx='1030' cy='130' r='180' fill='rgba(255,255,255,0.35)'/>" +
           "<circle cx='220' cy='700' r='220' fill='rgba(212,168,75,0.25)'/>" +
-          "<text x='50%' y='48%' dominant-baseline='middle' text-anchor='middle' fill='%233d6a87' font-size='56' font-family='Arial, sans-serif'>Esküvői fotó</text>" +
-          "<text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' fill='%235a6c7d' font-size='30' font-family='Arial, sans-serif'>Kép feltöltés alatt</text>" +
-        "</svg>"
-      );
+          "<text x='50%' y='48%' dominant-baseline='middle' text-anchor='middle' fill='%233d6a87' font-size='56' font-family='Arial, sans-serif'>" +
+          String(s.line1).replace(/</g, "") +
+          "</text>" +
+          "<text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' fill='%235a6c7d' font-size='30' font-family='Arial, sans-serif'>" +
+          String(s.line2).replace(/</g, "") +
+          "</text>" +
+          "</svg>"
+      )
+    );
+  }
+
+  function initImageFallbacks() {
+    var images = document.querySelectorAll('img');
+    if (!images.length) return;
 
     images.forEach(function (img) {
       img.addEventListener('error', function handleImageError() {
         if (img.dataset.fallbackApplied === '1') return;
         img.dataset.fallbackApplied = '1';
-        img.src = fallbackSvg;
+        img.src = buildFallbackSvg();
+        var s =
+          window.EskuvoI18n && typeof window.EskuvoI18n.imgFallbackStrings === 'function'
+            ? window.EskuvoI18n.imgFallbackStrings()
+            : { alt: 'Esküvői helyettesítő kép' };
         if (!img.alt || !img.alt.trim()) {
-          img.alt = 'Esküvői helyettesítő kép';
+          img.alt = s.alt;
         }
       });
     });
   }
 
   function init() {
+    if (window.EskuvoI18n && typeof window.EskuvoI18n.init === 'function') {
+      window.EskuvoI18n.init();
+    }
     initEnvelope();
     initScrollAnimations();
     initPageTimeline();
