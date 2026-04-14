@@ -33,8 +33,33 @@
 
   <main id="main-content" class="main-content">
     <nav class="page-timeline" aria-label="Oldal szakaszai">
-      <div class="page-timeline-line"><span class="page-timeline-progress" id="timeline-progress"></span></div>
-      <div class="page-timeline-points" id="timeline-points"></div>
+      <div class="page-timeline-inner">
+        <div class="page-timeline-branch" aria-hidden="true">
+          <svg class="page-timeline-branch-svg" viewBox="0 0 48 520" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="tl-branch-stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8b7355" stop-opacity="0.35"/>
+                <stop offset="50%" stop-color="#5c4d3f" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#8b7355" stop-opacity="0.35"/>
+              </linearGradient>
+              <filter id="tl-soft" x="-20%" y="-5%" width="140%" height="110%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="0.6"/>
+              </filter>
+            </defs>
+            <path class="page-timeline-branch-path" d="M22 8 Q32 72 18 136 Q8 200 24 264 Q38 328 16 392 Q6 456 22 512" fill="none" stroke="url(#tl-branch-stroke)" stroke-width="2.2" stroke-linecap="round" filter="url(#tl-soft)"/>
+            <path d="M22 8 Q32 72 18 136 Q8 200 24 264 Q38 328 16 392 Q6 456 22 512" fill="none" stroke="rgba(92,77,63,0.12)" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <div class="page-timeline-line">
+            <span class="page-timeline-progress" id="timeline-progress"></span>
+          </div>
+        </div>
+        <div class="page-timeline-points" id="timeline-points"></div>
+      </div>
+      <div class="page-timeline-petals" aria-hidden="true">
+        <span class="page-timeline-petal page-timeline-petal--1"></span>
+        <span class="page-timeline-petal page-timeline-petal--2"></span>
+        <span class="page-timeline-petal page-timeline-petal--3"></span>
+      </div>
     </nav>
     <!-- Hero / Címsor -->
     <header id="hero" class="hero animate-in">
