@@ -124,15 +124,13 @@
     pointsRoot.innerHTML = '';
     var pointEls = [];
 
+    /* Tulipánszerű bimbó + tömör szár */
     var TL_FLOWER_ICON =
-      '<svg class="tl-flower-icon" width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
-      '<g class="tl-flower-icon__g">' +
-      '<circle cx="12" cy="5.4" r="2.75" fill="currentColor"/>' +
-      '<circle cx="17.35" cy="10.65" r="2.75" fill="currentColor"/>' +
-      '<circle cx="15" cy="17.25" r="2.75" fill="currentColor"/>' +
-      '<circle cx="9" cy="17.25" r="2.75" fill="currentColor"/>' +
-      '<circle cx="6.65" cy="10.65" r="2.75" fill="currentColor"/>' +
-      '<circle cx="12" cy="12" r="2.05" fill="currentColor"/>' +
+      '<svg class="tl-flower-icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+      '<g class="tl-flower-icon__g" fill="currentColor">' +
+      '<rect x="11" y="11.6" width="2" height="10.6" rx="0.45"/>' +
+      '<path d="M12 11.6C8.1 11.3 5.5 8.6 6 5.8 6.4 3.2 8.9 1.8 12 1.8s5.6 1.4 6 4c.5 2.8-2.1 5.5-6 5.8z"/>' +
+      '<path opacity="0.9" d="M12 2.8c-1.35.15-2.45.75-2.85 1.85.75-.45 1.65-.7 2.85-.7s2.1.25 2.85.7C14.45 3.55 13.35 2.95 12 2.8z"/>' +
       '</g></svg>';
 
     var TL_NODE_INNER =
@@ -172,8 +170,14 @@
           var pA = anchor.getPointAtLength(Math.max(0, L - delta));
           var pB = anchor.getPointAtLength(Math.min(len, L + delta));
           var pathAng = Math.atan2(pB.y - pA.y, pB.x - pA.x);
-          var flip = pi % 2 === 0 ? 1 : -1;
-          var perpDeg = (pathAng + flip * (Math.PI / 2)) * (180 / Math.PI);
+          /* Mindig a „jobbra” mutató merőleges (a tartalom felé), ne váltogasson az oldal szélére */
+          var angOut = pathAng + Math.PI / 2;
+          var angIn = pathAng - Math.PI / 2;
+          var perpAng = Math.cos(angOut) >= Math.cos(angIn) ? angOut : angIn;
+          if (Math.cos(perpAng) < 0.08) {
+            perpAng += Math.PI;
+          }
+          var perpDeg = perpAng * (180 / Math.PI);
           pointEls[pi].style.setProperty('--stem-deg', perpDeg + 'deg');
         }
       } catch (e) {}
