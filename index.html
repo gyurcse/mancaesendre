@@ -59,10 +59,21 @@
                   <stop offset="100%" stop-color="rgba(30,48,62,0.8)"/>
                 </linearGradient>
               </defs>
-              <!-- TL_PATH: hosszabb hullám – pontok ehhez illeszkednek (JS) -->
-              <path id="timeline-anchor-path" class="page-timeline-root-main" d="M28 6 Q42 140 18 268 Q6 396 36 508 Q52 600 20 668 Q8 708 28 714" fill="none" stroke="url(#tl-root-fade)" stroke-width="1.75" stroke-linecap="round"/>
-              <path class="page-timeline-root-hair" d="M28 6 Q42 140 18 268 Q6 396 36 508 Q52 600 20 668 Q8 708 28 714" fill="none" stroke="rgba(22,36,48,0.42)" stroke-width="0.95" stroke-linecap="round" transform="translate(0.5, 0)"/>
-              <path id="timeline-progress-path" pathLength="100" d="M28 6 Q42 140 18 268 Q6 396 36 508 Q52 600 20 668 Q8 708 28 714" fill="none" stroke="url(#tl-progress-stroke)" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"/>
+              <!-- Levélkék a főág mentén (mint a referencia-rajz) -->
+              <g class="tl-leaves" fill="rgba(74,124,158,0.22)" aria-hidden="true">
+                <ellipse cx="6" cy="98" rx="4" ry="2.1" transform="rotate(-38 6 98)"/>
+                <ellipse cx="28" cy="168" rx="4" ry="2.1" transform="rotate(42 28 168)"/>
+                <ellipse cx="5" cy="248" rx="3.8" ry="2" transform="rotate(-32 5 248)"/>
+                <ellipse cx="30" cy="318" rx="4" ry="2.1" transform="rotate(36 30 318)"/>
+                <ellipse cx="7" cy="398" rx="3.8" ry="2" transform="rotate(-40 7 398)"/>
+                <ellipse cx="29" cy="478" rx="4" ry="2.1" transform="rotate(34 29 478)"/>
+                <ellipse cx="6" cy="558" rx="3.8" ry="2" transform="rotate(-36 6 558)"/>
+                <ellipse cx="27" cy="632" rx="3.6" ry="1.9" transform="rotate(40 27 632)"/>
+              </g>
+              <!-- Főtörzs + jobbra ívelő „oldalágak” – a pontok ehhez illeszkednek (JS) -->
+              <path id="timeline-anchor-path" class="page-timeline-root-main" d="M 17 5 C 17 92 30 108 17 128 C 8 210 32 228 17 248 C 17 328 30 348 17 368 C 10 448 34 468 17 488 C 17 568 28 588 17 608 C 14 672 26 692 17 716" fill="none" stroke="url(#tl-root-fade)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path class="page-timeline-root-hair" d="M 17 5 C 17 92 30 108 17 128 C 8 210 32 228 17 248 C 17 328 30 348 17 368 C 10 448 34 468 17 488 C 17 568 28 588 17 608 C 14 672 26 692 17 716" fill="none" stroke="rgba(22,36,48,0.42)" stroke-width="0.95" stroke-linecap="round" stroke-linejoin="round" transform="translate(0.45, 0)"/>
+              <path id="timeline-progress-path" pathLength="100" d="M 17 5 C 17 92 30 108 17 128 C 8 210 32 228 17 248 C 17 328 30 348 17 368 C 10 448 34 468 17 488 C 17 568 28 588 17 608 C 14 672 26 692 17 716" fill="none" stroke="url(#tl-progress-stroke)" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"/>
             </svg>
           </div>
           <div class="page-timeline-petals" aria-hidden="true">

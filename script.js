@@ -124,13 +124,21 @@
     pointsRoot.innerHTML = '';
     var pointEls = [];
 
-    /* Tulipánszerű bimbó + tömör szár */
+    /* 8 szirmú virág (középen „lyuk”), vékony háttérvonal a szirmok között */
+    var tlPetals = '';
+    for (var fi = 0; fi < 8; fi++) {
+      tlPetals +=
+        '<ellipse cx="0" cy="-5.4" rx="2.05" ry="4.45" transform="rotate(' +
+        fi * 45 +
+        ')" fill="currentColor" stroke="var(--color-bg)" stroke-width="0.3"/>';
+    }
     var TL_FLOWER_ICON =
-      '<svg class="tl-flower-icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
-      '<g class="tl-flower-icon__g" fill="currentColor">' +
-      '<rect x="11" y="11.6" width="2" height="10.6" rx="0.45"/>' +
-      '<path d="M12 11.6C8.1 11.3 5.5 8.6 6 5.8 6.4 3.2 8.9 1.8 12 1.8s5.6 1.4 6 4c.5 2.8-2.1 5.5-6 5.8z"/>' +
-      '<path opacity="0.9" d="M12 2.8c-1.35.15-2.45.75-2.85 1.85.75-.45 1.65-.7 2.85-.7s2.1.25 2.85.7C14.45 3.55 13.35 2.95 12 2.8z"/>' +
+      '<svg class="tl-flower-icon" width="26" height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+      '<g class="tl-flower-icon__g">' +
+      '<g transform="translate(12,12)">' +
+      tlPetals +
+      '</g>' +
+      '<circle class="tl-flower-icon__center" cx="12" cy="12" r="2.7" fill="var(--color-bg)"/>' +
       '</g></svg>';
 
     var TL_NODE_INNER =

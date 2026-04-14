@@ -93,6 +93,14 @@ body .main-content {
   background: transparent;
 }
 
+.tl-leaves {
+  pointer-events: none;
+}
+
+.tl-flower-icon__center {
+  fill: var(--color-bg);
+}
+
 #timeline-progress-path {
   transition: stroke-dashoffset 0.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
