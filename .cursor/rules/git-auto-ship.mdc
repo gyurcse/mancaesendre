@@ -1,0 +1,18 @@
+---
+description: Változtatások után automatikus git commit és push
+alwaysApply: true
+---
+
+# Git – automatikus feltöltés (Eskuvo / meghívó repo)
+
+Ha a felhasználó **nem** kéri kifejezetten, hogy ne commitolj / ne pusholj:
+
+1. Amikor **érdemi fájlmódosítás** kész (HTML, CSS, JS, képek, konfig), a feladat végén futtasd a terminálból:
+   - `git status` ellenőrzés
+   - `git add -A`
+   - `git commit -m "…"` – **értelmes, rövid magyar üzenet** a változásról (ne csak „fix”).
+   - `git push`
+
+2. Ha nincs változás vagy a commit üres lenne, ne hívj commitot.
+
+3. A `.cursor/hooks/auto-git-ship.sh` a **stop** hookban is lefuthat; ha már pusholtál, a `git diff` üres lesz – akkor ne duplikáld feleslegesen (a hook úgyis kihagyja).

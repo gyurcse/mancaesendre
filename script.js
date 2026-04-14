@@ -84,9 +84,9 @@
   /** Oldalsó timeline: szekciók = pontok, görgetés + aktív állapot + kitöltött sáv */
   function initPageTimeline() {
     var pointsRoot = document.getElementById('timeline-points');
-    var progressEl = document.getElementById('timeline-progress');
+    var progressPath = document.getElementById('timeline-progress-path');
     var main = document.getElementById('main-content');
-    if (!pointsRoot || !progressEl || !main) return;
+    if (!pointsRoot || !main) return;
 
     var steps = [
       { id: 'hero', label: 'Kezdőlap' },
@@ -114,7 +114,8 @@
       (function (seg, index) {
         var a = document.createElement('a');
         a.href = '#' + seg.id;
-        a.className = 'page-timeline-point';
+        a.className =
+          'page-timeline-point ' + (index % 2 === 0 ? 'page-timeline-point--stem-a' : 'page-timeline-point--stem-b');
         a.title = seg.label;
         a.setAttribute('aria-label', seg.label + ' szekció');
         a.addEventListener('click', function (e) {
@@ -146,7 +147,9 @@
       var docEl = document.documentElement;
       var maxScroll = docEl.scrollHeight - window.innerHeight;
       var scrollPct = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
-      progressEl.style.height = scrollPct + '%';
+      if (progressPath) {
+        progressPath.style.strokeDashoffset = String(100 - scrollPct);
+      }
 
       for (var k = 0; k < pointEls.length; k++) {
         var p = pointEls[k];

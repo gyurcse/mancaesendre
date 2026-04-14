@@ -35,23 +35,33 @@
     <nav class="page-timeline" aria-label="Oldal szakaszai">
       <div class="page-timeline-inner">
         <div class="page-timeline-branch" aria-hidden="true">
-          <svg class="page-timeline-branch-svg" viewBox="0 0 48 520" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <svg class="page-timeline-branch-svg" viewBox="0 0 56 520" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="tl-branch-stroke" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#8b7355" stop-opacity="0.35"/>
-                <stop offset="50%" stop-color="#5c4d3f" stop-opacity="0.55"/>
-                <stop offset="100%" stop-color="#8b7355" stop-opacity="0.35"/>
+              <linearGradient id="tl-root-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(232,240,245,0.95)"/>
+                <stop offset="45%" stop-color="rgba(180,198,212,0.35)"/>
+                <stop offset="100%" stop-color="rgba(232,240,245,0.75)"/>
               </linearGradient>
-              <filter id="tl-soft" x="-20%" y="-5%" width="140%" height="110%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="0.6"/>
+              <linearGradient id="tl-progress-stroke" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(232,184,200,0.55)"/>
+                <stop offset="45%" stop-color="rgba(212,168,75,0.4)"/>
+                <stop offset="100%" stop-color="rgba(61,106,135,0.28)"/>
+              </linearGradient>
+              <filter id="tl-root-glow" x="-30%" y="-2%" width="160%" height="104%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="b"/>
+                <feMerge>
+                  <feMergeNode in="b"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
               </filter>
             </defs>
-            <path class="page-timeline-branch-path" d="M22 8 Q32 72 18 136 Q8 200 24 264 Q38 328 16 392 Q6 456 22 512" fill="none" stroke="url(#tl-branch-stroke)" stroke-width="2.2" stroke-linecap="round" filter="url(#tl-soft)"/>
-            <path d="M22 8 Q32 72 18 136 Q8 200 24 264 Q38 328 16 392 Q6 456 22 512" fill="none" stroke="rgba(92,77,63,0.12)" stroke-width="4" stroke-linecap="round"/>
+            <!-- Halvány „beolvadó” körvonal a háttérbe -->
+            <path class="page-timeline-root-halo" d="M28 4 Q38 96 22 178 Q10 258 30 338 Q46 418 24 508" fill="none" stroke="rgba(240,245,249,0.92)" stroke-width="5" stroke-linecap="round"/>
+            <path class="page-timeline-root-main" d="M28 4 Q38 96 22 178 Q10 258 30 338 Q46 418 24 508" fill="none" stroke="url(#tl-root-fade)" stroke-width="1.35" stroke-linecap="round" filter="url(#tl-root-glow)"/>
+            <path class="page-timeline-root-hair" d="M28 4 Q38 96 22 178 Q10 258 30 338 Q46 418 24 508" fill="none" stroke="rgba(139,115,85,0.14)" stroke-width="0.85" stroke-linecap="round" transform="translate(0.6, 0)"/>
+            <!-- Görgetés: csak a hullám mentén -->
+            <path id="timeline-progress-path" pathLength="100" d="M28 4 Q38 96 22 178 Q10 258 30 338 Q46 418 24 508" fill="none" stroke="url(#tl-progress-stroke)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"/>
           </svg>
-          <div class="page-timeline-line">
-            <span class="page-timeline-progress" id="timeline-progress"></span>
-          </div>
         </div>
         <div class="page-timeline-points" id="timeline-points"></div>
       </div>
