@@ -43,6 +43,7 @@
   }
 
   function initEnvelope() {
+    if (document.documentElement.getAttribute('data-invite') === 'chooser') return;
     if (!overlay || !mainContent) return;
 
     /* Mobilon és gépen is: első látogatáskor boríték, utána már az oldal */
@@ -167,10 +168,21 @@
     });
   }
 
+  function syncInviteRsvpUi() {
+    var v = document.documentElement.getAttribute('data-invite');
+    var wk = document.getElementById('rsvp-days-weekend');
+    var so = document.getElementById('rsvp-days-sat-only');
+    if (v === 'sat-only' && wk) wk.disabled = true;
+    else if (wk) wk.disabled = false;
+    if (so) so.hidden = v !== 'sat-only';
+  }
+
   function initInviteVariant() {
     var v = document.documentElement.getAttribute('data-invite') || 'fri-sat';
+    if (v === 'chooser') return;
     var tip = document.getElementById('invite-tipus');
     if (tip) tip.value = v;
+    syncInviteRsvpUi();
     var form = document.querySelector('.rsvp-form');
     if (!form || v !== 'fri-sat' || form.dataset.inviteDayValidateBound === '1') return;
     form.dataset.inviteDayValidateBound = '1';
@@ -190,15 +202,58 @@
     });
   }
 
-  function init() {
-    if (window.EskuvoI18n && typeof window.EskuvoI18n.init === 'function') {
-      window.EskuvoI18n.init();
-    }
+  function initCoreAfterInvite() {
     initInviteVariant();
     initEnvelope();
     initScrollAnimations();
     initCountdown();
     initImageFallbacks();
+  }
+
+  function initInviteLanding() {
+    var html = document.documentElement;
+    if (html.getAttribute('data-invite') !== 'chooser') return false;
+
+    var land = document.getElementById('invite-landing');
+    var mainContent = document.getElementById('main-content');
+    var envelope = document.getElementById('envelope-overlay');
+    if (!land) return false;
+
+    land.hidden = false;
+    land.setAttribute('aria-hidden', 'false');
+    if (mainContent) mainContent.classList.add('content-hidden');
+    if (envelope) envelope.style.display = 'none';
+
+    function unlock(variant) {
+      try {
+        sessionStorage.setItem('eskuvo_invite_variant', variant);
+      } catch (e) {}
+      html.setAttribute('data-invite', variant);
+      land.hidden = true;
+      land.setAttribute('aria-hidden', 'true');
+      if (envelope) envelope.style.display = '';
+      try {
+        if (window.EskuvoI18n && typeof window.EskuvoI18n.apply === 'function') {
+          window.EskuvoI18n.apply(window.EskuvoI18n.getLang());
+        }
+      } catch (e2) {}
+      initCoreAfterInvite();
+    }
+
+    var b1 = document.getElementById('invite-choice-fri-sat');
+    var b2 = document.getElementById('invite-choice-sat-only');
+    if (b1) b1.addEventListener('click', function () { unlock('fri-sat'); });
+    if (b2) b2.addEventListener('click', function () { unlock('sat-only'); });
+
+    return true;
+  }
+
+  function init() {
+    if (window.EskuvoI18n && typeof window.EskuvoI18n.init === 'function') {
+      window.EskuvoI18n.init();
+    }
+    if (initInviteLanding()) return;
+    initCoreAfterInvite();
   }
 
   if (document.readyState === 'loading') {

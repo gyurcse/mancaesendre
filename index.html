@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<html lang="hu" data-invite="fri-sat">
+<html lang="hu" data-invite="chooser">
 <head>
   <meta charset="UTF-8">
   <script>
     (function () {
+      var html = document.documentElement;
+      var SS = 'eskuvo_invite_variant';
       try {
-        var v = sessionStorage.getItem('eskuvo_invite_variant');
+        var v = sessionStorage.getItem(SS);
         if (v === 'fri-sat' || v === 'sat-only') {
-          document.documentElement.setAttribute('data-invite', v);
-          sessionStorage.removeItem('eskuvo_invite_variant');
+          html.setAttribute('data-invite', v);
           return;
         }
       } catch (e) {}
       try {
         var p = new URLSearchParams(window.location.search).get('meghivo');
-        if (p === 'tulipan') document.documentElement.setAttribute('data-invite', 'fri-sat');
-        else if (p === 'gyertya') document.documentElement.setAttribute('data-invite', 'sat-only');
+        if (p === 'babakocsi' || p === 'tulipan') {
+          html.setAttribute('data-invite', 'fri-sat');
+          sessionStorage.setItem(SS, 'fri-sat');
+          return;
+        }
+        if (p === 'gyertya') {
+          html.setAttribute('data-invite', 'sat-only');
+          sessionStorage.setItem(SS, 'sat-only');
+          return;
+        }
       } catch (e2) {}
+      html.setAttribute('data-invite', 'chooser');
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +47,36 @@
       <span class="lang-switch__glyph lang-switch__glyph--en" aria-hidden="true">🌐</span>
       <span class="lang-switch__abbr" aria-hidden="true">EN</span>
     </button>
+  </div>
+  <!-- Gyökér: válaszd ki, melyik szimbólum szerepel a meghívódon -->
+  <div id="invite-landing" class="invite-landing" hidden aria-hidden="true">
+    <div class="invite-landing__inner">
+      <h1 class="invite-landing__title" data-i18n="inviteChoiceTitle">Melyik jel van a meghívódon?</h1>
+      <div class="invite-landing__grid" role="group" aria-label="Meghívó típus">
+        <button type="button" class="invite-landing__card" id="invite-choice-fri-sat" data-invite-choice="fri-sat" data-i18n-aria="inviteChoiceBabakocsiAria">
+          <span class="invite-landing__icon-wrap" aria-hidden="true">
+            <svg class="invite-landing__icon-svg invite-landing__icon-svg--stroller" viewBox="0 0 64 64" width="96" height="96" focusable="false">
+              <circle cx="18" cy="50" r="8" fill="none" stroke="currentColor" stroke-width="3"/>
+              <circle cx="46" cy="50" r="8" fill="none" stroke="currentColor" stroke-width="3"/>
+              <path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M10 50V28c0-4 3-7 7-7h18l6 10h8c3 0 5 2 5 5v14M14 28h20"/>
+              <path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M44 22v-6a4 4 0 0 0-4-4h-6"/>
+            </svg>
+          </span>
+          <span class="invite-landing__card-kicker" data-i18n="inviteChoiceBabakocsiKicker">Babakocsi</span>
+        </button>
+        <button type="button" class="invite-landing__card" id="invite-choice-sat-only" data-invite-choice="sat-only" data-i18n-aria="inviteChoiceGyertyaAria">
+          <span class="invite-landing__icon-wrap" aria-hidden="true">
+            <svg class="invite-landing__icon-svg invite-landing__icon-svg--candle" viewBox="0 0 64 64" width="96" height="96" focusable="false">
+              <path fill="currentColor" d="M32 8c-4 6-8 8-8 14 0 5 3.5 9 8 9s8-4 8-9c0-6-4-8-8-14z" opacity="0.9"/>
+              <rect x="26" y="24" width="12" height="32" rx="2" fill="currentColor" opacity="0.35"/>
+              <rect x="28" y="26" width="8" height="28" rx="1" fill="currentColor"/>
+              <ellipse cx="32" cy="56" rx="14" ry="4" fill="currentColor" opacity="0.25"/>
+            </svg>
+          </span>
+          <span class="invite-landing__card-kicker" data-i18n="inviteChoiceGyertyaKicker">Gyertya</span>
+        </button>
+      </div>
+    </div>
   </div>
   <!-- Boríték overlay – csak mobilon, első megnyitáskor -->
   <div id="envelope-overlay" class="envelope-overlay" aria-hidden="true">
@@ -334,17 +374,6 @@
             <p class="form-hint form-hint--sat-only" data-i18n="formDaysSatOnlyNote">A meghívó a szombati programra szól. A válaszodnál ezt vessük figyelembe.</p>
             <input type="hidden" name="nap_szombat" value="igen" />
           </div>
-          <script>
-            (function () {
-              try {
-                var v = document.documentElement.getAttribute('data-invite');
-                var wk = document.getElementById('rsvp-days-weekend');
-                var so = document.getElementById('rsvp-days-sat-only');
-                if (v === 'sat-only' && wk) wk.disabled = true;
-                if (so) so.hidden = v !== 'sat-only';
-              } catch (e) {}
-            })();
-          </script>
           <label class="form-label"><span data-i18n="formGuests">Vendégek száma (magad is beleszámít)</span></label>
           <input type="number" name="guests" class="form-input" min="1" value="1" />
           <fieldset class="form-fieldset">

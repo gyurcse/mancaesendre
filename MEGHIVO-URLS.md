@@ -1,22 +1,25 @@
 # Személyes meghívó linkek
 
-A gyökér `index.html` alapértelmezésben a **péntek + szombat** meghívót mutatja (pl. saját böngészéshez).
+## Vendégeknek (ajánlott)
 
-A vendégeknek a lenti **szavas** linkek egyikét add meg (a `/m` előtag **nem** kell).
-
-## Ajánlott URL-ek (GitHub Pages: `…/<repo>/` után)
+A lenti **szavas** útvonalak egyikét add meg (a `/m` előtag **nem** kell).
 
 | Meghívó típus    | Útvonal (rövid) | Vagy query a főoldalon |
 | ---------------- | --------------- | ---------------------- |
-| Péntek + szombat | `tulipan/`      | `index.html?meghivo=tulipan` |
+| Péntek + szombat | `babakocsi/`    | `index.html?meghivo=babakocsi` |
 | Csak szombat     | `gyertya/`      | `index.html?meghivo=gyertya` |
 
-Példa teljes címre: `https://<felhasználó>.github.io/<repo>/tulipan/`
+Példa teljes címre: `https://<felhasználó>.github.io/<repo>/babakocsi/`
 
-A belépő oldal beállítja a munkamenet-változót, majd a fő `index.html`-re irányít. **Könyvjelzőnek** elég a `tulipan/` vagy `gyertya/` link.
+A belépő oldal beállítja a munkamenet-változót, majd a fő `index.html`-re irányít. **Könyvjelzőnek** elég a `babakocsi/` vagy `gyertya/` link.
 
-## Régi / alternatív útvonalak (átirányítanak)
+## Gyökér (`/` vagy `index.html`) – választó
 
-- `m/tulipan/`, `m/gyertya/`, `m/hetvege/`, `m/szombatra/`, valamint a régi véletlenszerű mappák → ugyanaz, mint fent.
+Ha valaki **csak a főoldalt** nyitja meg (nincs `babakocsi/` / `gyertya/` / `?meghivo=` és nincs munkamenetben mentett választás), két **nagy ikon** (babakocsi / gyertya) közül választhat – a meghívón szereplő jelnek megfelelőt.
 
-**Biztonság:** ez nem erős titkosítás; aki ismeri a másik szót, megnyithatja. Ne tedd közzé nyilvánosan.
+## Régi linkek
+
+- `?meghivo=tulipan` továbbra is a **hétvégi** meghívót nyitja (kompatibilitás).
+- `m/tulipan/`, `m/babakocsi/`, `m/gyertya/`, `m/hetvege/`, `m/szombatra/`, régi véletlenszerű mappák → átirányítás vagy ugyanaz.
+
+**Biztonság:** ez nem erős titkosítás; aki ismeri a másik útvonalat, megnyithatja. Ne tedd közzé nyilvánosan.

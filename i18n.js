@@ -123,6 +123,11 @@
       langSwitchAria: 'Nyelv választása',
       langHu: 'Magyar',
       langEn: 'English',
+      inviteChoiceTitle: 'Melyik jel van a meghívódon?',
+      inviteChoiceBabakocsiKicker: 'Babakocsi',
+      inviteChoiceBabakocsiAria: 'Babakocsi jel kiválasztása',
+      inviteChoiceGyertyaKicker: 'Gyertya',
+      inviteChoiceGyertyaAria: 'Gyertya jel kiválasztása',
       imgFallback1: 'Esküvői fotó',
       imgFallback2: 'Kép feltöltés alatt',
       imgFallbackAlt: 'Esküvői helyettesítő kép'
@@ -246,6 +251,11 @@
       langSwitchAria: 'Choose language',
       langHu: 'Hungarian',
       langEn: 'English',
+      inviteChoiceTitle: 'Which symbol is on your invitation?',
+      inviteChoiceBabakocsiKicker: 'Stroller',
+      inviteChoiceBabakocsiAria: 'Select stroller symbol',
+      inviteChoiceGyertyaKicker: 'Candle',
+      inviteChoiceGyertyaAria: 'Select candle symbol',
       imgFallback1: 'Wedding photo',
       imgFallback2: 'Image uploading',
       imgFallbackAlt: 'Wedding placeholder image'
@@ -317,8 +327,12 @@
     var subj = document.getElementById('form-subject');
     if (subj) {
       var invite = document.documentElement.getAttribute('data-invite') || 'fri-sat';
-      var sk = invite === 'sat-only' ? 'formSubjectSatOnly' : 'formSubjectFriSat';
-      subj.value = pack[sk] != null ? pack[sk] : pack.formSubject;
+      if (invite === 'chooser') {
+        subj.value = pack.formSubject != null ? pack.formSubject : '';
+      } else {
+        var sk = invite === 'sat-only' ? 'formSubjectSatOnly' : 'formSubjectFriSat';
+        subj.value = pack[sk] != null ? pack[sk] : pack.formSubject;
+      }
     }
 
     var tEl = document.querySelector('title');
