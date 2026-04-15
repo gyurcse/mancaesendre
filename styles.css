@@ -194,9 +194,31 @@ html[data-invite='chooser'] #envelope-overlay {
   height: 58%;
 }
 
-.invite-landing__icon-svg--stroller {
-  width: 62%;
-  height: 62%;
+/* Meghívó-választó: gyertya és babakocsi azonos 120×120 px dobozban, középen */
+.invite-landing__icon-wrap.invite-landing__icon-wrap--landing-fixed {
+  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  min-width: 120px;
+  min-height: 120px;
+  flex-shrink: 0;
+}
+
+.invite-landing__icon-wrap--landing-fixed .invite-landing__icon-svg {
+  display: block;
+  width: 120px;
+  height: 120px;
+  max-width: none;
+  max-height: none;
+}
+
+.invite-landing__icon-wrap--landing-fixed .invite-landing__icon-svg--candle {
+  width: 100px;
+  height: 100px;
+}
+
+.invite-landing__icon-wrap--stroller-asset {
+  background: transparent;
 }
 
 .invite-landing__card-kicker {
