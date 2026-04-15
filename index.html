@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" data-invite="fri-sat">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        var v = sessionStorage.getItem('eskuvo_invite_variant');
+        if (v === 'fri-sat' || v === 'sat-only') {
+          document.documentElement.setAttribute('data-invite', v);
+          sessionStorage.removeItem('eskuvo_invite_variant');
+          return;
+        }
+      } catch (e) {}
+      try {
+        var p = new URLSearchParams(window.location.search).get('meghivo');
+        if (p === 'tulipan') document.documentElement.setAttribute('data-invite', 'fri-sat');
+        else if (p === 'gyertya') document.documentElement.setAttribute('data-invite', 'sat-only');
+      } catch (e2) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Esküvőnk meghívója</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="timeline.css">
   <meta name="theme-color" content="#3d6a87">
 </head>
 <body>
@@ -42,49 +58,6 @@
   </div>
 
   <main id="main-content" class="main-content">
-    <nav class="page-timeline" data-i18n-aria="pageTimelineAria" aria-label="Oldal szakaszai" aria-hidden="true">
-      <div class="page-timeline-inner">
-        <div class="page-timeline-branch">
-          <div class="page-timeline-svg-wrap" aria-hidden="true">
-            <svg class="page-timeline-branch-svg" viewBox="0 0 56 720" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="tl-root-fade" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="rgba(38,54,68,0.78)"/>
-                  <stop offset="50%" stop-color="rgba(28,42,54,0.9)"/>
-                  <stop offset="100%" stop-color="rgba(38,54,68,0.78)"/>
-                </linearGradient>
-                <linearGradient id="tl-progress-stroke" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="rgba(58,82,102,0.85)"/>
-                  <stop offset="50%" stop-color="rgba(36,56,72,0.92)"/>
-                  <stop offset="100%" stop-color="rgba(30,48,62,0.8)"/>
-                </linearGradient>
-              </defs>
-              <!-- Levélkék a főág mentén (mint a referencia-rajz) -->
-              <g class="tl-leaves" fill="rgba(74,124,158,0.22)" aria-hidden="true">
-                <ellipse cx="6" cy="98" rx="4" ry="2.1" transform="rotate(-38 6 98)"/>
-                <ellipse cx="28" cy="168" rx="4" ry="2.1" transform="rotate(42 28 168)"/>
-                <ellipse cx="5" cy="248" rx="3.8" ry="2" transform="rotate(-32 5 248)"/>
-                <ellipse cx="30" cy="318" rx="4" ry="2.1" transform="rotate(36 30 318)"/>
-                <ellipse cx="7" cy="398" rx="3.8" ry="2" transform="rotate(-40 7 398)"/>
-                <ellipse cx="29" cy="478" rx="4" ry="2.1" transform="rotate(34 29 478)"/>
-                <ellipse cx="6" cy="558" rx="3.8" ry="2" transform="rotate(-36 6 558)"/>
-                <ellipse cx="27" cy="632" rx="3.6" ry="1.9" transform="rotate(40 27 632)"/>
-              </g>
-              <!-- Főtörzs + jobbra ívelő „oldalágak” – a pontok ehhez illeszkednek (JS) -->
-              <path id="timeline-anchor-path" class="page-timeline-root-main" d="M 17 5 C 17 92 30 108 17 128 C 8 210 32 228 17 248 C 17 328 30 348 17 368 C 10 448 34 468 17 488 C 17 568 28 588 17 608 C 14 672 26 692 17 716" fill="none" stroke="url(#tl-root-fade)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              <path class="page-timeline-root-hair" d="M 17 5 C 17 92 30 108 17 128 C 8 210 32 228 17 248 C 17 328 30 348 17 368 C 10 448 34 468 17 488 C 17 568 28 588 17 608 C 14 672 26 692 17 716" fill="none" stroke="rgba(22,36,48,0.42)" stroke-width="0.95" stroke-linecap="round" stroke-linejoin="round" transform="translate(0.45, 0)"/>
-              <path id="timeline-progress-path" pathLength="100" d="M 17 5 C 17 92 30 108 17 128 C 8 210 32 228 17 248 C 17 328 30 348 17 368 C 10 448 34 468 17 488 C 17 568 28 588 17 608 C 14 672 26 692 17 716" fill="none" stroke="url(#tl-progress-stroke)" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"/>
-            </svg>
-          </div>
-          <div class="page-timeline-petals" aria-hidden="true">
-            <span class="page-timeline-petal page-timeline-petal--1"></span>
-            <span class="page-timeline-petal page-timeline-petal--2"></span>
-            <span class="page-timeline-petal page-timeline-petal--3"></span>
-          </div>
-          <div class="page-timeline-points" id="timeline-points"></div>
-        </div>
-      </div>
-    </nav>
     <!-- Hero / Címsor -->
     <header id="hero" class="hero animate-in">
       <div class="hero-bg">
@@ -132,9 +105,11 @@
       <div class="welcome-image-wrap">
         <img src="Fotok/IMG_8013.JPG" alt="Manca és Endre" data-i18n-alt="welcomeImgAlt" class="welcome-image" loading="lazy" />
       </div>
-      <p class="intro" data-i18n="welcomeIntro">
-        Kedves Vendégeink! Örömmel szeretnénk meghívni Önöket a nagy napunkra.
-        Készüljetek egy felejthetetlen ünnepre – várunk Titeket szeretettel.
+      <p class="intro intro--invite-split">
+        <span class="intro-variant intro-variant--fri-sat" data-i18n="welcomeIntroFriSat">Kedves Vendégeink! Meghívlak titeket a pénteki közös ünneplésre és a szombati nagy napunkra. Készüljetek egy felejthetetlen hétvégére – várunk szeretettel.</span><span
+          class="intro-variant intro-variant--sat-only"
+          data-i18n="welcomeIntroSatOnly"
+          >Kedves Vendégeink! Meghívlak titeket a szombati nagy napunkra. A pénteki programra ezúttal nem számítunk veletek – ha kérdésetek van, írjatok nyugodtan.</span>
       </p>
     </section>
 
@@ -143,12 +118,16 @@
       <h2 class="script-title" data-i18n="coupleTitle">Mi vagyunk</h2>
       <div class="couple-grid">
         <div class="couple-card">
-          <img src="Fotok/IMG_6127.jpg" alt="Endre – vőlegény" data-i18n-alt="coupleImgGroomAlt" class="couple-image" loading="lazy" />
+          <div class="couple-image-wrap">
+            <img src="Fotok/couple-endre.png" alt="Endre – vőlegény" data-i18n-alt="coupleImgGroomAlt" class="couple-image couple-image--mirror" loading="lazy" />
+          </div>
           <h3>Endre</h3>
           <p data-i18n="coupleGroom">Vőlegény</p>
         </div>
         <div class="couple-card">
-          <img src="Fotok/IMG_3759.JPG" alt="Manca – menyasszony" data-i18n-alt="coupleImgBrideAlt" class="couple-image couple-image--mirror" loading="lazy" />
+          <div class="couple-image-wrap">
+            <img src="Fotok/couple-manca.png" alt="Manca – menyasszony" data-i18n-alt="coupleImgBrideAlt" class="couple-image" loading="lazy" />
+          </div>
           <h3>Manca</h3>
           <p data-i18n="coupleBride">Menyasszony</p>
         </div>
@@ -164,38 +143,95 @@
         <span class="program-ornament__star">✦</span>
         <span class="program-ornament__line"></span>
       </div>
-      <ul class="program-list">
-        <li class="program-item">
-          <span class="program-icon" aria-hidden="true">🍳</span>
-          <span class="time">08:00–10:00</span>
-          <div><strong data-i18n="program1t">Reggeli</strong><br><span class="program-desc" data-i18n="program1d">Reggeli</span></div>
-        </li>
-        <li class="program-item">
-          <span class="program-icon" aria-hidden="true">⛪</span>
-          <span class="time">16:00–17:00</span>
-          <div><strong data-i18n="program2t">Egyházi esküvő</strong><br><span class="program-desc" data-i18n="program2d">A templomban</span></div>
-        </li>
-        <li class="program-item">
-          <span class="program-icon" aria-hidden="true">📷</span>
-          <span class="time">17:30–19:00</span>
-          <div><strong data-i18n="program3t">Fotózás</strong><br><span class="program-desc" data-i18n="program3d">Fotózás</span></div>
-        </li>
-        <li class="program-item">
-          <span class="program-icon" aria-hidden="true">🥂</span>
-          <span class="time">19:00</span>
-          <div><strong data-i18n="program4t">Vacsora</strong><br><span class="program-desc" data-i18n="program4d">Vacsora</span></div>
-        </li>
-        <li class="program-item">
-          <span class="program-icon" aria-hidden="true">💃</span>
-          <span class="time">21:00</span>
-          <div><strong data-i18n="program5t">Első tánc, menyasszonytánc</strong><br><span class="program-desc" data-i18n="program5d">Első tánc és buli</span></div>
-        </li>
-        <li class="program-item">
-          <span class="program-icon" aria-hidden="true">🌙</span>
-          <span class="time" data-i18n="programMidnight">Éjfél</span>
-          <div><strong data-i18n="program6t">Éjféli menü</strong><br><span class="program-desc" data-i18n="program6d">Éjféli menü</span></div>
-        </li>
-      </ul>
+      <div class="program-invite program-invite--fri-sat" id="program-invite-fri-sat">
+        <div class="program-day-block">
+          <h3 class="program-day-title" data-i18n="programDayFriLabel">Péntek – 2026. augusztus 21.</h3>
+          <ul class="program-list">
+            <li class="program-item program-item--fri-only">
+              <span class="program-icon" aria-hidden="true">🌿</span>
+              <span class="time" data-i18n="programFri1Time">17:00 – 19:00</span>
+              <div><strong data-i18n="programFri1t">Érkezés, köszöntő</strong><br><span class="program-desc" data-i18n="programFri1d">Könnyű fogadás, ismerkedés</span></div>
+            </li>
+            <li class="program-item program-item--fri-only">
+              <span class="program-icon" aria-hidden="true">🍽</span>
+              <span class="time" data-i18n="programFri2Time">20:00</span>
+              <div><strong data-i18n="programFri2t">Pénteki vacsora</strong><br><span class="program-desc" data-i18n="programFri2d">Közös est a hétvége kezdetéhez</span></div>
+            </li>
+          </ul>
+        </div>
+        <div class="program-day-block program-day-block--sat">
+          <h3 class="program-day-title" data-i18n="programDaySatLabel">Szombat – 2026. augusztus 22.</h3>
+          <ul class="program-list">
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🍳</span>
+              <span class="time">08:00–10:00</span>
+              <div><strong data-i18n="program1t">Reggeli</strong><br><span class="program-desc" data-i18n="program1d">Reggeli</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">⛪</span>
+              <span class="time">16:00–17:00</span>
+              <div><strong data-i18n="program2t">Egyházi esküvő</strong><br><span class="program-desc" data-i18n="program2d">A templomban</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">📷</span>
+              <span class="time">17:30–19:00</span>
+              <div><strong data-i18n="program3t">Fotózás</strong><br><span class="program-desc" data-i18n="program3d">Fotózás</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🥂</span>
+              <span class="time">19:00</span>
+              <div><strong data-i18n="program4t">Vacsora</strong><br><span class="program-desc" data-i18n="program4d">Vacsora</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">💃</span>
+              <span class="time">21:00</span>
+              <div><strong data-i18n="program5t">Első tánc, menyasszonytánc</strong><br><span class="program-desc" data-i18n="program5d">Első tánc és buli</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🌙</span>
+              <span class="time" data-i18n="programMidnight">Éjfél</span>
+              <div><strong data-i18n="program6t">Éjféli menü</strong><br><span class="program-desc" data-i18n="program6d">Éjféli menü</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="program-invite program-invite--sat-only" id="program-invite-sat-only">
+        <div class="program-day-block program-day-block--sat">
+          <h3 class="program-day-title" data-i18n="programDaySatLabel">Szombat – 2026. augusztus 22.</h3>
+          <ul class="program-list">
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🍳</span>
+              <span class="time" data-i18n="programSat1Time">09:00–11:00</span>
+              <div><strong data-i18n="programSat1t">Érkezés, reggeli</strong><br><span class="program-desc" data-i18n="programSat1d">Kávé, péksütemény – lazább start</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">⛪</span>
+              <span class="time">16:00–17:00</span>
+              <div><strong data-i18n="program2t">Egyházi esküvő</strong><br><span class="program-desc" data-i18n="program2d">A templomban</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">📷</span>
+              <span class="time">17:30–19:00</span>
+              <div><strong data-i18n="program3t">Fotózás</strong><br><span class="program-desc" data-i18n="program3d">Fotózás</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🥂</span>
+              <span class="time">19:00</span>
+              <div><strong data-i18n="program4t">Vacsora</strong><br><span class="program-desc" data-i18n="program4d">Vacsora</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">💃</span>
+              <span class="time">21:00</span>
+              <div><strong data-i18n="program5t">Első tánc, menyasszonytánc</strong><br><span class="program-desc" data-i18n="program5d">Első tánc és buli</span></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🌙</span>
+              <span class="time" data-i18n="programMidnight">Éjfél</span>
+              <div><strong data-i18n="program6t">Éjféli menü</strong><br><span class="program-desc" data-i18n="program6d">Éjféli menü</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Helyszín -->
@@ -275,6 +311,7 @@
         <p class="rsvp-subtitle" data-i18n="rsvpSubtitle">Szeretnénk, ha velünk lennél</p>
         <form class="rsvp-form" action="https://formspree.io/f/maqboozp" method="POST">
           <input type="hidden" name="_subject" id="form-subject" value="Esküvői részvétel – meghívó oldal" />
+          <input type="hidden" name="invite_tipus" id="invite-tipus" value="fri-sat" />
           <input type="hidden" name="_next" value="https://gyurcse.github.io/mancaesendre/#rsvp" />
           <label class="form-label"><span data-i18n="formName">Teljes név *</span></label>
           <input type="text" name="name" class="form-input" data-i18n-placeholder="formNamePh" placeholder="A neved" required />
@@ -285,6 +322,29 @@
             <label class="form-radio"><input type="radio" name="asistir" value="igen" required /> <span data-i18n="formYes">Igen, részt veszek</span></label>
             <label class="form-radio"><input type="radio" name="asistir" value="nem" /> <span data-i18n="formNo">Nem tudok jönni</span></label>
           </div>
+          <fieldset class="form-fieldset rsvp-days-fieldset rsvp-days-fieldset--weekend" id="rsvp-days-weekend">
+            <legend class="form-legend"><span data-i18n="formDaysLegend">Mely napokon jössz? *</span></legend>
+            <p class="form-hint" data-i18n="formDaysHintWeekend">Ha jössz, legalább egy napot jelölj meg.</p>
+            <div class="form-check-grid form-check-grid--days">
+              <label class="form-check"><input type="checkbox" name="nap_pentek" value="igen" /> <span data-i18n="formDayFri">Péntek</span></label>
+              <label class="form-check"><input type="checkbox" name="nap_szombat" value="igen" /> <span data-i18n="formDaySat">Szombat</span></label>
+            </div>
+          </fieldset>
+          <div class="form-fieldset rsvp-days-fieldset rsvp-days-fieldset--sat-only" id="rsvp-days-sat-only" hidden>
+            <p class="form-hint form-hint--sat-only" data-i18n="formDaysSatOnlyNote">A meghívó a szombati programra szól. A válaszodnál ezt vessük figyelembe.</p>
+            <input type="hidden" name="nap_szombat" value="igen" />
+          </div>
+          <script>
+            (function () {
+              try {
+                var v = document.documentElement.getAttribute('data-invite');
+                var wk = document.getElementById('rsvp-days-weekend');
+                var so = document.getElementById('rsvp-days-sat-only');
+                if (v === 'sat-only' && wk) wk.disabled = true;
+                if (so) so.hidden = v !== 'sat-only';
+              } catch (e) {}
+            })();
+          </script>
           <label class="form-label"><span data-i18n="formGuests">Vendégek száma (magad is beleszámít)</span></label>
           <input type="number" name="guests" class="form-input" min="1" value="1" />
           <fieldset class="form-fieldset">

@@ -81,223 +81,6 @@
     });
   }
 
-  /** Oldalsó timeline: szekciók = pontok, görgetés + aktív állapot + kitöltött sáv */
-  function initPageTimeline() {
-    var pointsRoot = document.getElementById('timeline-points');
-    var progressPath = document.getElementById('timeline-progress-path');
-    var main = document.getElementById('main-content');
-    var nav = document.querySelector('.page-timeline');
-    var hero = document.getElementById('hero');
-    if (!pointsRoot || !main || !nav || !hero) return;
-
-    function timelineLabelsFromI18n() {
-      if (window.EskuvoI18n && typeof window.EskuvoI18n.getTimelineLabels === 'function') {
-        var lang = window.EskuvoI18n.getLang();
-        return window.EskuvoI18n.getTimelineLabels(lang);
-      }
-      return [
-        'Visszaszámlálás',
-        'Üdvözlő',
-        'Mi vagyunk',
-        'Program',
-        'Helyszín',
-        'GYIK',
-        'Galéria',
-        'RSVP'
-      ];
-    }
-
-    /* Hero nincs a timeline-on; a pontok a főág két oldalára váltakoznak */
-    var ids = ['countdown', 'welcome', 'couple', 'program', 'venue', 'faq', 'gallery', 'rsvp'];
-    var labelsArr = timelineLabelsFromI18n();
-    var steps = ids.map(function (id, i) {
-      return { id: id, label: labelsArr[i] || id };
-    });
-
-    var segments = [];
-    for (var s = 0; s < steps.length; s++) {
-      var el = document.getElementById(steps[s].id);
-      if (el) segments.push({ id: steps[s].id, label: steps[s].label, el: el });
-    }
-    if (!segments.length) return;
-
-    pointsRoot.innerHTML = '';
-    var pointEls = [];
-
-    /* 8 szirmú virág (középen „lyuk”), vékony háttérvonal a szirmok között */
-    var tlPetals = '';
-    for (var fi = 0; fi < 8; fi++) {
-      tlPetals +=
-        '<ellipse cx="0" cy="-5.4" rx="2.05" ry="4.45" transform="rotate(' +
-        fi * 45 +
-        ')" fill="currentColor" stroke="var(--color-bg)" stroke-width="0.3"/>';
-    }
-    var TL_FLOWER_ICON =
-      '<svg class="tl-flower-icon" width="26" height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
-      '<g class="tl-flower-icon__g">' +
-      '<g transform="translate(12,12)">' +
-      tlPetals +
-      '</g>' +
-      '<circle class="tl-flower-icon__center" cx="12" cy="12" r="2.7" fill="var(--color-bg)"/>' +
-      '</g></svg>';
-
-    var TL_NODE_INNER =
-      '<span class="page-timeline-node__port">' +
-      '<span class="page-timeline-node__stem" aria-hidden="true"></span>' +
-      '<span class="page-timeline-node__flower">' +
-      TL_FLOWER_ICON +
-      '</span></span>';
-
-    function layoutPointsOnPath() {
-      var anchor = document.getElementById('timeline-anchor-path');
-      var branch = document.querySelector('.page-timeline-branch');
-      if (!anchor || !branch || !pointEls.length) return;
-      try {
-        var len = anchor.getTotalLength();
-        if (!isFinite(len) || len <= 0) return;
-        var n = pointEls.length;
-        var branchRect = branch.getBoundingClientRect();
-        var svg = anchor.ownerSVGElement;
-        if (!svg || branchRect.width <= 0 || branchRect.height <= 0) return;
-        var ctm = anchor.getScreenCTM();
-        if (!ctm) return;
-        for (var pi = 0; pi < n; pi++) {
-          var t = n === 1 ? 0.5 : pi / (n - 1);
-          var L = t * len;
-          var pt = anchor.getPointAtLength(L);
-          var svgPt = svg.createSVGPoint();
-          svgPt.x = pt.x;
-          svgPt.y = pt.y;
-          var scr = svgPt.matrixTransform(ctm);
-          var lx = ((scr.x - branchRect.left) / branchRect.width) * 100;
-          var ty = ((scr.y - branchRect.top) / branchRect.height) * 100;
-          pointEls[pi].style.left = lx + '%';
-          pointEls[pi].style.top = ty + '%';
-
-          var delta = Math.max(0.35, len * 0.0035);
-          var pA = anchor.getPointAtLength(Math.max(0, L - delta));
-          var pB = anchor.getPointAtLength(Math.min(len, L + delta));
-          var pathAng = Math.atan2(pB.y - pA.y, pB.x - pA.x);
-          /* Váltakozó merőleges: szárak a törzs két oldalán */
-          var perpAng = pi % 2 === 0 ? pathAng + Math.PI / 2 : pathAng - Math.PI / 2;
-          var perpDeg = perpAng * (180 / Math.PI);
-          pointEls[pi].style.setProperty('--stem-deg', perpDeg + 'deg');
-        }
-      } catch (e) {}
-    }
-
-    function scheduleLayoutPoints() {
-      requestAnimationFrame(function () {
-        requestAnimationFrame(layoutPointsOnPath);
-      });
-    }
-
-    for (var i = 0; i < segments.length; i++) {
-      (function (seg, index) {
-        var a = document.createElement('a');
-        a.href = '#' + seg.id;
-        a.className = 'page-timeline-node';
-        a.innerHTML = TL_NODE_INNER;
-        a.title = seg.label;
-        var ariaSuf =
-          window.EskuvoI18n && typeof window.EskuvoI18n.getTimelineAriaSuffix === 'function'
-            ? window.EskuvoI18n.getTimelineAriaSuffix(window.EskuvoI18n.getLang())
-            : ' szekció';
-        a.setAttribute('aria-label', seg.label + ariaSuf);
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          seg.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          if (history.replaceState) {
-            history.replaceState(null, '', '#' + seg.id);
-          }
-        });
-        pointsRoot.appendChild(a);
-        pointEls.push(a);
-      })(segments[i], i);
-    }
-
-    function sectionTop(el) {
-      return el.getBoundingClientRect().top + window.scrollY;
-    }
-
-    /** Timeline csak a hero alá görgetve (hero alja a nézet teteje fölött) */
-    function updateTimelineVisibility() {
-      var pastHero = hero.getBoundingClientRect().bottom < 40;
-      nav.classList.toggle('page-timeline--revealed', pastHero);
-      nav.setAttribute('aria-hidden', pastHero ? 'false' : 'true');
-    }
-
-    function updateTimeline() {
-      var triggerY = window.scrollY + window.innerHeight * 0.32;
-      var activeIndex = -1;
-      for (var j = segments.length - 1; j >= 0; j--) {
-        if (sectionTop(segments[j].el) <= triggerY) {
-          activeIndex = j;
-          break;
-        }
-      }
-
-      var docEl = document.documentElement;
-      var maxScroll = docEl.scrollHeight - window.innerHeight;
-      var scrollPct = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
-      if (progressPath) {
-        progressPath.style.strokeDashoffset = String(100 - scrollPct);
-      }
-
-      for (var k = 0; k < pointEls.length; k++) {
-        var p = pointEls[k];
-        p.classList.toggle('is-active', activeIndex >= 0 && k === activeIndex);
-        p.classList.toggle('is-passed', activeIndex >= 0 && k < activeIndex);
-        if (activeIndex >= 0 && k === activeIndex) {
-          p.setAttribute('aria-current', 'true');
-        } else {
-          p.removeAttribute('aria-current');
-        }
-      }
-    }
-
-    var scrollTick = false;
-    function onScroll() {
-      if (scrollTick) return;
-      scrollTick = true;
-      requestAnimationFrame(function () {
-        scrollTick = false;
-        updateTimelineVisibility();
-        updateTimeline();
-      });
-    }
-
-    var resizeTick = false;
-    function onResize() {
-      if (resizeTick) return;
-      resizeTick = true;
-      requestAnimationFrame(function () {
-        resizeTick = false;
-        layoutPointsOnPath();
-        updateTimelineVisibility();
-        updateTimeline();
-      });
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
-    window.addEventListener('hashchange', onResize);
-    updateTimelineVisibility();
-    updateTimeline();
-    scheduleLayoutPoints();
-
-    window.addEventListener('eskuvo:lang', function (ev) {
-      var lang = ev.detail && ev.detail.lang;
-      if (!lang || !window.EskuvoI18n) return;
-      var nextLabels = window.EskuvoI18n.getTimelineLabels(lang);
-      var suf = window.EskuvoI18n.getTimelineAriaSuffix(lang);
-      for (var ti = 0; ti < pointEls.length && ti < nextLabels.length; ti++) {
-        pointEls[ti].title = nextLabels[ti];
-        pointEls[ti].setAttribute('aria-label', nextLabels[ti] + suf);
-      }
-    });
-  }
-
   function pad(n) {
     return n < 10 ? '0' + n : String(n);
   }
@@ -384,13 +167,36 @@
     });
   }
 
+  function initInviteVariant() {
+    var v = document.documentElement.getAttribute('data-invite') || 'fri-sat';
+    var tip = document.getElementById('invite-tipus');
+    if (tip) tip.value = v;
+    var form = document.querySelector('.rsvp-form');
+    if (!form || v !== 'fri-sat' || form.dataset.inviteDayValidateBound === '1') return;
+    form.dataset.inviteDayValidateBound = '1';
+    form.addEventListener('submit', function (ev) {
+      var y = form.querySelector('input[name="asistir"]:checked');
+      if (!y || y.value !== 'igen') return;
+      var pe = form.querySelector('input[name="nap_pentek"]');
+      var sz = form.querySelector('input[name="nap_szombat"]');
+      if (pe && sz && !pe.checked && !sz.checked) {
+        ev.preventDefault();
+        var msg =
+          window.EskuvoI18n && typeof window.EskuvoI18n.t === 'function'
+            ? window.EskuvoI18n.t('formDaysValidation')
+            : 'Kérjük, jelölj legalább egy napot (péntek vagy szombat).';
+        alert(msg);
+      }
+    });
+  }
+
   function init() {
     if (window.EskuvoI18n && typeof window.EskuvoI18n.init === 'function') {
       window.EskuvoI18n.init();
     }
+    initInviteVariant();
     initEnvelope();
     initScrollAnimations();
-    initPageTimeline();
     initCountdown();
     initImageFallbacks();
   }

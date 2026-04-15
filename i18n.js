@@ -21,8 +21,10 @@
       countdownSecs: 'másodperc',
       countdownDetails: 'Részletek',
       welcomeTitle: 'Szeretettel várunk',
-      welcomeIntro:
-        'Kedves Vendégeink! Örömmel szeretnénk meghívni Önöket a nagy napunkra. Készüljetek egy felejthetetlen ünnepre – várunk Titeket szeretettel.',
+      welcomeIntroFriSat:
+        'Kedves Vendégeink! Meghívlak titeket a pénteki közös ünneplésre és a szombati nagy napunkra. Készüljetek egy felejthetetlen hétvégére – várunk szeretettel.',
+      welcomeIntroSatOnly:
+        'Kedves Vendégeink! Meghívlak titeket a szombati nagy napunkra. A pénteki programra ezúttal nem számítunk veletek – ha kérdésetek van, írjatok nyugodtan.',
       welcomeImgAlt: 'Manca és Endre',
       coupleTitle: 'Mi vagyunk',
       coupleGroom: 'Vőlegény',
@@ -31,6 +33,17 @@
       coupleImgBrideAlt: 'Manca – menyasszony',
       programTitle: 'Program',
       programSubtitle: 'Amit nektek készítettünk',
+      programDayFriLabel: 'Péntek – 2026. augusztus 21.',
+      programDaySatLabel: 'Szombat – 2026. augusztus 22.',
+      programFri1Time: '17:00 – 19:00',
+      programFri1t: 'Érkezés, köszöntő',
+      programFri1d: 'Könnyű fogadás, ismerkedés',
+      programFri2Time: '20:00',
+      programFri2t: 'Pénteki vacsora',
+      programFri2d: 'Közös est a hétvége kezdetéhez',
+      programSat1Time: '09:00–11:00',
+      programSat1t: 'Érkezés, reggeli',
+      programSat1d: 'Kávé, péksütemény – lazább start',
       program1t: 'Reggeli',
       program1d: 'Reggeli',
       program2t: 'Egyházi esküvő',
@@ -75,10 +88,16 @@
       galleryAlt5: 'Galéria 5.',
       galleryAlt6: 'Galéria 6.',
       galleryAlt7: 'Galéria 7.',
-      pageTimelineAria: 'Oldal szakaszai',
       rsvpTitle: 'Erősítsd meg részvételed',
       rsvpSubtitle: 'Szeretnénk, ha velünk lennél',
       formSubject: 'Esküvői részvétel – meghívó oldal',
+      formSubjectFriSat: 'Esküvő RSVP – péntek+szombat meghívó',
+      formSubjectSatOnly: 'Esküvő RSVP – szombat meghívó',
+      formDaysLegend: 'Mely napokon jössz? *',
+      formDaysHintWeekend: 'Ha jössz, legalább egy napot jelölj meg.',
+      formDaysSatOnlyNote: 'A meghívó a szombati programra szól. A válaszodnál ezt vessük figyelembe.',
+      formDayFri: 'Péntek',
+      formDaySat: 'Szombat',
       formName: 'Teljes név *',
       formNamePh: 'A neved',
       formEmail: 'Email (opcionális)',
@@ -100,10 +119,10 @@
       formMsg: 'Üzenet a párnak (opcionális)',
       formMsgPh: 'Írj nekünk pár sort…',
       formSubmit: 'Válasz küldése',
+      formDaysValidation: 'Kérjük, jelölj legalább egy napot (péntek vagy szombat).',
       langSwitchAria: 'Nyelv választása',
       langHu: 'Magyar',
       langEn: 'English',
-      timelineAriaSuffix: ' szekció',
       imgFallback1: 'Esküvői fotó',
       imgFallback2: 'Kép feltöltés alatt',
       imgFallbackAlt: 'Esküvői helyettesítő kép'
@@ -125,8 +144,10 @@
       countdownSecs: 'seconds',
       countdownDetails: 'Details',
       welcomeTitle: 'You are warmly invited',
-      welcomeIntro:
-        'Dear guests, we are delighted to invite you to our big day. Get ready for an unforgettable celebration — we cannot wait to celebrate with you.',
+      welcomeIntroFriSat:
+        'Dear guests, you are invited to join us on Friday for a shared celebration and on Saturday for our wedding day. We look forward to a wonderful weekend together.',
+      welcomeIntroSatOnly:
+        'Dear guests, you are invited to our wedding day on Saturday. We are not expecting you on Friday this time — if you have any questions, just write to us.',
       welcomeImgAlt: 'Manca and Endre',
       coupleTitle: 'We are',
       coupleGroom: 'Groom',
@@ -135,6 +156,17 @@
       coupleImgBrideAlt: 'Manca – bride',
       programTitle: 'Schedule',
       programSubtitle: 'What we have planned for you',
+      programDayFriLabel: 'Friday – 21 August 2026',
+      programDaySatLabel: 'Saturday – 22 August 2026',
+      programFri1Time: '5:00 – 7:00 p.m.',
+      programFri1t: 'Arrival & welcome',
+      programFri1d: 'Light reception and mingling',
+      programFri2Time: '8:00 p.m.',
+      programFri2t: 'Friday dinner',
+      programFri2d: 'An evening together to kick off the weekend',
+      programSat1Time: '9:00–11:00 a.m.',
+      programSat1t: 'Arrival & breakfast',
+      programSat1d: 'Coffee and pastries — a relaxed start',
       program1t: 'Breakfast',
       program1d: 'Breakfast',
       program2t: 'Church ceremony',
@@ -179,10 +211,16 @@
       galleryAlt5: 'Gallery 5.',
       galleryAlt6: 'Gallery 6.',
       galleryAlt7: 'Gallery 7.',
-      pageTimelineAria: 'Page sections',
       rsvpTitle: 'Confirm your attendance',
       rsvpSubtitle: 'We would love to have you with us',
       formSubject: 'Wedding RSVP – invitation site',
+      formSubjectFriSat: 'Wedding RSVP – Fri+Sat invitation',
+      formSubjectSatOnly: 'Wedding RSVP – Saturday invitation',
+      formDaysLegend: 'Which days will you attend? *',
+      formDaysHintWeekend: 'If you are coming, please tick at least one day.',
+      formDaysSatOnlyNote: 'This invitation is for the Saturday programme. We will assume Saturday when you reply.',
+      formDayFri: 'Friday',
+      formDaySat: 'Saturday',
       formName: 'Full name *',
       formNamePh: 'Your name',
       formEmail: 'Email (optional)',
@@ -204,10 +242,10 @@
       formMsg: 'Message to the couple (optional)',
       formMsgPh: 'Write us a few lines…',
       formSubmit: 'Send reply',
+      formDaysValidation: 'Please tick at least one day (Friday or Saturday).',
       langSwitchAria: 'Choose language',
       langHu: 'Hungarian',
       langEn: 'English',
-      timelineAriaSuffix: ' section',
       imgFallback1: 'Wedding photo',
       imgFallback2: 'Image uploading',
       imgFallbackAlt: 'Wedding placeholder image'
@@ -277,7 +315,11 @@
     });
 
     var subj = document.getElementById('form-subject');
-    if (subj) subj.value = pack.formSubject;
+    if (subj) {
+      var invite = document.documentElement.getAttribute('data-invite') || 'fri-sat';
+      var sk = invite === 'sat-only' ? 'formSubjectSatOnly' : 'formSubjectFriSat';
+      subj.value = pack[sk] != null ? pack[sk] : pack.formSubject;
+    }
 
     var tEl = document.querySelector('title');
     if (tEl) tEl.textContent = pack.docTitle;
@@ -297,31 +339,6 @@
     } catch (e) {}
   }
 
-  function getTimelineLabels(lang) {
-    if (lang === 'en') {
-      return [
-        'Countdown',
-        'Welcome',
-        'The two of us',
-        'Schedule',
-        'Venue',
-        'FAQ',
-        'Gallery',
-        'RSVP'
-      ];
-    }
-    return [
-      'Visszaszámlálás',
-      'Üdvözlő',
-      'Mi vagyunk',
-      'Program',
-      'Helyszín',
-      'GYIK',
-      'Galéria',
-      'RSVP'
-    ];
-  }
-
   function wireLangSwitch() {
     var root = document.querySelector('.lang-switch');
     if (!root) return;
@@ -338,17 +355,11 @@
     apply(getLang());
   }
 
-  function getTimelineAriaSuffix(lang) {
-    return (lang === 'en' ? T.en : T.hu).timelineAriaSuffix;
-  }
-
   window.EskuvoI18n = {
     getLang: getLang,
     setLang: setLang,
     apply: apply,
     init: init,
-    getTimelineLabels: getTimelineLabels,
-    getTimelineAriaSuffix: getTimelineAriaSuffix,
     t: function (key) {
       return txt(getLang(), key);
     },
