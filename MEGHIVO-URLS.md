@@ -1,18 +1,22 @@
-# Személyes meghívó linkek (titkos útvonalak)
+# Személyes meghívó linkek
 
-A gyökér `index.html` alapértelmezésben a **péntek + szombat** meghívót mutatja (fejlesztőknek / teljes hétvége).
+A gyökér `index.html` alapértelmezésben a **péntek + szombat** meghívót mutatja (pl. saját böngészéshez).
 
-A vendégeknek **ne** a gyökérlapot küldd, ha két külön kört akarsz – használd az alábbi, véletlenszerűnek tűnő útvonalakat (nevezd át őket, ha szeretnéd; utána frissítsd ezt a fájlt).
+A vendégeknek a lenti **szavas** linkek egyikét add meg (a `/m` előtag **nem** kell).
 
+## Ajánlott URL-ek (GitHub Pages: `…/<repo>/` után)
 
-| Meghívó típus    | Példa URL (GitHub Pages: `…/repo/` gyökér után) |
-| ---------------- | ----------------------------------------------- |
-| Péntek + szombat | `m/k7p2n9x4w3q8/`                               |
-| Csak szombat     | `m/r5t8h1m4v6n2/`                               |
+| Meghívó típus    | Útvonal (rövid) | Vagy query a főoldalon |
+| ---------------- | --------------- | ---------------------- |
+| Péntek + szombat | `tulipan/`      | `index.html?meghivo=tulipan` |
+| Csak szombat     | `gyertya/`      | `index.html?meghivo=gyertya` |
 
+Példa teljes címre: `https://<felhasználó>.github.io/<repo>/tulipan/`
 
-Példa teljes címre: `https://<felhasználó>.github.io/<repo>/m/r5t8h1m4v6n2/`
+A belépő oldal beállítja a munkamenet-változót, majd a fő `index.html`-re irányít. **Könyvjelzőnek** elég a `tulipan/` vagy `gyertya/` link.
 
-A rövid oldal beállítja a munkamenet-változót, majd a fő `index.html`-re irányít. A vendég a böngészőben a gyökér URL-t látja tovább – **könyvjelzőnek a titkos `m/.../` linket** add meg.
+## Régi / alternatív útvonalak (átirányítanak)
 
-**Biztonság:** ez nem erős titkosítás; aki ismeri a másik slugot, megnyithatja. Cseréld le a mappaneveket saját, hosszabb véletlenszerű karakterláncra, és ne tedd közzé nyilvánosan.
+- `m/tulipan/`, `m/gyertya/`, `m/hetvege/`, `m/szombatra/`, valamint a régi véletlenszerű mappák → ugyanaz, mint fent.
+
+**Biztonság:** ez nem erős titkosítás; aki ismeri a másik szót, megnyithatja. Ne tedd közzé nyilvánosan.

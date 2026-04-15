@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Meghívó</title>
-  <script>location.replace('../../tulipan/');</script>
+  <script>
+    try {
+      sessionStorage.setItem('eskuvo_invite_variant', 'sat-only');
+    } catch (e) {}
+    location.replace('../index.html');
+  </script>
 </head>
 <body>
   <p style="font-family: system-ui, sans-serif; padding: 2rem; text-align: center;">Átirányítás…</p>
