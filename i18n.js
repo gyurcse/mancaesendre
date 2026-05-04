@@ -60,7 +60,7 @@
       faqTitle: 'Gyakori kérdések',
       faqLeadAlt: 'Gyakori kérdések – hangulatkép',
       faq1q: 'Hozhatok kísérőt?',
-      faq1a: 'Igen, kérjük jelezd a vendégek számát a részvételi űrlapon.',
+      faq1a: 'Igen — kérjük, jelezd az üzenet mezőben (vagy írj nekünk emailben).',
       faq2q: 'Hogyan lehet a leggyorsabban, legjobban eljutni a Villabogart-hoz?',
       faq2p: 'Három útvonalat javasolunk:',
       faq2l1:
@@ -100,7 +100,6 @@
       formAttend: 'Részt veszel? *',
       formYes: 'Igen, részt veszek',
       formNo: 'Nem tudok jönni',
-      formGuests: 'Vendégek száma (magad is beleszámít)',
       formDietLegend: 'Ételallergia / intolerancia',
       formDietHint: 'Fontos, hogy tudjuk. Jelöld be, ami igaz rád.',
       formDietGluten: 'Gluténmentes / celiák',
@@ -190,7 +189,7 @@
       faqTitle: 'Frequently asked questions',
       faqLeadAlt: 'FAQ – mood photo',
       faq1q: 'May I bring a plus-one?',
-      faq1a: 'Yes — please let us know the number of guests on the RSVP form.',
+      faq1a: 'Yes — please mention it in the message field (or email us).',
       faq2q: 'What is the best way to get to Villabogart?',
       faq2p: 'We suggest three routes:',
       faq2l1:
@@ -230,7 +229,6 @@
       formAttend: 'Will you attend? *',
       formYes: 'Yes, I will attend',
       formNo: 'I cannot make it',
-      formGuests: 'Number of guests (including yourself)',
       formDietLegend: 'Food allergies / intolerances',
       formDietHint: 'Please tick anything that applies to you.',
       formDietGluten: 'Gluten-free / coeliac',
