@@ -364,49 +364,42 @@
       <div class="rsvp-inner">
         <h2 class="script-title" data-i18n="rsvpTitle">Erősítsd meg részvételed</h2>
         <p class="rsvp-subtitle" data-i18n="rsvpSubtitle">Szeretnénk, ha velünk lennél</p>
-        <form class="rsvp-form" action="https://formspree.io/f/maqboozp" method="POST">
-          <input type="hidden" name="_subject" id="form-subject" value="Esküvői részvétel – meghívó oldal" />
-          <input type="hidden" name="invite_tipus" id="invite-tipus" value="fri-sat" />
-          <input type="hidden" name="_next" value="https://gyurcse.github.io/mancaesendre/#rsvp" />
-          <label class="form-label"><span data-i18n="formName">Teljes név *</span></label>
-          <input type="text" name="name" class="form-input" data-i18n-placeholder="formNamePh" placeholder="A neved" required />
-          <label class="form-label"><span data-i18n="formEmail">Email (opcionális)</span></label>
-          <input type="email" name="email" class="form-input" data-i18n-placeholder="formEmailPh" placeholder="email@pelda.hu" />
-          <label class="form-label"><span data-i18n="formAttend">Részt veszel? *</span></label>
-          <div class="form-radio-group">
-            <label class="form-radio"><input type="radio" name="asistir" value="igen" required /> <span data-i18n="formYes">Igen, részt veszek</span></label>
-            <label class="form-radio"><input type="radio" name="asistir" value="nem" /> <span data-i18n="formNo">Nem tudok jönni</span></label>
+        <p class="rsvp-google-lead" data-i18n="rsvpGoogleLead">
+          Töltsd ki az alábbi űrlapot – a válaszok a Google Táblázatban gyűlnek, onnan bármikor letölthetők (CSV, Excel).
+        </p>
+        <!--
+          Google Forms: hozz létre két űrlapot (péntek+szombat vs. csak szombat), majd a „Küldés” fülön
+          „<>” Beágyazás → másold a viewform?embedded=true URL-t ide. Válaszok → Táblázat: CSV / Excel export.
+        -->
+        <div
+          id="rsvp-google-root"
+          class="rsvp-google-root"
+          data-form-fri-sat=""
+          data-form-sat-only=""
+        >
+          <iframe
+            id="rsvp-google-iframe"
+            class="rsvp-google-iframe"
+            hidden
+            data-i18n-title="rsvpIframeTitle"
+            title="RSVP űrlap"
+            loading="lazy"
+          ></iframe>
+          <div id="rsvp-google-fallback" class="rsvp-google-fallback" hidden>
+            <p data-i18n="rsvpGoogleMissing">Állítsd be a Google űrlap beágyazási linkjeit az index.html fájlban (data-form-fri-sat és data-form-sat-only).</p>
           </div>
-          <fieldset class="form-fieldset rsvp-days-fieldset rsvp-days-fieldset--weekend" id="rsvp-days-weekend">
-            <legend class="form-legend"><span data-i18n="formDaysLegend">Mely napokon jössz? *</span></legend>
-            <p class="form-hint" data-i18n="formDaysHintWeekend">Ha jössz, legalább egy napot jelölj meg.</p>
-            <div class="form-check-grid form-check-grid--days">
-              <label class="form-check"><input type="checkbox" name="nap_pentek" value="igen" /> <span data-i18n="formDayFri">Péntek</span></label>
-              <label class="form-check"><input type="checkbox" name="nap_szombat" value="igen" /> <span data-i18n="formDaySat">Szombat</span></label>
-            </div>
-          </fieldset>
-          <div class="form-fieldset rsvp-days-fieldset rsvp-days-fieldset--sat-only" id="rsvp-days-sat-only" hidden>
-            <p class="form-hint form-hint--sat-only" data-i18n="formDaysSatOnlyNote">A meghívó a szombati programra szól. A válaszodnál ezt vessük figyelembe.</p>
-            <input type="hidden" name="nap_szombat" value="igen" />
-          </div>
-          <fieldset class="form-fieldset">
-            <legend class="form-legend"><span class="form-legend-icon" aria-hidden="true">⚠</span> <span data-i18n="formDietLegend">Ételallergia / intolerancia</span></legend>
-            <p class="form-hint" data-i18n="formDietHint">Fontos, hogy tudjuk. Jelöld be, ami igaz rád.</p>
-            <div class="form-check-grid">
-              <label class="form-check"><input type="checkbox" name="diet" value="gluten" /> <span data-i18n="formDietGluten">Gluténmentes / celiák</span></label>
-              <label class="form-check"><input type="checkbox" name="diet" value="lactose" /> <span data-i18n="formDietLactose">Laktózmentes</span></label>
-              <label class="form-check"><input type="checkbox" name="diet" value="vegetarian" /> <span data-i18n="formDietVeg">Vegetáriánus</span></label>
-              <label class="form-check"><input type="checkbox" name="diet" value="vegan" /> <span data-i18n="formDietVegan">Vegán</span></label>
-              <label class="form-check"><input type="checkbox" name="diet" value="nuts" /> <span data-i18n="formDietNuts">Mogyoróallergia</span></label>
-              <label class="form-check"><input type="checkbox" name="diet" value="shellfish" /> <span data-i18n="formDietShellfish">Rákallergia</span></label>
-            </div>
-          </fieldset>
-          <label class="form-label"><span data-i18n="formOther">Egyéb allergia vagy restrikció</span></label>
-          <input type="text" name="other_diet" class="form-input" data-i18n-placeholder="formOtherPh" placeholder="Pl. tojásallergia, fruktóz intolerancia…" />
-          <label class="form-label"><span data-i18n="formMsg">Üzenet a párnak (opcionális)</span></label>
-          <textarea name="message" class="form-textarea" rows="4" data-i18n-placeholder="formMsgPh" placeholder="Írj nekünk pár sort…"></textarea>
-          <button type="submit" class="btn-rsvp"><span class="btn-rsvp-icon" aria-hidden="true">✈</span> <span data-i18n="formSubmit">Válasz küldése</span></button>
-        </form>
+          <p class="rsvp-google-external" hidden>
+            <a
+              id="rsvp-google-open"
+              class="rsvp-google-external-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="rsvpGoogleOpenNewTab"
+              >Megnyitás új lapon</a
+            >
+          </p>
+        </div>
       </div>
     </section>
 

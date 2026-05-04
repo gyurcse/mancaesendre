@@ -1547,158 +1547,64 @@ body:has(#main-content.content-hidden) .site-nav {
   color: var(--color-text-soft);
 }
 
-/* Form kisebb – kompakt RSVP */
-.rsvp-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-width: 420px;
+.rsvp-google-lead {
+  text-align: center;
+  margin: 0 0 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-text-soft);
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rsvp-google-root {
+  max-width: 100%;
   margin: 0 auto;
 }
 
-.form-label {
+.rsvp-google-iframe {
   display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text);
-  margin-bottom: 0.2rem;
-}
-
-.form-input {
   width: 100%;
-  max-width: 100%;
-  padding: 0.5rem 0.7rem;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  border: 1px solid rgba(74,124,158,0.3);
-  border-radius: 8px;
-  background: var(--color-white);
+  min-height: 720px;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+.rsvp-google-fallback {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--color-text);
-  transition: border-color 0.2s, box-shadow 0.2s;
-  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px dashed rgba(74, 124, 158, 0.35);
+  border-radius: 10px;
 }
 
-.form-input:focus {
-  outline: none;
-  border-color: var(--color-blue);
-  box-shadow: 0 0 0 3px rgba(74,124,158,0.15);
-}
-
-.form-radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-radio {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-
-.form-radio input {
-  accent-color: var(--color-blue);
-}
-
-.form-fieldset {
-  border: 1px solid rgba(74,124,158,0.25);
-  border-radius: 8px;
-  padding: 0.75rem;
+.rsvp-google-fallback p {
   margin: 0;
 }
 
-.form-legend {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text);
-  padding: 0 0.5rem;
-}
-
-.form-legend-icon {
-  margin-right: 0.35rem;
-  color: var(--color-yellow-dark);
-}
-
-.form-check-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.35rem 0;
-}
-
-.form-textarea {
-  width: 100%;
-  max-width: 100%;
-  padding: 0.5rem 0.7rem;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  border: 1px solid rgba(74,124,158,0.3);
-  border-radius: 8px;
-  background: var(--color-white);
-  color: var(--color-text);
-  resize: vertical;
-  min-height: 64px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  box-sizing: border-box;
-}
-
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--color-blue);
-  box-shadow: 0 0 0 3px rgba(74,124,158,0.15);
-}
-
-.btn-rsvp-icon {
-  margin-right: 0.5rem;
-  font-size: 0.9em;
-}
-
-.form-hint {
-  font-size: 0.85rem;
-  color: var(--color-text-soft);
-  margin: 0 0 0.5rem;
-}
-
-.form-check {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  margin-bottom: 0.35rem;
-  cursor: pointer;
-}
-
-.form-check:last-child {
-  margin-bottom: 0;
-}
-
-.form-check input {
-  accent-color: var(--color-blue);
-}
-
-.btn-rsvp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0.7rem 1rem;
-  background: var(--color-blue-dark);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
+.rsvp-google-external {
   text-align: center;
-  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  margin: 0.85rem 0 0;
 }
 
-.btn-rsvp:hover {
-  background: var(--color-blue-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(74,124,158,0.35);
+.rsvp-google-external-link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-blue-dark);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(61, 106, 135, 0.35);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.rsvp-google-external-link:hover {
+  color: var(--color-blue);
+  border-bottom-color: var(--color-blue);
 }
 
 /* Footer – professzionális lezárás */

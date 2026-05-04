@@ -60,7 +60,7 @@
       faqTitle: 'Gyakori kérdések',
       faqLeadAlt: 'Gyakori kérdések – hangulatkép',
       faq1q: 'Hozhatok kísérőt?',
-      faq1a: 'Igen — kérjük, jelezd az üzenet mezőben (vagy írj nekünk emailben).',
+      faq1a: 'Igen — kérjük, jelezd az RSVP Google űrlapon (vagy írj nekünk emailben).',
       faq2q: 'Hogyan lehet a leggyorsabban, legjobban eljutni a Villabogart-hoz?',
       faq2p: 'Három útvonalat javasolunk:',
       faq2l1:
@@ -83,6 +83,12 @@
       galleryAlt5: 'Galéria 5.',
       rsvpTitle: 'Erősítsd meg részvételed',
       rsvpSubtitle: 'Szeretnénk, ha velünk lennél',
+      rsvpGoogleLead:
+        'Töltsd ki az alábbi űrlapot – a válaszok a Google Táblázatban gyűlnek, onnan bármikor letölthetők (CSV, Excel).',
+      rsvpGoogleMissing:
+        'Állítsd be a Google űrlap beágyazási linkjeit az index.html fájlban: a #rsvp-google-root elem data-form-fri-sat és data-form-sat-only attribútumai.',
+      rsvpGoogleOpenNewTab: 'Űrlap megnyitása új lapon',
+      rsvpIframeTitle: 'RSVP – válasz űrlap',
       formSubject: 'Esküvői részvétel – meghívó oldal',
       formSubjectFriSat: 'Esküvő RSVP – péntek+szombat meghívó',
       formSubjectSatOnly: 'Esküvő RSVP – szombat meghívó',
@@ -188,7 +194,7 @@
       faqTitle: 'Frequently asked questions',
       faqLeadAlt: 'FAQ – mood photo',
       faq1q: 'May I bring a plus-one?',
-      faq1a: 'Yes — please mention it in the message field (or email us).',
+      faq1a: 'Yes — please mention it on the RSVP Google Form (or email us).',
       faq2q: 'What is the best way to get to Villabogart?',
       faq2p: 'We suggest three routes:',
       faq2l1:
@@ -211,6 +217,12 @@
       galleryAlt5: 'Gallery 5.',
       rsvpTitle: 'Confirm your attendance',
       rsvpSubtitle: 'We would love to have you with us',
+      rsvpGoogleLead:
+        'Please fill in the form below — responses are collected in Google Sheets and can be downloaded anytime (CSV, Excel).',
+      rsvpGoogleMissing:
+        'Set the Google Form embed URLs on the #rsvp-google-root element in index.html: data-form-fri-sat and data-form-sat-only.',
+      rsvpGoogleOpenNewTab: 'Open form in a new tab',
+      rsvpIframeTitle: 'RSVP response form',
       formSubject: 'Wedding RSVP – invitation site',
       formSubjectFriSat: 'Wedding RSVP – Fri+Sat invitation',
       formSubjectSatOnly: 'Wedding RSVP – Saturday invitation',
@@ -347,18 +359,6 @@
       if (s === '') return;
       el.setAttribute('alt', s);
     });
-
-    var subj = document.getElementById('form-subject');
-    if (subj) {
-      var invite = document.documentElement.getAttribute('data-invite') || 'fri-sat';
-      if (invite === 'chooser') {
-        subj.value = pickStr(lang, 'formSubject');
-      } else {
-        var sk = invite === 'sat-only' ? 'formSubjectSatOnly' : 'formSubjectFriSat';
-        var subjVal = pickStr(lang, sk);
-        subj.value = subjVal !== '' ? subjVal : pickStr(lang, 'formSubject');
-      }
-    }
 
     var tEl = document.querySelector('title');
     if (tEl) tEl.textContent = pickStr(lang, 'docTitle');

@@ -44,17 +44,18 @@ Mobilos nézet teszteléséhez nyisd meg ugyanazt a címet mobilon (ugyanabban a
 - `styles.css` – stílusok, boríték animáció, reszponzív elrendezés
 - `script.js` – boríték megnyitás (első látogatás, kattintás), localStorage
 
-## Részvételi űrlap – levelek a Gmailbe (mancaendre@gmail.com)
+## Részvételi űrlap – Google Forms (ingyenes, exportálható)
 
-Az űrlap a [Formspree](https://formspree.io) szolgáltatáson keresztül küldi a válaszokat. Beállítás:
+A RSVP szekció egy **beágyazott Google űrlapot** mutat. A válaszok a **Google Táblázatokban** gyűlnek; onnan **Fájl → Letöltés → CSV / Excel**.
 
-1. Menj a **https://formspree.io/create** oldalra.
-2. Add meg a **mancaendre@gmail.com** címet (ide érkeznek majd a részvételi válaszok).
-3. Hozz létre egy formot; a Formspree kiad egy **form ID**-t (pl. `xjvqyqwe`).
-4. Az `index.html`-ben keresd meg a form `action` attribútumát és cseréld ki a **YOUR_FORM_ID** részt a kapott ID-ra, pl.:
-   `action="https://formspree.io/f/xjvqyqwe"`
+1. Készíts két űrlapot (vagy egyet, ha ugyanaz a kérdőív): **péntek+szombat** meghívó és **csak szombat** meghívó.
+2. Mindkét űrlapon: **Válaszok** fül → **Táblázat ikon** → hozz létre táblázatot.
+3. **Küldés** (Send) → **<>** Beágyazás → másold a **viewform?embedded=true** linket (vagy a `src` URL-t az iframe-ből).
+4. Az `index.html`-ben a `#rsvp-google-root` elemnél töltsd ki:
+   - `data-form-fri-sat="…viewform?embedded=true"`
+   - `data-form-sat-only="…viewform?embedded=true"`
 
-Ezután minden kitöltött űrlap a mancaendre@gmail.com postafiókba érkezik.
+Ha mindkét attribútum üres, az oldal egy rövid útmutatót jelenít meg a fejlesztőknek.
 
 ## Későbbi módosítások
 

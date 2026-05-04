@@ -168,38 +168,80 @@
     });
   }
 
-  function syncInviteRsvpUi() {
-    var v = document.documentElement.getAttribute('data-invite');
-    var wk = document.getElementById('rsvp-days-weekend');
-    var so = document.getElementById('rsvp-days-sat-only');
-    if (v === 'sat-only' && wk) wk.disabled = true;
-    else if (wk) wk.disabled = false;
-    if (so) so.hidden = v !== 'sat-only';
+  function ensureGoogleFormEmbeddedUrl(raw) {
+    var u = (raw || '').trim();
+    if (!u) return '';
+    try {
+      var url = new URL(u, window.location.href);
+      url.searchParams.set('embedded', 'true');
+      return url.toString();
+    } catch (e) {
+      if (/\bembedded=true\b/i.test(u)) return u;
+      return u + (u.indexOf('?') === -1 ? '?' : '&') + 'embedded=true';
+    }
+  }
+
+  function googleFormOpenUrl(raw) {
+    var u = (raw || '').trim();
+    if (!u) return '';
+    try {
+      var url = new URL(u, window.location.href);
+      url.searchParams.delete('embedded');
+      var s = url.toString();
+      return s.replace(/\?$/, '');
+    } catch (e2) {
+      return u.replace(/[?&]embedded=true\b/gi, '').replace(/\?$/, '');
+    }
+  }
+
+  function syncRsvpGoogleEmbed() {
+    var root = document.getElementById('rsvp-google-root');
+    if (!root) return;
+    var iframe = document.getElementById('rsvp-google-iframe');
+    var fb = document.getElementById('rsvp-google-fallback');
+    var openA = document.getElementById('rsvp-google-open');
+    var extRow = document.querySelector('.rsvp-google-external');
+    var v = document.documentElement.getAttribute('data-invite') || 'fri-sat';
+
+    if (v === 'chooser') {
+      if (iframe) {
+        iframe.removeAttribute('src');
+        iframe.hidden = true;
+      }
+      if (fb) fb.hidden = true;
+      if (extRow) extRow.hidden = true;
+      return;
+    }
+
+    var urlFri = (root.getAttribute('data-form-fri-sat') || '').trim();
+    var urlSat = (root.getAttribute('data-form-sat-only') || '').trim();
+    var url = v === 'sat-only' ? urlSat : urlFri;
+
+    if (!url) {
+      if (iframe) {
+        iframe.removeAttribute('src');
+        iframe.hidden = true;
+      }
+      if (fb) fb.hidden = false;
+      if (extRow) extRow.hidden = true;
+      if (openA) openA.setAttribute('href', '#');
+      return;
+    }
+
+    var embed = ensureGoogleFormEmbeddedUrl(url);
+    if (iframe) {
+      iframe.hidden = false;
+      if (iframe.getAttribute('src') !== embed) iframe.setAttribute('src', embed);
+    }
+    if (fb) fb.hidden = true;
+    if (extRow) extRow.hidden = false;
+    if (openA) openA.setAttribute('href', googleFormOpenUrl(url));
   }
 
   function initInviteVariant() {
     var v = document.documentElement.getAttribute('data-invite') || 'fri-sat';
     if (v === 'chooser') return;
-    var tip = document.getElementById('invite-tipus');
-    if (tip) tip.value = v;
-    syncInviteRsvpUi();
-    var form = document.querySelector('.rsvp-form');
-    if (!form || v !== 'fri-sat' || form.dataset.inviteDayValidateBound === '1') return;
-    form.dataset.inviteDayValidateBound = '1';
-    form.addEventListener('submit', function (ev) {
-      var y = form.querySelector('input[name="asistir"]:checked');
-      if (!y || y.value !== 'igen') return;
-      var pe = form.querySelector('input[name="nap_pentek"]');
-      var sz = form.querySelector('input[name="nap_szombat"]');
-      if (pe && sz && !pe.checked && !sz.checked) {
-        ev.preventDefault();
-        var msg =
-          window.EskuvoI18n && typeof window.EskuvoI18n.t === 'function'
-            ? window.EskuvoI18n.t('formDaysValidation')
-            : 'Kérjük, jelölj legalább egy napot (péntek vagy szombat).';
-        alert(msg);
-      }
-    });
+    syncRsvpGoogleEmbed();
   }
 
   function initSiteNav() {
