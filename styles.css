@@ -1566,7 +1566,10 @@ body:has(#main-content.content-hidden) .site-nav {
 .rsvp-google-iframe {
   display: block;
   width: 100%;
-  min-height: 720px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 1431px;
   border: 0;
   border-radius: 10px;
   background: #fff;
