@@ -228,17 +228,9 @@
     function setOpen(open) {
       root.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        backdrop.hidden = false;
-        drawer.hidden = false;
-        drawer.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('site-nav--open');
-      } else {
-        backdrop.hidden = true;
-        drawer.hidden = true;
-        drawer.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('site-nav--open');
-      }
+      backdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+      document.body.classList.toggle('site-nav--open', open);
       refreshToggleLabel();
     }
 
@@ -247,6 +239,13 @@
     toggle.addEventListener('click', function () {
       setOpen(!root.classList.contains('is-open'));
     });
+
+    var closeBtn = document.getElementById('site-nav-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        setOpen(false);
+      });
+    }
 
     backdrop.addEventListener('click', function () {
       setOpen(false);

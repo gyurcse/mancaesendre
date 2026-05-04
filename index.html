@@ -38,7 +38,7 @@
   <meta name="theme-color" content="#3d6a87">
 </head>
 <body>
-  <div class="site-header-bar">
+  <div class="site-chrome" aria-hidden="false">
     <div class="lang-switch" role="group" aria-label="Nyelv választása">
       <button type="button" class="lang-switch__btn lang-switch__btn--hu is-active" data-set-lang="hu" data-i18n-aria="langHu" data-i18n-title="langHu" title="Magyar" aria-label="Magyar" aria-pressed="true">
         <span class="lang-switch__glyph" aria-hidden="true">A</span>
@@ -57,9 +57,12 @@
           <span class="site-nav__line"></span>
         </span>
       </button>
-      <div class="site-nav__backdrop" id="site-nav-backdrop" hidden aria-hidden="true"></div>
-      <div class="site-nav__drawer" id="site-nav-menu" role="dialog" aria-modal="true" aria-labelledby="site-nav-drawer-heading" aria-hidden="true" hidden>
-        <p id="site-nav-drawer-heading" class="site-nav__drawer-title script-title" data-i18n="navDrawerTitle">Szakaszok</p>
+      <div class="site-nav__backdrop" id="site-nav-backdrop" aria-hidden="true"></div>
+      <div class="site-nav__drawer" id="site-nav-menu" role="dialog" aria-modal="true" aria-labelledby="site-nav-drawer-heading" aria-hidden="true">
+        <div class="site-nav__drawer-top">
+          <p id="site-nav-drawer-heading" class="site-nav__drawer-title script-title" data-i18n="navDrawerTitle">Szakaszok</p>
+          <button type="button" class="site-nav__close" id="site-nav-close" data-i18n-aria="navDrawerCloseAria" aria-label="Bezárás">×</button>
+        </div>
         <ul class="site-nav__list">
           <li class="site-nav__item"><a class="site-nav__link" href="#hero" data-i18n="navLinkHero">Címlap</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="#countdown" data-i18n="countdownTitle">Visszaszámlálás</a></li>
