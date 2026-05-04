@@ -194,7 +194,7 @@ html[data-invite='chooser'] #envelope-overlay {
   height: 58%;
 }
 
-/* Meghívó-választó: gyertya és babakocsi azonos 120×120 px dobozban, középen */
+/* Meghívó-választó: pezsgő és gyertya illusztráció, 120×120 px kör, középen */
 .invite-landing__icon-wrap.invite-landing__icon-wrap--landing-fixed {
   box-sizing: border-box;
   width: 120px;
