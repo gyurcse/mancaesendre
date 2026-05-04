@@ -128,6 +128,9 @@
       inviteChoicePezsgoAria: 'Pezsgő illusztráció kiválasztása',
       inviteChoiceGyertyaKicker: 'Gyertya',
       inviteChoiceGyertyaAria: 'Gyertya illusztráció kiválasztása',
+      navSiteAria: 'Ugrás egy szakaszra',
+      navLinkHero: 'Címlap',
+      navLinkRsvp: 'RSVP',
       imgFallback1: 'Esküvői fotó',
       imgFallback2: 'Kép feltöltés alatt',
       imgFallbackAlt: 'Esküvői helyettesítő kép'
@@ -256,6 +259,9 @@
       inviteChoicePezsgoAria: 'Select champagne illustration',
       inviteChoiceGyertyaKicker: 'Candle',
       inviteChoiceGyertyaAria: 'Select candle illustration',
+      navSiteAria: 'Jump to a section',
+      navLinkHero: 'Home',
+      navLinkRsvp: 'RSVP',
       imgFallback1: 'Wedding photo',
       imgFallback2: 'Image uploading',
       imgFallbackAlt: 'Wedding placeholder image'
