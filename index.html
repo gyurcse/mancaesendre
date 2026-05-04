@@ -15,7 +15,7 @@
       } catch (e) {}
       try {
         var p = new URLSearchParams(window.location.search).get('meghivo');
-        if (p === 'babakocsi' || p === 'tulipan') {
+        if (p === 'babakocsi' || p === 'pezsgo' || p === 'tulipan') {
           html.setAttribute('data-invite', 'fri-sat');
           sessionStorage.setItem(SS, 'fri-sat');
           return;
@@ -53,7 +53,7 @@
     <div class="invite-landing__inner">
       <h1 class="invite-landing__title" data-i18n="inviteChoiceTitle">Melyik jel van a meghívódon?</h1>
       <div class="invite-landing__grid" role="group" aria-label="Meghívó típus">
-        <button type="button" class="invite-landing__card" id="invite-choice-fri-sat" data-invite-choice="fri-sat" data-i18n-aria="inviteChoiceBabakocsiAria">
+        <button type="button" class="invite-landing__card" id="invite-choice-fri-sat" data-invite-choice="fri-sat" data-i18n-aria="inviteChoicePezsgoAria">
           <span class="invite-landing__icon-wrap invite-landing__icon-wrap--landing-fixed invite-landing__icon-wrap--invite-img" aria-hidden="true">
             <img
               class="invite-landing__img"
@@ -65,7 +65,7 @@
               decoding="async"
             />
           </span>
-          <span class="invite-landing__card-kicker" data-i18n="inviteChoiceBabakocsiKicker">Pezsgő</span>
+          <span class="invite-landing__card-kicker" data-i18n="inviteChoicePezsgoKicker">Pezsgő</span>
         </button>
         <button type="button" class="invite-landing__card" id="invite-choice-sat-only" data-invite-choice="sat-only" data-i18n-aria="inviteChoiceGyertyaAria">
           <span class="invite-landing__icon-wrap invite-landing__icon-wrap--landing-fixed invite-landing__icon-wrap--invite-img" aria-hidden="true">
