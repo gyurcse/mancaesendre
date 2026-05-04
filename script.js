@@ -252,7 +252,14 @@
     if (window.EskuvoI18n && typeof window.EskuvoI18n.init === 'function') {
       window.EskuvoI18n.init();
     }
-    if (initInviteLanding()) return;
+    if (initInviteLanding()) {
+      try {
+        if (window.EskuvoI18n && typeof window.EskuvoI18n.apply === 'function') {
+          window.EskuvoI18n.apply(window.EskuvoI18n.getLang());
+        }
+      } catch (e3) {}
+      return;
+    }
     initCoreAfterInvite();
   }
 

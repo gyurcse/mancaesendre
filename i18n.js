@@ -124,6 +124,7 @@
       langHu: 'Magyar',
       langEn: 'English',
       inviteChoiceTitle: 'Melyik jel van a meghívódon?',
+      inviteChoiceGroupAria: 'Meghívó típus választása',
       inviteChoicePezsgoKicker: 'Pezsgő',
       inviteChoicePezsgoAria: 'Pezsgő illusztráció kiválasztása',
       inviteChoiceGyertyaKicker: 'Gyertya',
@@ -255,6 +256,7 @@
       langHu: 'Hungarian',
       langEn: 'English',
       inviteChoiceTitle: 'Which symbol is on your invitation?',
+      inviteChoiceGroupAria: 'Choose invitation type',
       inviteChoicePezsgoKicker: 'Champagne',
       inviteChoicePezsgoAria: 'Select champagne illustration',
       inviteChoiceGyertyaKicker: 'Candle',
@@ -271,12 +273,16 @@
   function getLang() {
     try {
       var s = localStorage.getItem(STORAGE_KEY);
-      if (s === 'en' || s === 'hu') return s;
+      if (typeof s === 'string') {
+        s = s.toLowerCase();
+        if (s === 'en' || s === 'hu') return s;
+      }
     } catch (e) {}
     return 'hu';
   }
 
   function setLang(lang) {
+    if (typeof lang === 'string') lang = lang.toLowerCase();
     if (lang !== 'en' && lang !== 'hu') return;
     try {
       localStorage.setItem(STORAGE_KEY, lang);
@@ -285,64 +291,85 @@
   }
 
   function txt(lang, key) {
-    var pack = T[lang] || T.hu;
-    return pack[key] != null ? pack[key] : T.hu[key] || '';
+    return pickStr(lang, key);
+  }
+
+  /** Aktuális nyelv szövege; ha hiányzik, HU majd EN (ne maradjon üres / elavult DOM). */
+  function pickStr(lang, key) {
+    var primary = T[lang] || T.hu;
+    if (primary[key] != null) return primary[key];
+    if (T.hu[key] != null) return T.hu[key];
+    if (T.en[key] != null) return T.en[key];
+    return '';
   }
 
   function apply(lang) {
+    if (typeof lang === 'string') lang = lang.toLowerCase();
     if (lang !== 'en' && lang !== 'hu') lang = 'hu';
     document.documentElement.lang = lang === 'en' ? 'en' : 'hu';
 
-    var pack = T[lang] || T.hu;
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
-      if (!key || pack[key] == null) return;
-      el.textContent = pack[key];
+      if (!key) return;
+      var s = pickStr(lang, key);
+      if (s === '') return;
+      el.textContent = s;
     });
 
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-html');
-      if (!key || pack[key] == null) return;
-      el.innerHTML = pack[key];
+      if (!key) return;
+      var s = pickStr(lang, key);
+      if (s === '') return;
+      el.innerHTML = s;
     });
 
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-placeholder');
-      if (!key || pack[key] == null) return;
-      el.setAttribute('placeholder', pack[key]);
+      if (!key) return;
+      var s = pickStr(lang, key);
+      if (s === '') return;
+      el.setAttribute('placeholder', s);
     });
 
     document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-aria');
-      if (!key || pack[key] == null) return;
-      el.setAttribute('aria-label', pack[key]);
+      if (!key) return;
+      var s = pickStr(lang, key);
+      if (s === '') return;
+      el.setAttribute('aria-label', s);
     });
 
     document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-title');
-      if (!key || pack[key] == null) return;
-      el.setAttribute('title', pack[key]);
+      if (!key) return;
+      var s = pickStr(lang, key);
+      if (s === '') return;
+      el.setAttribute('title', s);
     });
 
     document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-alt');
-      if (!key || pack[key] == null) return;
-      el.setAttribute('alt', pack[key]);
+      if (!key) return;
+      var s = pickStr(lang, key);
+      if (s === '') return;
+      el.setAttribute('alt', s);
     });
 
     var subj = document.getElementById('form-subject');
     if (subj) {
       var invite = document.documentElement.getAttribute('data-invite') || 'fri-sat';
       if (invite === 'chooser') {
-        subj.value = pack.formSubject != null ? pack.formSubject : '';
+        subj.value = pickStr(lang, 'formSubject');
       } else {
         var sk = invite === 'sat-only' ? 'formSubjectSatOnly' : 'formSubjectFriSat';
-        subj.value = pack[sk] != null ? pack[sk] : pack.formSubject;
+        var subjVal = pickStr(lang, sk);
+        subj.value = subjVal !== '' ? subjVal : pickStr(lang, 'formSubject');
       }
     }
 
     var tEl = document.querySelector('title');
-    if (tEl) tEl.textContent = pack.docTitle;
+    if (tEl) tEl.textContent = pickStr(lang, 'docTitle');
 
     document.querySelectorAll('.lang-switch__btn').forEach(function (btn) {
       var l = btn.getAttribute('data-set-lang');
@@ -352,7 +379,7 @@
     });
 
     var langRoot = document.querySelector('.lang-switch');
-    if (langRoot) langRoot.setAttribute('aria-label', pack.langSwitchAria);
+    if (langRoot) langRoot.setAttribute('aria-label', pickStr(lang, 'langSwitchAria'));
 
     try {
       window.dispatchEvent(new CustomEvent('eskuvo:lang', { detail: { lang: lang } }));
@@ -365,6 +392,7 @@
     root.querySelectorAll('[data-set-lang]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var l = btn.getAttribute('data-set-lang');
+        if (typeof l === 'string') l = l.toLowerCase();
         setLang(l);
       });
     });
