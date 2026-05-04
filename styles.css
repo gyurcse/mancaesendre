@@ -1232,80 +1232,6 @@ body:has(#main-content.content-hidden) .site-nav {
   grid-template-columns: 1fr 1fr;
 }
 
-/* Párunk */
-.couple-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  align-items: start;
-}
-
-.couple-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  min-width: 0;
-  padding: 0.75rem 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: var(--radius);
-  border: 1px solid rgba(74, 124, 158, 0.14);
-  border-bottom: 2px solid rgba(61, 106, 135, 0.2);
-  box-shadow: var(--shadow);
-  transition: transform 0.35s ease;
-}
-
-.couple-card:hover {
-  transform: translateY(-4px);
-}
-
-/* Keret + vágás egy helyen: mindkét kép ugyanúgy viselkedik, a tükör nem „töri” a lekerekítést */
-.couple-image-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  aspect-ratio: 3 / 4;
-  max-height: min(380px, 52vw);
-  border-radius: calc(var(--radius) - 3px);
-  overflow: hidden;
-  margin: 0 0 0.75rem;
-  flex-shrink: 0;
-  box-shadow: inset 0 0 0 1px rgba(74, 124, 158, 0.08);
-}
-
-.couple-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center 32%;
-  margin: 0;
-  border-radius: 0;
-  box-shadow: none;
-  max-height: none;
-}
-
-/* Egyik szóló kép tükrözve, hogy egymás felé nézzenek (wrapper overflow tartja a sarkokat) */
-.couple-image--mirror {
-  transform: scaleX(-1);
-  transform-origin: center center;
-}
-
-.couple-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  margin: 0 0 0.25rem;
-}
-
-.couple-card p {
-  font-size: 0.85rem;
-  color: var(--color-text-soft);
-  margin: 0;
-}
-
 /* Program */
 .program-subtitle {
   text-align: center;
@@ -1787,13 +1713,6 @@ body:has(#main-content.content-hidden) .site-nav {
 @media (min-width: 600px) {
   .section {
     padding: 2.5rem 1.5rem;
-  }
-
-  .couple-grid {
-    gap: 1.75rem;
-    max-width: min(440px, 100%);
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .gallery-grid {

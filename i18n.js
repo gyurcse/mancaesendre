@@ -26,11 +26,6 @@
       welcomeIntroSatOnly:
         'Kedves Vendégeink! Meghívlak titeket a szombati nagy napunkra. A pénteki programra ezúttal nem számítunk veletek – ha kérdésetek van, írjatok nyugodtan.',
       welcomeImgAlt: 'Manca és Endre',
-      coupleTitle: 'Mi vagyunk',
-      coupleGroom: 'Vőlegény',
-      coupleBride: 'Menyasszony',
-      coupleImgGroomAlt: 'Endre – vőlegény',
-      coupleImgBrideAlt: 'Manca – menyasszony',
       programTitle: 'Program',
       programSubtitle: 'Amit nektek készítettünk',
       programDayFriLabel: 'Péntek – 2026. augusztus 21.',
@@ -161,11 +156,6 @@
       welcomeIntroSatOnly:
         'Dear guests, you are invited to our wedding day on Saturday. We are not expecting you on Friday this time — if you have any questions, just write to us.',
       welcomeImgAlt: 'Manca and Endre',
-      coupleTitle: 'We are',
-      coupleGroom: 'Groom',
-      coupleBride: 'Bride',
-      coupleImgGroomAlt: 'Endre – groom',
-      coupleImgBrideAlt: 'Manca – bride',
       programTitle: 'Schedule',
       programSubtitle: 'What we have planned for you',
       programDayFriLabel: 'Friday – 21 August 2026',
