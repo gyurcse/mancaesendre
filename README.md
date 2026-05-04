@@ -4,15 +4,28 @@ Mobilon első megnyitáskor egy boríték animáció jelenik meg; kattintásra k
 
 ## Élő oldal (GitHub Pages)
 
-A webről való eléréshez engedélyezd a **GitHub Pages**-t:
+A repóban be van kötve egy **GitHub Actions** workflow (`.github/workflows/deploy-pages.yml`), ami minden **`main`** push után kiteszi az oldalt.
+
+### Első bekapcsolás (egyszer)
 
 1. Nyisd meg a repót: [github.com/gyurcse/mancaesendre](https://github.com/gyurcse/mancaesendre)
-2. **Settings** → bal oldalon **Pages**
-3. **Source**: „Deploy from a branch”
-4. **Branch**: `main`, **Folder**: `/ (root)` → **Save**
+2. **Settings** → **Pages**
+3. **Build and deployment** → **Source**: válaszd a **GitHub Actions** lehetőséget (ne „Deploy from a branch”).
 
-Néhány perc múlva az oldal elérhető lesz itt:  
-**https://gyurcse.github.io/mancaesendre/**
+Ezután a **Actions** fülön lefut a „Deploy static content to Pages” workflow; ha kész, az oldal:
+
+- **https://gyurcse.github.io/mancaesendre/**
+
+### Saját domain (`mancaesendre.hu`)
+
+A repó gyökerében van egy **`CNAME`** fájl (`mancaesendre.hu`). A GitHubon:
+
+1. **Settings** → **Pages** → **Custom domain** → írd be: `mancaesendre.hu` → Save  
+   (GitHub ellenőrzi a DNS-t; a **Enforce HTTPS** később kapcsolható, ha már zöld a DNS.)
+
+2. A domain DNS-énél (amikor a domain **aktív** és szerkeszthető) állíts be rekordokat a [GitHub Pages DNS](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain) szerint – apex domainhez általában GitHub **A** rekordok, vagy **ALIAS/ANAME** a szolgáltatód szerint.
+
+Amíg a regisztrátornál a domain „nem aktív”, addig a DNS-et sem tudod rendesen kezelni; először azt kell rendezni náluk.
 
 ## Lokális futtatás
 

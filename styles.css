@@ -212,13 +212,18 @@ html[data-invite='chooser'] #envelope-overlay {
   max-height: none;
 }
 
-.invite-landing__icon-wrap--landing-fixed .invite-landing__icon-svg--candle {
-  width: 100px;
-  height: 100px;
+.invite-landing__icon-wrap--invite-img {
+  background: #f4efe6;
+  overflow: hidden;
 }
 
-.invite-landing__icon-wrap--stroller-asset {
-  background: transparent;
+.invite-landing__img {
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }
 
 .invite-landing__card-kicker {
