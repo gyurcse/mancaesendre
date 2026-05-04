@@ -27,7 +27,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  scroll-padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
   background: #dce8ef;
   overflow-x: hidden;
 }
@@ -95,7 +95,7 @@ html[data-invite='chooser'] body {
   overflow: hidden;
 }
 
-html[data-invite='chooser'] .lang-switch {
+html[data-invite='chooser'] .site-header-bar {
   z-index: 10060;
 }
 
@@ -581,7 +581,6 @@ html[data-invite='chooser'] #envelope-overlay {
   opacity: 1;
   transition: opacity 0.6s ease;
   transform-origin: center top;
-  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 .main-content.content-hidden {
@@ -590,7 +589,8 @@ html[data-invite='chooser'] #envelope-overlay {
 }
 
 body:has(#main-content.content-hidden) .site-nav {
-  display: none;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Zoom-in: a meghívó tartalma „belezoomol” és ez lesz az oldal */
@@ -1947,81 +1947,189 @@ body:has(#main-content.content-hidden) .site-nav {
   }
 }
 
-/* Gyors szakasz-navigáció – fix alsó sáv, vízszintes görgetés mobilon */
-.site-nav {
+/* Fejléc: balra nyelv, jobbra hamburger menü */
+.site-header-bar {
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  z-index: 9990;
-  padding: 0.4rem 0 calc(0.45rem + env(safe-area-inset-bottom, 0px));
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.96) 40%, rgba(255, 255, 255, 0.98) 100%);
-  border-top: 1px solid rgba(74, 124, 158, 0.18);
-  box-shadow: 0 -6px 28px rgba(45, 62, 80, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  z-index: 10001;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: max(0.65rem, env(safe-area-inset-top, 0px)) max(0.75rem, env(safe-area-inset-right, 0px)) 0.35rem
+    max(0.75rem, env(safe-area-inset-left, 0px));
+  pointer-events: none;
 }
 
-.site-nav__inner {
-  max-width: min(100%, calc(var(--content-max) + 3rem));
-  margin: 0 auto;
-  padding: 0 max(0.5rem, env(safe-area-inset-left, 0px)) 0 max(0.5rem, env(safe-area-inset-right, 0px));
-  mask-image: linear-gradient(90deg, transparent 0%, #000 0.6rem, #000 calc(100% - 0.6rem), transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 0.6rem, #000 calc(100% - 0.6rem), transparent 100%);
+.site-header-bar > * {
+  pointer-events: auto;
+}
+
+/* Szakaszok: hamburger + jobbról lenyíló panel */
+.site-nav {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.site-nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(74, 124, 158, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 8px 28px rgba(45, 62, 80, 0.12);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.site-nav__toggle:hover {
+  border-color: rgba(74, 124, 158, 0.4);
+  box-shadow: 0 10px 32px rgba(45, 62, 80, 0.16);
+}
+
+.site-nav__toggle:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+.site-nav__burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 1.25rem;
+  height: 1rem;
+}
+
+.site-nav__line {
+  display: block;
+  height: 2px;
+  background: var(--color-blue-dark);
+  border-radius: 1px;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
+}
+
+.site-nav.is-open .site-nav__line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-nav.is-open .site-nav__line:nth-child(2) {
+  opacity: 0;
+}
+
+.site-nav.is-open .site-nav__line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.site-nav__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10008;
+  background: rgba(28, 45, 58, 0.35);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.site-nav.is-open .site-nav__backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.site-nav__backdrop[hidden] {
+  display: none !important;
+}
+
+.site-nav__drawer {
+  position: fixed;
+  z-index: 10009;
+  top: calc(max(0.65rem, env(safe-area-inset-top, 0px)) + 2.75rem + 0.35rem);
+  right: max(0.75rem, env(safe-area-inset-right, 0px));
+  width: min(20rem, calc(100vw - 1.5rem));
+  max-height: min(32rem, calc(100dvh - 5.5rem));
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 1rem 1.15rem;
+  border-radius: calc(var(--radius) + 4px);
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(74, 124, 158, 0.2);
+  box-shadow: 0 16px 48px rgba(45, 62, 80, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform: translateX(0.5rem) scale(0.98);
+  opacity: 0;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+  pointer-events: none;
+}
+
+.site-nav.is-open .site-nav__drawer {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+}
+
+.site-nav__drawer[hidden] {
+  display: none !important;
+}
+
+.site-nav__drawer-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.65rem;
+  text-align: center;
+  color: var(--color-blue-dark);
 }
 
 .site-nav__list {
   list-style: none;
   margin: 0;
-  padding: 0.15rem 0;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-direction: column;
   gap: 0.35rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  scroll-snap-type: x proximity;
-}
-
-.site-nav__list::-webkit-scrollbar {
-  display: none;
 }
 
 .site-nav__item {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
+  margin: 0;
 }
 
 .site-nav__link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.5rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
+  display: block;
+  width: 100%;
+  padding: 0.62rem 0.85rem;
+  border-radius: 10px;
   font-family: var(--font-body), sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   text-decoration: none;
+  text-align: center;
   color: var(--color-blue-dark);
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(74, 124, 158, 0.22);
-  box-shadow: 0 1px 4px rgba(45, 62, 80, 0.06);
-  white-space: nowrap;
+  background: rgba(240, 245, 250, 0.85);
+  border: 1px solid rgba(74, 124, 158, 0.15);
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease;
+    color 0.2s ease;
 }
 
 .site-nav__link:hover {
-  border-color: rgba(74, 124, 158, 0.45);
-  box-shadow: 0 3px 12px rgba(74, 124, 158, 0.12);
+  border-color: rgba(74, 124, 158, 0.35);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .site-nav__link:focus-visible {
@@ -2033,7 +2141,6 @@ body:has(#main-content.content-hidden) .site-nav {
   color: var(--color-white);
   background: linear-gradient(135deg, var(--color-blue-dark), var(--color-blue));
   border-color: transparent;
-  box-shadow: 0 2px 12px rgba(74, 124, 158, 0.35);
 }
 
 .site-nav__link--accent:hover {
@@ -2041,31 +2148,14 @@ body:has(#main-content.content-hidden) .site-nav {
   filter: brightness(1.05);
 }
 
-@media (min-width: 900px) {
-  .site-nav__list {
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow-x: visible;
-    row-gap: 0.4rem;
-  }
-
-  .site-nav__inner {
-    mask-image: none;
-    -webkit-mask-image: none;
-  }
-
-  .site-nav__link {
-    font-size: 0.74rem;
-    padding: 0.4rem 0.85rem;
-  }
+body.site-nav--open {
+  overflow: hidden;
 }
 
-/* Nyelvváltó (HU / EN) – mindig elérhető, a boríték fölött is */
+/* Nyelvváltó (HU / EN) – a fejlécsáv bal oldalán */
 .lang-switch {
-  position: fixed;
-  top: max(0.75rem, env(safe-area-inset-top, 0px));
-  right: max(0.75rem, env(safe-area-inset-right, 0px));
-  z-index: 10001;
+  position: relative;
+  flex: 0 0 auto;
   display: flex;
   align-items: stretch;
   padding: 3px;
@@ -2134,6 +2224,12 @@ body:has(#main-content.content-hidden) .site-nav {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .site-nav__drawer,
+  .site-nav__backdrop,
+  .site-nav__line {
+    transition-duration: 0.01ms !important;
   }
 
   .animate-on-scroll > *,

@@ -202,12 +202,80 @@
     });
   }
 
+  function initSiteNav() {
+    var root = document.getElementById('site-nav');
+    var toggle = document.getElementById('site-nav-toggle');
+    var drawer = document.getElementById('site-nav-menu');
+    var backdrop = document.getElementById('site-nav-backdrop');
+    if (!root || !toggle || !drawer || !backdrop || root.dataset.navBound === '1') return;
+    root.dataset.navBound = '1';
+
+    function tAria(key) {
+      try {
+        if (window.EskuvoI18n && typeof window.EskuvoI18n.t === 'function') {
+          return window.EskuvoI18n.t(key);
+        }
+      } catch (e) {}
+      return '';
+    }
+
+    function refreshToggleLabel() {
+      var open = root.classList.contains('is-open');
+      var label = open ? tAria('navMenuCloseAria') : tAria('navMenuOpenAria');
+      if (label) toggle.setAttribute('aria-label', label);
+    }
+
+    function setOpen(open) {
+      root.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        backdrop.hidden = false;
+        drawer.hidden = false;
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('site-nav--open');
+      } else {
+        backdrop.hidden = true;
+        drawer.hidden = true;
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('site-nav--open');
+      }
+      refreshToggleLabel();
+    }
+
+    refreshToggleLabel();
+
+    toggle.addEventListener('click', function () {
+      setOpen(!root.classList.contains('is-open'));
+    });
+
+    backdrop.addEventListener('click', function () {
+      setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && root.classList.contains('is-open')) {
+        setOpen(false);
+      }
+    });
+
+    drawer.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        setOpen(false);
+      });
+    });
+
+    window.addEventListener('eskuvo:lang', function () {
+      refreshToggleLabel();
+    });
+  }
+
   function initCoreAfterInvite() {
     initInviteVariant();
     initEnvelope();
     initScrollAnimations();
     initCountdown();
     initImageFallbacks();
+    initSiteNav();
   }
 
   function initInviteLanding() {

@@ -38,15 +38,41 @@
   <meta name="theme-color" content="#3d6a87">
 </head>
 <body>
-  <div class="lang-switch" role="group" aria-label="Nyelv választása">
-    <button type="button" class="lang-switch__btn lang-switch__btn--hu is-active" data-set-lang="hu" data-i18n-aria="langHu" data-i18n-title="langHu" title="Magyar" aria-label="Magyar" aria-pressed="true">
-      <span class="lang-switch__glyph" aria-hidden="true">A</span>
-      <span class="lang-switch__abbr" aria-hidden="true">HU</span>
-    </button>
-    <button type="button" class="lang-switch__btn lang-switch__btn--en" data-set-lang="en" data-i18n-aria="langEn" data-i18n-title="langEn" title="English" aria-label="English" aria-pressed="false">
-      <span class="lang-switch__glyph lang-switch__glyph--en" aria-hidden="true">🌐</span>
-      <span class="lang-switch__abbr" aria-hidden="true">EN</span>
-    </button>
+  <div class="site-header-bar">
+    <div class="lang-switch" role="group" aria-label="Nyelv választása">
+      <button type="button" class="lang-switch__btn lang-switch__btn--hu is-active" data-set-lang="hu" data-i18n-aria="langHu" data-i18n-title="langHu" title="Magyar" aria-label="Magyar" aria-pressed="true">
+        <span class="lang-switch__glyph" aria-hidden="true">A</span>
+        <span class="lang-switch__abbr" aria-hidden="true">HU</span>
+      </button>
+      <button type="button" class="lang-switch__btn lang-switch__btn--en" data-set-lang="en" data-i18n-aria="langEn" data-i18n-title="langEn" title="English" aria-label="English" aria-pressed="false">
+        <span class="lang-switch__glyph lang-switch__glyph--en" aria-hidden="true">🌐</span>
+        <span class="lang-switch__abbr" aria-hidden="true">EN</span>
+      </button>
+    </div>
+    <nav class="site-nav" id="site-nav" aria-label="Ugrás egy szakaszra" data-i18n-aria="navSiteAria">
+      <button type="button" class="site-nav__toggle" id="site-nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Menü megnyitása">
+        <span class="site-nav__burger" aria-hidden="true">
+          <span class="site-nav__line"></span>
+          <span class="site-nav__line"></span>
+          <span class="site-nav__line"></span>
+        </span>
+      </button>
+      <div class="site-nav__backdrop" id="site-nav-backdrop" hidden aria-hidden="true"></div>
+      <div class="site-nav__drawer" id="site-nav-menu" role="dialog" aria-modal="true" aria-labelledby="site-nav-drawer-heading" aria-hidden="true" hidden>
+        <p id="site-nav-drawer-heading" class="site-nav__drawer-title script-title" data-i18n="navDrawerTitle">Szakaszok</p>
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="#hero" data-i18n="navLinkHero">Címlap</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#countdown" data-i18n="countdownTitle">Visszaszámlálás</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#welcome" data-i18n="welcomeTitle">Szeretettel várunk</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#couple" data-i18n="coupleTitle">Mi vagyunk</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#program" data-i18n="programTitle">Program</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#venue" data-i18n="venueTitle">Helyszín</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#faq" data-i18n="faqTitle">Gyakori kérdések</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#gallery" data-i18n="galleryTitle">Galéria</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--accent" href="#rsvp" data-i18n="navLinkRsvp">RSVP</a></li>
+        </ul>
+      </div>
+    </nav>
   </div>
   <!-- Gyökér: válaszd ki, melyik szimbólum szerepel a meghívódon -->
   <div id="invite-landing" class="invite-landing" hidden aria-hidden="true">
@@ -409,22 +435,6 @@
       <p>Manca & Endre · 2026</p>
     </footer>
   </main>
-
-  <nav class="site-nav" id="site-nav" aria-label="Ugrás egy szakaszra" data-i18n-aria="navSiteAria">
-    <div class="site-nav__inner">
-      <ul class="site-nav__list">
-        <li class="site-nav__item"><a class="site-nav__link" href="#hero" data-i18n="navLinkHero">Címlap</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#countdown" data-i18n="countdownTitle">Visszaszámlálás</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#welcome" data-i18n="welcomeTitle">Szeretettel várunk</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#couple" data-i18n="coupleTitle">Mi vagyunk</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#program" data-i18n="programTitle">Program</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#venue" data-i18n="venueTitle">Helyszín</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#faq" data-i18n="faqTitle">Gyakori kérdések</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#gallery" data-i18n="galleryTitle">Galéria</a></li>
-        <li class="site-nav__item"><a class="site-nav__link site-nav__link--accent" href="#rsvp" data-i18n="navLinkRsvp">RSVP</a></li>
-      </ul>
-    </div>
-  </nav>
 
   <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>
