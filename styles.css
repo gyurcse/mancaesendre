@@ -1485,9 +1485,15 @@ body:has(#main-content.content-hidden) .site-nav {
   height: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+  object-position: center;
   border-radius: var(--radius);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   background: var(--color-bg-countdown);
+}
+
+/* Magas portré: a négyzetes vágás a felső részt tartja meg (fejek) */
+.gallery-item--anchor-top {
+  object-position: center top;
 }
 
 .gallery-item:hover {
