@@ -233,13 +233,15 @@ html[data-invite='chooser'] #envelope-overlay {
   border-radius: 50%;
 }
 
-/* Pezsgő ikon: palack alja ne vágódjon le a körös maszk miatt – több tér alul, finom pozíció */
-.invite-landing__icon-wrap--pezsgo.invite-landing__icon-wrap--invite-img {
-  padding: 6px 10px 22px 10px;
+/* Pezsgő: ne kör legyen a keret (ne vágja le a sarkokat), lágy kerekített téglalap */
+.invite-landing__icon-wrap.invite-landing__icon-wrap--landing-fixed.invite-landing__icon-wrap--invite-img.invite-landing__icon-wrap--pezsgo {
+  border-radius: 18px;
+  padding: 10px;
 }
 
 .invite-landing__img--pezsgo {
-  object-position: 50% 44%;
+  border-radius: 12px;
+  object-position: center;
 }
 
 .invite-landing__card-kicker {
