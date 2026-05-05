@@ -337,6 +337,17 @@
       try {
         sessionStorage.setItem('eskuvo_invite_variant', variant);
       } catch (e) {}
+      try {
+        var maxAge = 60 * 60 * 24 * 120;
+        var sec = typeof location !== 'undefined' && location.protocol === 'https:' ? '; Secure' : '';
+        document.cookie =
+          'eskuvo_invite_variant=' +
+          encodeURIComponent(variant) +
+          '; path=/; max-age=' +
+          maxAge +
+          '; SameSite=Lax' +
+          sec;
+      } catch (eCookie) {}
       html.setAttribute('data-invite', variant);
       land.hidden = true;
       land.setAttribute('aria-hidden', 'true');

@@ -6,26 +6,66 @@
     (function () {
       var html = document.documentElement;
       var SS = 'eskuvo_invite_variant';
+      var CK = 'eskuvo_invite_variant';
+      var maxAge = 60 * 60 * 24 * 120; /* 120 nap */
+      var sec = typeof location !== 'undefined' && location.protocol === 'https:' ? '; Secure' : '';
+
+      function setInviteCookie(val) {
+        try {
+          document.cookie =
+            CK + '=' + encodeURIComponent(val) + '; path=/; max-age=' + maxAge + '; SameSite=Lax' + sec;
+        } catch (e0) {}
+      }
+
+      function readInviteCookie() {
+        try {
+          var m = document.cookie.match(
+            new RegExp('(?:^|; )' + CK.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=(fri-sat|sat-only)(?:;|$)')
+          );
+          return m ? m[1] : '';
+        } catch (e1) {
+          return '';
+        }
+      }
+
+      function remember(val) {
+        try {
+          sessionStorage.setItem(SS, val);
+        } catch (e2) {}
+        setInviteCookie(val);
+      }
+
       try {
         var v = sessionStorage.getItem(SS);
         if (v === 'fri-sat' || v === 'sat-only') {
           html.setAttribute('data-invite', v);
           return;
         }
-      } catch (e) {}
+      } catch (e3) {}
+
       try {
         var p = new URLSearchParams(window.location.search).get('meghivo');
         if (p === 'babakocsi' || p === 'pezsgo' || p === 'tulipan') {
           html.setAttribute('data-invite', 'fri-sat');
-          sessionStorage.setItem(SS, 'fri-sat');
+          remember('fri-sat');
           return;
         }
         if (p === 'gyertya') {
           html.setAttribute('data-invite', 'sat-only');
-          sessionStorage.setItem(SS, 'sat-only');
+          remember('sat-only');
           return;
         }
-      } catch (e2) {}
+      } catch (e4) {}
+
+      var fromCookie = readInviteCookie();
+      if (fromCookie === 'fri-sat' || fromCookie === 'sat-only') {
+        html.setAttribute('data-invite', fromCookie);
+        try {
+          sessionStorage.setItem(SS, fromCookie);
+        } catch (e5) {}
+        return;
+      }
+
       html.setAttribute('data-invite', 'chooser');
     })();
   </script>
