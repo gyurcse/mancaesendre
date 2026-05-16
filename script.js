@@ -5,7 +5,8 @@
   var overlay = document.getElementById('envelope-overlay');
   var mainContent = document.getElementById('main-content');
 
-  var WEDDING_DATE = new Date('2026-08-22T14:00:00');
+  /* 2026. augusztus 22., szombat 15:00 (helyi idő) */
+  var WEDDING_DATE = new Date(2026, 7, 22, 15, 0, 0);
 
   function marMegnyitottak() {
     try {
