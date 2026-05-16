@@ -96,6 +96,7 @@
       galleryAlt3: 'Galéria 3.',
       galleryAlt4: 'Galéria 4.',
       galleryAlt5: 'Galéria 5.',
+      galleryAlt6: 'Galéria 6.',
       rsvpTitle: 'Erősítsd meg részvételed',
       rsvpSubtitle: 'Szeretnénk, ha velünk lennél',
       rsvpGoogleLead:
@@ -245,6 +246,7 @@
       galleryAlt3: 'Gallery 3.',
       galleryAlt4: 'Gallery 4.',
       galleryAlt5: 'Gallery 5.',
+      galleryAlt6: 'Gallery 6.',
       rsvpTitle: 'Confirm your attendance',
       rsvpSubtitle: 'We would love to have you with us',
       rsvpGoogleLead:
