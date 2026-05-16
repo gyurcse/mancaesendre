@@ -4,10 +4,12 @@
 
 A lenti **szavas** útvonalak egyikét add meg (a `/m` előtag **nem** kell).
 
-| Meghívó típus    | Útvonal (rövid) | Vagy query a főoldalon |
-| ---------------- | --------------- | ---------------------- |
+
+| Meghívó típus    | Útvonal (rövid) | Vagy query a főoldalon         |
+| ---------------- | --------------- | ------------------------------ |
 | Péntek + szombat | `babakocsi/`    | `index.html?meghivo=babakocsi` |
-| Csak szombat     | `gyertya/`      | `index.html?meghivo=gyertya` |
+| Csak szombat     | `gyertya/`      | `index.html?meghivo=gyertya`   |
+
 
 Példa teljes címre: `https://<felhasználó>.github.io/<repo>/babakocsi/`
 
