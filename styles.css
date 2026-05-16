@@ -1594,11 +1594,27 @@ body:has(#main-content.content-hidden) .site-nav {
 .rsvp-inner {
   position: relative;
   z-index: 1;
+  margin-top: 12px;
   background: #f8f6f2;
   border-radius: var(--radius);
   padding: 2rem 1.5rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   border: 1px solid rgba(74,124,158,0.12);
+}
+
+@media (max-width: 599px) {
+  .rsvp {
+    padding-top: 0.35rem;
+  }
+
+  .rsvp-inner {
+    margin-top: 1.35rem;
+    padding-top: 1.5rem;
+  }
+
+  .rsvp-google-iframe {
+    margin-top: 0.25rem;
+  }
 }
 
 .rsvp-google-root {
