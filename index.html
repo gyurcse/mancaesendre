@@ -391,22 +391,63 @@
     <!-- Helyszín -->
     <section id="venue" class="section venue animate-on-scroll">
       <h2 class="script-title" data-i18n="venueTitle">Helyszín</h2>
-      <div class="venue-card">
-        <div class="venue-image-wrap">
-          <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&amp;q=80" alt="Villabogart – helyszín" data-i18n-alt="venueImgAlt" class="venue-image" loading="lazy" referrerpolicy="no-referrer" />
-        </div>
-        <div class="venue-info">
-          <div class="venue-header">
-            <span class="venue-icon" aria-hidden="true">📍</span>
-            <h3>Villabogart</h3>
+      <div class="venue-list">
+        <article class="venue-card">
+          <div class="venue-info">
+            <div class="venue-header">
+              <span class="venue-icon" aria-hidden="true">📍</span>
+              <h3 data-i18n="venueLagziTitle">Lagzi – Villabogart</h3>
+            </div>
+            <p class="venue-address" data-i18n="venueLagziAddress">7443 Alsóbogát, Szabadság utca 4.</p>
+            <div class="venue-map-wrap">
+              <iframe
+                class="venue-map"
+                src="https://maps.google.com/maps?q=Szabads%C3%A1g+utca+4,+7443+Als%C3%B3bog%C3%A1t&amp;hl=hu&amp;z=16&amp;output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                data-i18n-title="venueMap"
+                title="Térkép – Villabogart"
+              ></iframe>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&amp;query=Szabads%C3%A1g+utca+4,+7443+Als%C3%B3bog%C3%A1t"
+              target="_blank"
+              rel="noopener"
+              class="btn-map"
+              data-i18n="venueMapBtn"
+              >Maps megnyitása</a
+            >
           </div>
-          <p class="venue-address">Alsóbogáton</p>
-          <p class="venue-time"><span class="venue-clock" aria-hidden="true">🕐</span> <span data-i18n="venueTime">17:00 – 01:00</span></p>
-          <div class="venue-map-wrap">
-            <iframe class="venue-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2722.127!2d19.5!3d47.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDEyJzAwLjAiTiAxOcKwMzAnMDAuMCJF!5e0!3m2!1shu!2shu!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-i18n-title="venueMap" title="Térkép"></iframe>
+        </article>
+        <article class="venue-card venue-card--church">
+          <div class="venue-info">
+            <div class="venue-header">
+              <span class="venue-icon" aria-hidden="true">⛪</span>
+              <h3 data-i18n="venueChurchTitle">Nászmise: Nagyboldogasszony székesegyház</h3>
+            </div>
+            <p class="venue-address" data-i18n="venueChurchAddress">7400 Kaposvár, Kossuth tér 3.</p>
+            <div class="venue-map-wrap">
+              <iframe
+                class="venue-map"
+                src="https://maps.google.com/maps?q=Kossuth+t%C3%A9r+3,+7400+Kaposv%C3%A1r&amp;hl=hu&amp;z=16&amp;output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                data-i18n-title="venueMap"
+                title="Térkép – Nagyboldogasszony székesegyház"
+              ></iframe>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&amp;query=Kossuth+t%C3%A9r+3,+7400+Kaposv%C3%A1r"
+              target="_blank"
+              rel="noopener"
+              class="btn-map"
+              data-i18n="venueMapBtn"
+              >Maps megnyitása</a
+            >
           </div>
-          <a href="https://www.google.com/maps/search/Villabogart+Als%C3%B3bog%C3%A1ton" target="_blank" rel="noopener" class="btn-map" data-i18n="venueMapBtn">Maps megnyitása</a>
-        </div>
+        </article>
       </div>
     </section>
 
