@@ -1398,13 +1398,6 @@ body:has(#main-content.content-hidden) .site-nav {
 }
 
 /* Program */
-.program-subtitle {
-  text-align: center;
-  margin: -0.75rem 0 0.75rem;
-  font-size: 0.9rem;
-  color: var(--color-text-soft);
-}
-
 .program-ornament {
   display: flex;
   align-items: center;
