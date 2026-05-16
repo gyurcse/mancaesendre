@@ -31,7 +31,7 @@
       welcomeIntroSatOnly2:
         'Nagy örömmel hívunk Benneteket, hogy velünk ünnepeljétek életünk egyik legszebb napját.',
       welcomeIntroSatOnly3:
-        'Csatlakozzatok hozzánk szombati nagy napunkra, hogy együtt élhessük át ezeket a különleges pillanatokat.',
+        'Csatlakozzatok hozzánk a nagy napunkra, hogy együtt élhessük át ezeket a különleges pillanatokat.',
       welcomeIntroSatOnly4: 'Szeretettel várunk Benneteket egy felejthetetlen ünneplésre!',
       welcomeImgAlt: 'Manca és Endre',
       programTitle: 'Program',
@@ -180,7 +180,7 @@
       welcomeIntroSatOnly2:
         'We are delighted to invite you to celebrate one of the most beautiful days of our lives with us.',
       welcomeIntroSatOnly3:
-        'Join us on our big day on Saturday, so we can share these special moments together.',
+        'Join us on our big day, so we can share these special moments together.',
       welcomeIntroSatOnly4: 'We look forward to welcoming you to an unforgettable celebration!',
       welcomeImgAlt: 'Manca and Endre',
       programTitle: 'Schedule',
