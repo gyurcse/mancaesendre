@@ -1212,10 +1212,44 @@ body:has(#main-content.content-hidden) .site-nav {
   display: block;
 }
 
+.program-day-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 2.5rem auto 1.75rem;
+  max-width: min(240px, 72%);
+  padding: 0 0.5rem;
+}
+
+.program-day-divider__line {
+  flex: 1;
+  min-width: 2rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(74, 124, 158, 0.18) 30%,
+    rgba(184, 146, 63, 0.32) 50%,
+    rgba(74, 124, 158, 0.18) 70%,
+    transparent
+  );
+}
+
+.program-day-divider__mark {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(212, 168, 75, 0.55), var(--color-yellow-dark));
+  opacity: 0.55;
+  box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.08);
+}
+
 .program-day-block + .program-day-block {
-  margin-top: 2rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(74, 124, 158, 0.22);
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .program-day-title {
