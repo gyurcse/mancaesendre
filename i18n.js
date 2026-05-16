@@ -27,8 +27,12 @@
       welcomeIntroFriSat3:
         'Csatlakozzatok hozzánk a pénteki közös hangolódásra és a szombati nagy napunkra is, hogy együtt élhessük át ezeket a különleges pillanatokat.',
       welcomeIntroFriSat4: 'Szeretettel várunk Benneteket egy felejthetetlen ünneplésre!',
-      welcomeIntroSatOnly:
-        'Kedves Vendégeink! Meghívlak titeket a szombati nagy napunkra. A pénteki programra ezúttal nem számítunk veletek – ha kérdésetek van, írjatok nyugodtan.',
+      welcomeIntroSatOnly1: 'Kedves Vendégeink!',
+      welcomeIntroSatOnly2:
+        'Nagy örömmel hívunk Benneteket, hogy velünk ünnepeljétek életünk egyik legszebb napját.',
+      welcomeIntroSatOnly3:
+        'Csatlakozzatok hozzánk szombati nagy napunkra, hogy együtt élhessük át ezeket a különleges pillanatokat.',
+      welcomeIntroSatOnly4: 'Szeretettel várunk Benneteket egy felejthetetlen ünneplésre!',
       welcomeImgAlt: 'Manca és Endre',
       programTitle: 'Program',
       programSubtitle: 'Amit nektek készítettünk',
@@ -165,8 +169,12 @@
       welcomeIntroFriSat3:
         'Join us for Friday’s warm-up together and our big day on Saturday, so we can share these special moments with you.',
       welcomeIntroFriSat4: 'We look forward to welcoming you to an unforgettable celebration!',
-      welcomeIntroSatOnly:
-        'Dear guests, you are invited to our wedding day on Saturday. We are not expecting you on Friday this time — if you have any questions, just write to us.',
+      welcomeIntroSatOnly1: 'Dear guests,',
+      welcomeIntroSatOnly2:
+        'We are delighted to invite you to celebrate one of the most beautiful days of our lives with us.',
+      welcomeIntroSatOnly3:
+        'Join us on our big day on Saturday, so we can share these special moments together.',
+      welcomeIntroSatOnly4: 'We look forward to welcoming you to an unforgettable celebration!',
       welcomeImgAlt: 'Manca and Endre',
       programTitle: 'Schedule',
       programSubtitle: 'What we have planned for you',
