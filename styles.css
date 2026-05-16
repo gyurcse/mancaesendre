@@ -1183,14 +1183,114 @@ body:has(#main-content.content-hidden) .site-nav {
   margin-bottom: 0;
 }
 
-.faq-plan-image {
+.faq-plan-trigger {
   display: block;
   width: 100%;
   max-width: min(520px, 100%);
   margin: 1rem auto 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  border-radius: var(--radius);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-plan-trigger:hover .faq-plan-image,
+.faq-plan-trigger:focus-visible .faq-plan-image {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.faq-plan-trigger:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+.faq-plan-image {
+  display: block;
+  width: 100%;
   border-radius: var(--radius);
   border: 1px solid rgba(74, 124, 158, 0.18);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease;
+}
+
+.image-lightbox {
+  padding: 0;
+  margin: 0;
+  border: none;
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: visible;
+}
+
+.image-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-lightbox::backdrop {
+  background: rgba(22, 38, 50, 0.88);
+}
+
+.image-lightbox__panel {
+  position: relative;
+  box-sizing: border-box;
+  width: min(96vw, 920px);
+  max-height: 92vh;
+  margin: 4vh auto;
+  padding: 0.75rem 0.75rem 1rem;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+.image-lightbox__title {
+  margin: 0 2.5rem 0.65rem 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-blue-dark);
+}
+
+.image-lightbox__close {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(74, 124, 158, 0.12);
+  color: var(--color-blue-dark);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.image-lightbox__close:hover {
+  background: var(--color-blue-dark);
+  color: #fff;
+}
+
+.image-lightbox__close:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+.image-lightbox__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(92vh - 4.5rem);
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 /* Meghívó variáns (data-invite a <html>-en: fri-sat | sat-only) */

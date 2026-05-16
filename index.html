@@ -465,13 +465,20 @@
             <p data-i18n="faq1a">
               A VILLABOGArT birtokon található szálláshelyek, mint a VILLABOGArT Vendégház és a Maison BOGArT, mindössze néhány perces sétára helyezkednek el a Magtártól. A Falusi Házak, Tóházak és Majorsági szállások esetében a távolság átlagosan 8–10 perc séta, míg autóval mindössze 3–4 perc.
             </p>
-            <img
-              src="Fotok/bogatterv.png"
-              alt="Villabogart birtok térképe – szállások és épületek"
-              data-i18n-alt="faq1MapAlt"
-              class="faq-plan-image"
-              loading="lazy"
-            />
+            <button
+              type="button"
+              class="faq-plan-trigger"
+              data-i18n-aria="faq1MapZoomAria"
+              aria-controls="faq-plan-lightbox"
+            >
+              <img
+                src="Fotok/bogatterv.png"
+                alt="Villabogart birtok térképe – szállások és épületek"
+                data-i18n-alt="faq1MapAlt"
+                class="faq-plan-image"
+                loading="lazy"
+              />
+            </button>
           </div>
         </details>
         <details class="faq-item">
@@ -558,6 +565,23 @@
       <p>Manca & Endre · 2026</p>
     </footer>
   </main>
+
+  <dialog id="faq-plan-lightbox" class="image-lightbox" aria-labelledby="faq-plan-lightbox-title">
+    <div class="image-lightbox__panel">
+      <p id="faq-plan-lightbox-title" class="image-lightbox__title" data-i18n="faq1MapLightboxTitle">
+        Villabogart birtok térképe
+      </p>
+      <button type="button" class="image-lightbox__close" data-i18n-aria="imageLightboxClose" aria-label="Bezárás">
+        <span aria-hidden="true">×</span>
+      </button>
+      <img
+        src="Fotok/bogatterv.png"
+        alt=""
+        data-i18n-alt="faq1MapAlt"
+        class="image-lightbox__img"
+      />
+    </div>
+  </dialog>
 
   <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>

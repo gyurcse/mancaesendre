@@ -310,6 +310,37 @@
     });
   }
 
+  function initImageLightbox() {
+    var trigger = document.querySelector('.faq-plan-trigger');
+    var dialog = document.getElementById('faq-plan-lightbox');
+    if (!trigger || !dialog || typeof dialog.showModal !== 'function') return;
+
+    var panel = dialog.querySelector('.image-lightbox__panel');
+    var closeBtn = dialog.querySelector('.image-lightbox__close');
+
+    trigger.addEventListener('click', function () {
+      dialog.showModal();
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        dialog.close();
+      });
+    }
+
+    dialog.addEventListener('click', function (e) {
+      if (panel && !panel.contains(e.target)) {
+        dialog.close();
+      }
+    });
+
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        dialog.close();
+      }
+    });
+  }
+
   function initCoreAfterInvite() {
     initInviteVariant();
     initEnvelope();
@@ -317,6 +348,7 @@
     initCountdown();
     initImageFallbacks();
     initSiteNav();
+    initImageLightbox();
   }
 
   function initInviteLanding() {
