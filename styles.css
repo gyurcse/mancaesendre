@@ -1183,6 +1183,16 @@ body:has(#main-content.content-hidden) .site-nav {
   margin-bottom: 0;
 }
 
+.faq-plan-image {
+  display: block;
+  width: 100%;
+  max-width: min(520px, 100%);
+  margin: 1rem auto 0;
+  border-radius: var(--radius);
+  border: 1px solid rgba(74, 124, 158, 0.18);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
 /* Meghívó variáns (data-invite a <html>-en: fri-sat | sat-only) */
 .intro-variant--sat-only {
   display: none;

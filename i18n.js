@@ -78,8 +78,10 @@
       venueMapBtn: 'Maps megnyitása',
       faqTitle: 'Gyakori kérdések',
       faqLeadAlt: 'Gyakori kérdések – hangulatkép',
-      faq1q: 'Hozhatok kísérőt?',
-      faq1a: 'Igen — kérjük, jelezd az RSVP Google űrlapon (vagy írj nekünk emailben).',
+      faq1q: 'Hol helyezkednek el a szállások a kastélyhoz képest?',
+      faq1a:
+        'A VILLABOGArT birtokon található szálláshelyek, mint a VILLABOGArT Vendégház és a Maison BOGArT, mindössze néhány perces sétára helyezkednek el a Magtártól. A Falusi Házak, Tóházak és Majorsági szállások esetében a távolság átlagosan 8–10 perc séta, míg autóval mindössze 3–4 perc.',
+      faq1MapAlt: 'Villabogart birtok térképe – szállások és épületek',
       faq2q: 'Hogyan lehet a leggyorsabban, legjobban eljutni a Villabogart-hoz?',
       faq2p: 'Három útvonalat javasolunk:',
       faq2l1:
@@ -228,8 +230,10 @@
       venueMapBtn: 'Open in Maps',
       faqTitle: 'Frequently asked questions',
       faqLeadAlt: 'FAQ – mood photo',
-      faq1q: 'May I bring a plus-one?',
-      faq1a: 'Yes — please mention it on the RSVP Google Form (or email us).',
+      faq1q: 'Where are the accommodations in relation to the castle?',
+      faq1a:
+        'On the VILLABOGArT estate, stays such as the VILLABOGArT Guest House and Maison BOGArT are only a few minutes’ walk from the Magtár. For the Village Houses, Lake Houses and Manor Farm stays, it is typically an 8–10 minute walk, or just 3–4 minutes by car.',
+      faq1MapAlt: 'Villabogart estate map – accommodation and buildings',
       faq2q: 'What is the best way to get to Villabogart?',
       faq2p: 'We suggest three routes:',
       faq2l1:
