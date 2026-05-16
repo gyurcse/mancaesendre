@@ -97,10 +97,6 @@
       galleryAlt4: 'Galéria 4.',
       galleryAlt5: 'Galéria 5.',
       galleryAlt6: 'Galéria 6.',
-      rsvpTitle: 'Erősítsd meg részvételed',
-      rsvpSubtitle: 'Szeretnénk, ha velünk lennél',
-      rsvpGoogleLead:
-        'Töltsd ki az alábbi űrlapot – a válaszok a Google Táblázatban gyűlnek, onnan bármikor letölthetők (CSV, Excel).',
       rsvpGoogleMissing:
         'Állítsd be a Google űrlap beágyazási linkjeit az index.html fájlban: a #rsvp-google-root elem data-form-fri-sat és data-form-sat-only attribútumai.',
       rsvpGoogleOpenNewTab: 'Űrlap megnyitása új lapon',
@@ -247,10 +243,6 @@
       galleryAlt4: 'Gallery 4.',
       galleryAlt5: 'Gallery 5.',
       galleryAlt6: 'Gallery 6.',
-      rsvpTitle: 'Confirm your attendance',
-      rsvpSubtitle: 'We would love to have you with us',
-      rsvpGoogleLead:
-        'Please fill in the form below — responses are collected in Google Sheets and can be downloaded anytime (CSV, Excel).',
       rsvpGoogleMissing:
         'Set the Google Form embed URLs on the #rsvp-google-root element in index.html: data-form-fri-sat and data-form-sat-only.',
       rsvpGoogleOpenNewTab: 'Open form in a new tab',
