@@ -1303,7 +1303,16 @@ body:has(#main-content.content-hidden) .site-nav {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  max-width: min(400px, 100%);
+  max-width: min(520px, 100%);
+}
+
+.program-disclaimer {
+  margin: 1.75rem auto 0;
+  max-width: min(520px, 100%);
+  text-align: center;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--color-text-soft);
 }
 
 .program-item {
@@ -1335,6 +1344,10 @@ body:has(#main-content.content-hidden) .site-nav {
 .program-item:nth-child(4) { transition-delay: 0.26s; }
 .program-item:nth-child(5) { transition-delay: 0.33s; }
 .program-item:nth-child(6) { transition-delay: 0.4s; }
+.program-item:nth-child(7) { transition-delay: 0.47s; }
+.program-item:nth-child(8) { transition-delay: 0.54s; }
+.program-item:nth-child(9) { transition-delay: 0.61s; }
+.program-item:nth-child(10) { transition-delay: 0.68s; }
 
 .program-item:hover {
   background: rgba(74,124,158,0.06);
