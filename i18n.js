@@ -91,7 +91,7 @@
       faq2l3:
         'vagy az M7-esről a 142-es km-nél letérve Lengyeltóti–Somogyvár–Osztopán–Somogyjád falvakon keresztül érnek el Alsóbogátra (ez a leghosszabb, de a legjobb minőségű út a falvak között).',
       faq3q: 'Milyen öltözék a megfelelő?',
-      faq3a: 'Ünnepélyes, de kellemes: öltöny / elegáns ruha.',
+      faq3a: 'Elegáns, színes öltözékre gondolunk — kérjük, kerüljétek a sötét színeket.',
       faq4q: 'Milyen nászajándékot szívesen fogadtok?',
       faq4a:
         'Háztartásunk teljes, nem is vágyunk másra, csak közös életünk kezdetén egy kis támogatásra.',
@@ -243,7 +243,7 @@
       faq2l3:
         'or leave the M7 at km 142 via Lengyeltóti–Somogyvár–Osztopán–Somogyjád (the longest route, but the best quality between villages).',
       faq3q: 'What should I wear?',
-      faq3a: 'Smart festive: suit / elegant dress.',
+      faq3a: 'Elegant, colourful attire — please avoid dark colours.',
       faq4q: 'What would you like as a wedding gift?',
       faq4a:
         'Our home is complete and we do not wish for anything else—only a little support as we begin our life together.',
