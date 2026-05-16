@@ -934,6 +934,14 @@ body:has(#main-content.content-hidden) .site-nav {
   margin: 0;
 }
 
+.welcome .intro-variant p {
+  margin: 0 0 1rem;
+}
+
+.welcome .intro-variant p:last-child {
+  margin-bottom: 0;
+}
+
 /* Countdown – nagyobb, full site széles */
 .countdown-section {
   text-align: center;
@@ -1180,12 +1188,16 @@ body:has(#main-content.content-hidden) .site-nav {
   display: none;
 }
 
+.intro-variant--fri-sat {
+  display: block;
+}
+
 [data-invite='sat-only'] .intro-variant--fri-sat {
   display: none;
 }
 
 [data-invite='sat-only'] .intro-variant--sat-only {
-  display: inline;
+  display: block;
 }
 
 .program-invite--sat-only {

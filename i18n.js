@@ -21,8 +21,12 @@
       countdownSecs: 'másodperc',
       countdownDetails: 'Részletek',
       welcomeTitle: 'Szeretettel várunk',
-      welcomeIntroFriSat:
-        'Kedves Vendégeink! Meghívlak titeket a pénteki közös ünneplésre és a szombati nagy napunkra. Készüljetek egy felejthetetlen hétvégére – várunk szeretettel.',
+      welcomeIntroFriSat1: 'Kedves Vendégeink!',
+      welcomeIntroFriSat2:
+        'Nagy örömmel hívunk Benneteket, hogy velünk ünnepeljétek életünk egyik legszebb hétvégéjét.',
+      welcomeIntroFriSat3:
+        'Csatlakozzatok hozzánk a pénteki közös hangolódásra és a szombati nagy napunkra is, hogy együtt élhessük át ezeket a különleges pillanatokat.',
+      welcomeIntroFriSat4: 'Szeretettel várunk Benneteket egy felejthetetlen ünneplésre!',
       welcomeIntroSatOnly:
         'Kedves Vendégeink! Meghívlak titeket a szombati nagy napunkra. A pénteki programra ezúttal nem számítunk veletek – ha kérdésetek van, írjatok nyugodtan.',
       welcomeImgAlt: 'Manca és Endre',
@@ -155,8 +159,12 @@
       countdownSecs: 'seconds',
       countdownDetails: 'Details',
       welcomeTitle: 'You are warmly invited',
-      welcomeIntroFriSat:
-        'Dear guests, you are invited to join us on Friday for a shared celebration and on Saturday for our wedding day. We look forward to a wonderful weekend together.',
+      welcomeIntroFriSat1: 'Dear guests,',
+      welcomeIntroFriSat2:
+        'We are delighted to invite you to celebrate one of the most beautiful weekends of our lives with us.',
+      welcomeIntroFriSat3:
+        'Join us for Friday’s warm-up together and our big day on Saturday, so we can share these special moments with you.',
+      welcomeIntroFriSat4: 'We look forward to welcoming you to an unforgettable celebration!',
       welcomeIntroSatOnly:
         'Dear guests, you are invited to our wedding day on Saturday. We are not expecting you on Friday this time — if you have any questions, just write to us.',
       welcomeImgAlt: 'Manca and Endre',
