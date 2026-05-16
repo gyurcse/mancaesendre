@@ -946,15 +946,11 @@ body:has(#main-content.content-hidden) .site-nav {
   box-sizing: border-box;
 }
 
-.countdown-section .script-title {
-  font-size: clamp(2rem, 6vw, 2.75rem);
-  margin-bottom: 0.5rem;
-}
-
-.countdown-subtitle {
-  margin: -0.25rem 0 2rem;
-  font-size: 1.05rem;
-  color: var(--color-text-soft);
+.countdown-section .script-title--countdown {
+  font-size: clamp(1.85rem, 5.5vw, 2.65rem);
+  line-height: 1.15;
+  margin: 0 auto 2rem;
+  max-width: min(18rem, 92vw);
 }
 
 .countdown-grid {
