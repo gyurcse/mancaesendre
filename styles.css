@@ -1033,7 +1033,7 @@ body:has(#main-content.content-hidden) .site-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.45rem, 2.2vw, 0.95rem);
+  gap: clamp(0.55rem, 2.5vw, 1.15rem);
   max-width: min(440px, 100%);
   margin: 0 auto;
   text-decoration: none;
@@ -1047,7 +1047,7 @@ body:has(#main-content.content-hidden) .site-nav {
 
 .menu-teaser__cutlery {
   flex-shrink: 0;
-  width: clamp(0.95rem, 3vw, 1.25rem);
+  width: clamp(1.35rem, 4.2vw, 1.85rem);
   color: rgba(61, 106, 135, 0.55);
   transition: color 0.2s ease;
 }
