@@ -1101,16 +1101,6 @@ body:has(#main-content.content-hidden) .site-nav {
   text-align: center;
 }
 
-.menu-teaser__eyebrow {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: clamp(0.52rem, 2vw, 0.58rem);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-yellow-dark);
-}
-
 .menu-teaser__title {
   margin: 0;
   font-family: var(--font-display);
