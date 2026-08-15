@@ -1109,29 +1109,9 @@ body:has(#main-content.content-hidden) .site-nav {
   font-family: var(--font-display);
   font-weight: 600;
   font-style: italic;
-  font-size: clamp(1.1rem, 4vw, 1.45rem);
+  font-size: clamp(1.15rem, 4.2vw, 1.55rem);
   line-height: 1.15;
   color: var(--color-blue-dark);
-}
-
-.menu-teaser__cta-text {
-  display: inline-block;
-  margin-top: 0.4rem;
-  padding: 0.32rem 0.75rem;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, #b8d4e8 0%, #a8cce0 100%);
-  color: var(--color-blue-dark);
-  font-size: clamp(0.66rem, 2.4vw, 0.74rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(74, 124, 158, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.menu-teaser__plate:hover .menu-teaser__cta-text {
-  background: linear-gradient(180deg, #c5dced 0%, #b4d4e6 100%);
-  box-shadow: 0 6px 16px rgba(74, 124, 158, 0.18);
 }
 
 @media (min-width: 600px) {
