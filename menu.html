@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="hu" data-invite="fri-sat">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWMEY06HQK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWMEY06HQK');
+  </script>
+  <script>
+    (function () {
+      var html = document.documentElement;
+      var SS = 'eskuvo_invite_variant';
+      var CK = 'eskuvo_invite_variant';
+      function readCookie() {
+        try {
+          var m = document.cookie.match(
+            new RegExp('(?:^|; )' + CK.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=(fri-sat|sat-only)(?:;|$)')
+          );
+          return m ? m[1] : '';
+        } catch (e) {
+          return '';
+        }
+      }
+      try {
+        var v = sessionStorage.getItem(SS);
+        if (v === 'fri-sat' || v === 'sat-only') {
+          html.setAttribute('data-invite', v);
+          return;
+        }
+      } catch (e2) {}
+      var fromCookie = readCookie();
+      if (fromCookie === 'fri-sat' || fromCookie === 'sat-only') {
+        html.setAttribute('data-invite', fromCookie);
+        try {
+          sessionStorage.setItem(SS, fromCookie);
+        } catch (e3) {}
+        return;
+      }
+      html.setAttribute('data-invite', 'fri-sat');
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="menuDocTitle">Büfémenü – Manca &amp; Endre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#3d6a87">
+</head>
+<body class="page-menu">
+  <div class="site-chrome" aria-hidden="false">
+    <div class="site-chrome__controls">
+      <div class="lang-switch" role="group" aria-label="Nyelv választása">
+        <button type="button" class="lang-switch__btn lang-switch__btn--hu is-active" data-set-lang="hu" data-i18n-aria="langHu" data-i18n-title="langHu" title="Magyar" aria-label="Magyar" aria-pressed="true">
+          <span class="lang-switch__glyph" aria-hidden="true">A</span>
+          <span class="lang-switch__abbr" aria-hidden="true">HU</span>
+        </button>
+        <button type="button" class="lang-switch__btn lang-switch__btn--en" data-set-lang="en" data-i18n-aria="langEn" data-i18n-title="langEn" title="English" aria-label="English" aria-pressed="false">
+          <span class="lang-switch__glyph lang-switch__glyph--en" aria-hidden="true">🌐</span>
+          <span class="lang-switch__abbr" aria-hidden="true">EN</span>
+        </button>
+      </div>
+      <nav class="site-nav" id="site-nav" aria-label="Ugrás egy szakaszra" data-i18n-aria="navSiteAria">
+        <button type="button" class="site-nav__toggle" id="site-nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Menü megnyitása">
+          <span class="site-nav__burger" aria-hidden="true">
+            <span class="site-nav__line"></span>
+            <span class="site-nav__line"></span>
+            <span class="site-nav__line"></span>
+          </span>
+        </button>
+        <div class="site-nav__backdrop" id="site-nav-backdrop" aria-hidden="true"></div>
+        <div class="site-nav__drawer" id="site-nav-menu" role="dialog" aria-modal="true" aria-labelledby="site-nav-drawer-heading" aria-hidden="true">
+          <div class="site-nav__drawer-top">
+            <p id="site-nav-drawer-heading" class="site-nav__drawer-title script-title" data-i18n="navDrawerTitle">Menü</p>
+            <button type="button" class="site-nav__close" id="site-nav-close" data-i18n-aria="navDrawerCloseAria" aria-label="Bezárás">
+              <span class="site-nav__close-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#countdown" data-i18n="navLinkCountdown">Visszaszámlálás</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#welcome" data-i18n="welcomeTitle">Szeretettel várunk</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#program" data-i18n="programTitle">Program</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#venue" data-i18n="venueTitle">Helyszín</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#faq" data-i18n="faqTitle">Gyakori kérdések</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#gallery" data-i18n="galleryTitle">Galéria</a></li>
+            <li class="site-nav__item"><a class="site-nav__link is-current" href="menu.html" data-i18n="navLinkMenu" aria-current="page">Büfémenü</a></li>
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--accent" href="index.html#rsvp" data-i18n="navLinkRsvp">RSVP</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main-content" class="main-content menu-page">
+    <header class="menu-page__hero">
+      <p class="menu-page__kicker" data-i18n="menuKicker">Vendégvárás &amp; vacsora</p>
+      <h1 class="script-title menu-page__title" data-i18n="menuPageTitle">Büfémenü</h1>
+      <p class="menu-page__lead" data-i18n="menuLead">Amit az este során kínálunk nektek.</p>
+      <a class="menu-page__back" href="index.html" data-i18n="menuBack">← Vissza a meghívóhoz</a>
+    </header>
+
+    <section class="menu-section animate-on-scroll visible">
+      <h2 class="menu-section__title" data-i18n="menuWelcomeTitle">Vendégváró</h2>
+      <p class="menu-section__note" data-i18n="menuWelcomeNote">Finger food jellegű kínálat</p>
+      <ul class="menu-list">
+        <li data-i18n="menuW1">Mini wrapok, mini burgerek</li>
+        <li data-i18n="menuW2">Leveles kosárkák 4 féle ízben (sajtos, májas, darált sertéshúsos, vega)</li>
+        <li data-i18n="menuW3">Aszalt szilvával göngyölt szárnyasrolád</li>
+        <li data-i18n="menuW4">Tavaszi jércerolád</li>
+        <li data-i18n="menuW5">Sweet chilivel töltött csirkegolyók</li>
+        <li data-i18n="menuW6">Ropogós sajtgolyók</li>
+        <li data-i18n="menuW7">Panírozott rákolló burgonyaspirálban</li>
+        <li data-i18n="menuW8">Prágai sonkás tojássaláta</li>
+        <li data-i18n="menuW9">Cézársaláta szardellával</li>
+        <li data-i18n="menuW10">Majonézes kukoricasaláta kemencés karajszelettel</li>
+        <li data-i18n="menuW11">Franciasaláta grillezett natúr csirkefalatkával</li>
+        <li data-i18n="menuW12">Fekete erdő sonka, vörösboros áfonyamártással</li>
+        <li data-i18n="menuW13">Tonhalsaláta, pirított krutonnal</li>
+        <li data-i18n="menuW14">Csirkemáj baconbe göngyölve, majonézes burgonyasalátával</li>
+        <li data-i18n="menuW15">Zöldséghasábok és grissini dippekkel (fokhagymás majonéz, padlizsánkrém, snidlinges tejföl, BBQ)</li>
+        <li data-i18n="menuW16">Mini pékáruk (mini zsemle, francia bagett)</li>
+      </ul>
+    </section>
+
+    <section class="menu-section animate-on-scroll">
+      <h2 class="menu-section__title" data-i18n="menuPrepTitle">Bekészítés</h2>
+      <ul class="menu-list">
+        <li data-i18n="menuPrep1">Édes és sós aprósütemény (mini pogácsa, mini tepertőspogácsa, sajtos masni)</li>
+      </ul>
+    </section>
+
+    <section class="menu-section animate-on-scroll">
+      <h2 class="menu-section__title" data-i18n="menuDinnerTitle">Vacsora – büfé</h2>
+
+      <h3 class="menu-section__subtitle" data-i18n="menuSoupTitle">Leves</h3>
+      <ul class="menu-list">
+        <li data-i18n="menuSoup1">Újházi tyúkhúsleves gazdagon zöldségelve, főtt hússal és metélttel</li>
+        <li data-i18n="menuSoup2">Hideg szederkrémleves</li>
+      </ul>
+
+      <h3 class="menu-section__subtitle" data-i18n="menuMainsTitle">Főételek</h3>
+      <ul class="menu-list">
+        <li data-i18n="menuM1">Vörösboros marhapörkölt galuskával, káposztasalátával</li>
+        <li data-i18n="menuM2">BBQ oldalas, grillezett csöves kukoricával, kemencés burgonyával</li>
+        <li data-i18n="menuM3">Baconbe göngyölt csirkemell, cheddar sajtmártással, tobozkrokettel</li>
+        <li data-i18n="menuM4">Pirosra sült kacsacomb, hagymás tört burgonyával, párolt lilakáposztával</li>
+        <li data-i18n="menuM5">Klasszikus cigánypecsenye, kakastaréjjal, jázmin rizzsel</li>
+        <li data-i18n="menuM6">Sertés Cordon Bleu, steakburgonyával, csalamádéval</li>
+        <li data-i18n="menuM7">Cukkinikenu sajtmártással, párolt jázmin rizzsel (vegetáriánus)</li>
+        <li data-i18n="menuM8">Salátabüfé: paradicsom, uborka, jégsaláta, kukorica, 2 féle öntettel</li>
+      </ul>
+
+      <h3 class="menu-section__subtitle" data-i18n="menuDessertTitle">Rétes &amp; torta</h3>
+      <ul class="menu-list">
+        <li data-i18n="menuD1">Házi rétes válogatás (túrós mazsola nélkül, meggyes darás, meggyes-túrós, almás-fahéjas)</li>
+        <li data-i18n="menuD2">Menyasszonyi torta</li>
+      </ul>
+    </section>
+
+    <section class="menu-section animate-on-scroll">
+      <h2 class="menu-section__title" data-i18n="menuMidnightTitle">Éjféli menü</h2>
+      <ul class="menu-list">
+        <li data-i18n="menuN1">Töltöttkáposzta friss tejföllel, pékáruval, erős pistával</li>
+        <li data-i18n="menuN2">Visszatálalt főételek</li>
+      </ul>
+    </section>
+
+    <section class="menu-section animate-on-scroll">
+      <h2 class="menu-section__title" data-i18n="menuDrinksTitle">Italcsomag</h2>
+      <p class="menu-section__note" data-i18n="menuDrinksNote">Korlátlan alkoholos – vacsora kezdetétől hajnalig</p>
+
+      <h3 class="menu-section__subtitle" data-i18n="menuSoftTitle">Üdítők &amp; víz</h3>
+      <ul class="menu-list">
+        <li data-i18n="menuSoft1">Üdítők: Coca-Cola, Coca-Cola Zero, Fanta narancs, Kinley gyömbér, tonic</li>
+        <li data-i18n="menuSoft2">Ásványvíz (szénsavas és mentes), szikvíz</li>
+        <li data-i18n="menuSoft3">Rostos levek: alma, narancs, őszibarack</li>
+      </ul>
+
+      <h3 class="menu-section__subtitle" data-i18n="menuBeerWineTitle">Sör &amp; bor</h3>
+      <ul class="menu-list">
+        <li data-i18n="menuBeer1">Csapolt Dreher sör</li>
+        <li data-i18n="menuBeer2">Folyó borok a Konyári pincészetből (vörös, fehér, rosé)</li>
+      </ul>
+
+      <h3 class="menu-section__subtitle" data-i18n="menuSpiritsTitle">Röviditalok</h3>
+      <ul class="menu-list">
+        <li data-i18n="menuSp1">Jägermeister, Bombay gin, Finlandia vodka, Jack Daniel’s whiskey, Bacardi, Aperol, Tubi 60, pálinka (3 íz), Baileys</li>
+      </ul>
+
+      <h3 class="menu-section__subtitle" data-i18n="menuLongTitle">Long drinkek</h3>
+      <ul class="menu-list menu-list--inline">
+        <li>Gin-Tonic</li>
+        <li>Whiskey cola</li>
+        <li>Vodka narancs</li>
+        <li>Vodka szóda</li>
+        <li>Bacardi cola</li>
+        <li>Tubi szóda</li>
+        <li>Aperol Spritz</li>
+      </ul>
+    </section>
+
+    <div class="section-divider section-divider--footer" aria-hidden="true"><span class="section-divider-icon">✦</span></div>
+    <footer class="footer">
+      <p>Manca &amp; Endre · 2026</p>
+    </footer>
+  </main>
+
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

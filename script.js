@@ -300,7 +300,7 @@
       }
     });
 
-    drawer.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    drawer.querySelectorAll('a.site-nav__link').forEach(function (a) {
       a.addEventListener('click', function () {
         setOpen(false);
       });
