@@ -226,11 +226,28 @@
 
     <!-- Vacsora menü – átvezető blokk -->
     <section id="menu-teaser" class="section menu-teaser animate-on-scroll">
-      <div class="menu-teaser__card">
-        <p class="menu-teaser__eyebrow" data-i18n="menuTeaserEyebrow">Vendégvárás &amp; vacsora</p>
-        <h2 class="menu-teaser__title" data-i18n="menuTeaserTitle">Vacsora Menü</h2>
-        <a href="menu.html" class="menu-teaser__cta" data-i18n="menuTeaserCta">Menü megtekintése</a>
-      </div>
+      <a href="menu.html" class="menu-teaser__plate" data-i18n-aria="menuTeaserCta" aria-label="Menü megtekintése">
+        <span class="menu-teaser__cutlery menu-teaser__cutlery--fork" aria-hidden="true">
+          <svg viewBox="0 0 24 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 2v22M12 2v22M18 2v22M6 24h12v6c0 4-3 7-6 7s-6-3-6-7v-6z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 37v49" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="menu-teaser__dish">
+          <span class="menu-teaser__dish-rim" aria-hidden="true"></span>
+          <span class="menu-teaser__dish-inner">
+            <span class="menu-teaser__eyebrow" data-i18n="menuTeaserEyebrow">Vendégvárás &amp; vacsora</span>
+            <span class="menu-teaser__title" data-i18n="menuTeaserTitle">Vacsora Menü</span>
+            <span class="menu-teaser__cta-text" data-i18n="menuTeaserCta">Menü megtekintése</span>
+          </span>
+        </span>
+        <span class="menu-teaser__cutlery menu-teaser__cutlery--knife" aria-hidden="true">
+          <svg viewBox="0 0 24 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 2c8 10 10 22 10 34H8c0-12 0-24 2-34z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M12 36v50" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </a>
     </section>
 
     <!-- Üdvözlő szöveg -->
