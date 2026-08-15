@@ -1808,11 +1808,19 @@ body:has(#main-content.content-hidden) .site-nav {
 
 /* ===== Menü oldal – 3 étkezés = 3 kártya, egymás mellett ===== */
 .page-menu {
-  --menu-accent: #b8923f;
-  --menu-ink: #2a343c;
-  --menu-muted: #6a7885;
-  --menu-line: rgba(42, 52, 60, 0.1);
-  --menu-card: #fffcf8;
+  --menu-accent: #a6843a;
+  --menu-ink: #243039;
+  --menu-muted: #6d7a86;
+  --menu-line: rgba(36, 48, 57, 0.1);
+  --menu-card: #fffdf9;
+  --menu-display: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --menu-body: "Source Sans 3", "Montserrat", sans-serif;
+}
+
+.page-menu,
+.page-menu button,
+.page-menu input {
+  font-family: var(--menu-body);
 }
 
 .page-menu .main-content {
@@ -1828,59 +1836,46 @@ body:has(#main-content.content-hidden) .site-nav {
 
 .menu-page__hero {
   text-align: center;
-  padding: 2.25rem 0 1.75rem;
+  padding: 2.5rem 0 2rem;
 }
 
 .menu-page__eyebrow {
-  margin: 0 0 0.55rem;
-  font-family: var(--font-body);
-  font-size: 0.7rem;
+  margin: 0 0 0.65rem;
+  font-family: var(--menu-body);
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--menu-accent);
 }
 
 .menu-page__title {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--menu-display);
   font-weight: 600;
-  font-size: clamp(2.6rem, 9vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
+  font-size: clamp(3rem, 10vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
   color: var(--menu-ink);
+  font-style: italic;
 }
 
 .menu-page__rule {
-  width: 2.75rem;
+  width: 2.5rem;
   height: 1px;
-  margin: 1rem auto;
+  margin: 1.1rem auto 0.95rem;
   background: var(--menu-accent);
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 .menu-page__lead {
-  margin: 0 auto 1.15rem;
+  margin: 0 auto;
   max-width: 22rem;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-family: var(--menu-body);
+  font-size: 1rem;
   font-weight: 300;
+  letter-spacing: 0.01em;
   color: var(--menu-muted);
-}
-
-.menu-page__back {
-  display: inline-block;
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: var(--color-blue-dark);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(61, 106, 135, 0.3);
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.menu-page__back:hover {
-  color: var(--color-blue);
-  border-bottom-color: var(--color-blue);
 }
 
 .menu-columns {
@@ -1910,27 +1905,28 @@ body:has(#main-content.content-hidden) .site-nav {
 }
 
 .menu-meal__label {
-  margin: 0 0 0.3rem;
-  font-family: var(--font-body);
-  font-size: 0.66rem;
+  margin: 0 0 0.35rem;
+  font-family: var(--menu-body);
+  font-size: 0.64rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--menu-accent);
 }
 
 .menu-meal__title {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--menu-display);
   font-weight: 600;
-  font-size: clamp(1.55rem, 4vw, 1.85rem);
-  line-height: 1.15;
+  font-size: clamp(1.65rem, 4vw, 1.95rem);
+  line-height: 1.12;
   color: var(--menu-ink);
 }
 
 .menu-meal__intro {
   margin: 0.4rem 0 0;
-  font-size: 0.82rem;
+  font-family: var(--menu-body);
+  font-size: 0.84rem;
   font-weight: 300;
   color: var(--menu-muted);
 }
@@ -1945,15 +1941,16 @@ body:has(#main-content.content-hidden) .site-nav {
 
 .menu-meal__cat-title {
   margin: 0 0 0.45rem;
-  font-family: var(--font-display);
-  font-size: 0.98rem;
+  font-family: var(--menu-display);
+  font-size: 1.02rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   color: var(--menu-ink);
 }
 
 .menu-meal__cat-note {
   margin: -0.2rem 0 0.45rem;
+  font-family: var(--menu-body);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -1970,8 +1967,8 @@ body:has(#main-content.content-hidden) .site-nav {
 .menu-meal__list li {
   position: relative;
   padding: 0.38rem 0 0.38rem 0.85rem;
-  font-family: var(--font-body);
-  font-size: 0.84rem;
+  font-family: var(--menu-body);
+  font-size: 0.86rem;
   line-height: 1.4;
   color: var(--menu-ink);
   border-bottom: 1px solid rgba(42, 52, 60, 0.06);
@@ -1996,7 +1993,7 @@ body:has(#main-content.content-hidden) .site-nav {
 .menu-meal__hint {
   display: block;
   margin-top: 0.15rem;
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   font-weight: 400;
   color: var(--menu-muted);
   line-height: 1.4;
@@ -2009,7 +2006,7 @@ body:has(#main-content.content-hidden) .site-nav {
 
 @media (min-width: 800px) {
   .menu-page__hero {
-    padding: 2.75rem 0 2rem;
+    padding: 3rem 0 2.15rem;
   }
 
   .menu-columns {
@@ -2023,7 +2020,7 @@ body:has(#main-content.content-hidden) .site-nav {
   }
 
   .menu-meal__list li {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
 
   .menu-meal__hint {
@@ -2041,7 +2038,7 @@ body:has(#main-content.content-hidden) .site-nav {
   }
 
   .menu-meal__list li {
-    font-size: 0.84rem;
+    font-size: 0.86rem;
   }
 }
 
