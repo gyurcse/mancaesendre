@@ -59,9 +59,10 @@
     if (room.address) {
       card.appendChild(el('p', 'stay-room__addr', room.address));
     }
-    if (group && group.maps) {
+    var mapsUrl = (room && room.maps) || (group && group.maps);
+    if (mapsUrl) {
       var a = el('a', 'btn-map btn-map--venue stay-room__maps', t('venueMapBtn') || 'Maps');
-      a.href = group.maps;
+      a.href = mapsUrl;
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
       card.appendChild(a);
@@ -129,9 +130,10 @@
       var park = parkingCopy(g && g.parking);
       if (park) card.appendChild(el('p', 'stay-hit__note', park));
       if (g && g.towel) card.appendChild(el('p', 'stay-hit__warn', t('stayTowelNote')));
-      if (g && g.maps) {
+      var mapsUrl = (room && room.maps) || (g && g.maps);
+      if (mapsUrl) {
         var a = el('a', 'btn-map btn-map--venue', t('venueMapBtn') || 'Maps');
-        a.href = g.maps;
+        a.href = mapsUrl;
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
         card.appendChild(a);
