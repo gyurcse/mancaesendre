@@ -2406,10 +2406,60 @@ body:has(#main-content.content-hidden) .site-nav {
     background: transparent;
   }
 
+  /* Péntek: függőleges lista, ne 2 oszlopban szétcsússzon */
+  .program-day-block--fri .program-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0;
+    gap: 0;
+    justify-items: stretch;
+  }
+
+  .program-day-block--fri .program-list::before {
+    display: none;
+  }
+
+  .program-day-block--fri .program-item {
+    display: grid;
+    grid-template-columns: 7.25rem 2.75rem 1fr;
+    align-items: center;
+    text-align: left;
+    max-width: none;
+    width: 100%;
+    padding: 0.8rem 0.35rem;
+    border-bottom: 1px solid rgba(74, 124, 158, 0.18);
+  }
+
+  .program-day-block--fri .program-item .time {
+    order: 0;
+    margin: 0;
+    justify-self: start;
+  }
+
+  .program-day-block--fri .program-item .program-icon {
+    order: 0;
+    margin-top: 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  .program-day-block--fri .program-item div {
+    order: 0;
+    text-align: left;
+    font-size: 0.92rem;
+  }
+
+  .program-day-block--fri .program-item:hover {
+    padding: 0.8rem 0.35rem;
+  }
+
   /* Péntek: két programpont */
   .program-day-block:not(.program-day-block--sat):not(.program-day-block--sun) .program-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 560px;
+    grid-template-columns: 1fr;
+    max-width: 34rem;
     margin-left: auto;
     margin-right: auto;
   }
@@ -2437,11 +2487,6 @@ body:has(#main-content.content-hidden) .site-nav {
   .program-day-block--sat .program-list {
     grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
     gap: 0.75rem 0.35rem;
-  }
-
-  .program-day-block:not(.program-day-block--sat):not(.program-day-block--sun) .program-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 720px;
   }
 }
 
