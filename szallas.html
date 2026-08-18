@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hu" data-invite="fri-sat">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWMEY06HQK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWMEY06HQK');
+  </script>
+  <script>
+    (function () {
+      var html = document.documentElement;
+      var SS = 'eskuvo_invite_variant';
+      var CK = 'eskuvo_invite_variant';
+      function readCookie() {
+        try {
+          var m = document.cookie.match(
+            new RegExp('(?:^|; )' + CK.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=(fri-sat|sat-only)(?:;|$)')
+          );
+          return m ? m[1] : '';
+        } catch (e) {
+          return '';
+        }
+      }
+      try {
+        var v = sessionStorage.getItem(SS);
+        if (v === 'fri-sat' || v === 'sat-only') {
+          html.setAttribute('data-invite', v);
+          return;
+        }
+      } catch (e2) {}
+      var fromCookie = readCookie();
+      if (fromCookie === 'fri-sat' || fromCookie === 'sat-only') {
+        html.setAttribute('data-invite', fromCookie);
+        try { sessionStorage.setItem(SS, fromCookie); } catch (e3) {}
+        return;
+      }
+      html.setAttribute('data-invite', 'fri-sat');
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="stayDocTitle">Szállások – Manca &amp; Endre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#3d6a87">
+</head>
+<body class="page-info">
+  <div class="site-chrome" aria-hidden="false">
+    <div class="site-chrome__controls">
+      <div class="lang-switch" role="group" aria-label="Nyelv választása">
+        <button type="button" class="lang-switch__btn lang-switch__btn--hu is-active" data-set-lang="hu" data-i18n-aria="langHu" data-i18n-title="langHu" title="Magyar" aria-label="Magyar" aria-pressed="true">
+          <span class="lang-switch__glyph" aria-hidden="true">A</span>
+          <span class="lang-switch__abbr" aria-hidden="true">HU</span>
+        </button>
+        <button type="button" class="lang-switch__btn lang-switch__btn--en" data-set-lang="en" data-i18n-aria="langEn" data-i18n-title="langEn" title="English" aria-label="English" aria-pressed="false">
+          <span class="lang-switch__glyph lang-switch__glyph--en" aria-hidden="true">🌐</span>
+          <span class="lang-switch__abbr" aria-hidden="true">EN</span>
+        </button>
+      </div>
+      <nav class="site-nav" id="site-nav" aria-label="Ugrás egy szakaszra" data-i18n-aria="navSiteAria">
+        <button type="button" class="site-nav__toggle" id="site-nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Menü megnyitása">
+          <span class="site-nav__burger" aria-hidden="true">
+            <span class="site-nav__line"></span>
+            <span class="site-nav__line"></span>
+            <span class="site-nav__line"></span>
+          </span>
+        </button>
+        <div class="site-nav__backdrop" id="site-nav-backdrop" aria-hidden="true"></div>
+        <div class="site-nav__drawer" id="site-nav-menu" role="dialog" aria-modal="true" aria-labelledby="site-nav-drawer-heading" aria-hidden="true">
+          <div class="site-nav__drawer-top">
+            <p id="site-nav-drawer-heading" class="site-nav__drawer-title script-title" data-i18n="navDrawerTitle">Menü</p>
+            <button type="button" class="site-nav__close" id="site-nav-close" data-i18n-aria="navDrawerCloseAria" aria-label="Bezárás">
+              <span class="site-nav__close-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--accent" href="menu.html" data-i18n="navLinkMenu">Vacsora Menü</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#program" data-i18n="programTitle">Program</a></li>
+            <li class="site-nav__item"><a class="site-nav__link is-current" href="szallas.html" data-i18n="navLinkStay" aria-current="page">Szállások</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="infok.html" data-i18n="navLinkInfo">Tudnivalók</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main-content" class="main-content info-page">
+    <header class="info-hero">
+      <p class="info-hero__kicker"><a href="index.html" data-i18n="navLinkHome">Meghívó</a></p>
+      <h1 class="script-title info-hero__title" data-i18n="stayTitle">Szállások</h1>
+      <p class="info-hero__lead" data-i18n="stayLead">Minden vendégnek foglaltunk helyet. Írd be a neved, és megmutatjuk a szállásod.</p>
+    </header>
+
+    <section class="stay-search animate-on-scroll visible">
+      <label class="stay-search__label" for="stay-q" data-i18n="staySearchLabel">Keresés név szerint</label>
+      <input class="stay-search__input" id="stay-q" type="search" autocomplete="off" spellcheck="false" data-i18n-placeholder="staySearchPh" placeholder="Pl. Kovács Anna">
+      <div id="stay-results" class="stay-results" hidden></div>
+    </section>
+
+    <section class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="stayNotesTitle">Amit jó tudni</h2>
+      <ul class="info-points">
+        <li data-i18n="stayNoteLinen">Tiszta törülköző és ágynemű vár titeket — a többi szükségletről kérlek magatok gondoskodjatok.</li>
+        <li data-i18n="stayTowelNote">Ha a Zichy (kis) Kastélyban laktok: hozzatok törülközőt. Nem minden szobához tartozik fürdő, az emeleten közös fürdők vannak.</li>
+        <li data-i18n="stayNoteKey">Vasárnap 11:00-tól a szállás elhagyásakor a kulcsot tegyétek vissza a zárba.</li>
+        <li data-i18n="stayNoteGrass">A VILLABOGArT területén tilos a fűre parkolni.</li>
+      </ul>
+    </section>
+
+    <section class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="stayMapTitle">Birtok térkép</h2>
+      <p class="info-block__intro" data-i18n="stayMapLead">A VILLABOGArT és a Maison a Magtárhoz közel van. A falusi házak, tóházak és a majorság kb. 8–10 perc séta.</p>
+      <button type="button" class="faq-plan-trigger js-lightbox-trigger" data-i18n-aria="faq1MapZoomAria" aria-controls="faq-plan-lightbox">
+        <img src="Fotok/bogatterv.png" alt="Villabogart birtok térképe – szállások és épületek" data-i18n-alt="faq1MapAlt" class="faq-plan-image" loading="lazy">
+      </button>
+    </section>
+
+    <section class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="stayBrowseTitle">Házanként</h2>
+      <div id="stay-groups" class="stay-groups"></div>
+    </section>
+
+    <p class="info-more">
+      <a href="infok.html" data-i18n="stayToInfo">Parkolás, útvonal és kontaktok →</a>
+    </p>
+
+    <div class="section-divider section-divider--footer" aria-hidden="true"><span class="section-divider-icon">✦</span></div>
+    <footer class="footer"><p>Manca &amp; Endre · 2026</p></footer>
+  </main>
+
+  <dialog id="faq-plan-lightbox" class="image-lightbox" aria-labelledby="faq-plan-lightbox-title">
+    <div class="image-lightbox__panel">
+      <p id="faq-plan-lightbox-title" class="image-lightbox__title" data-i18n="faq1MapLightboxTitle">Villabogart birtok térképe</p>
+      <button type="button" class="image-lightbox__close" data-i18n-aria="imageLightboxClose" aria-label="Bezárás"><span aria-hidden="true">×</span></button>
+      <img src="Fotok/bogatterv.png" alt="" data-i18n-alt="faq1MapAlt" class="image-lightbox__img">
+    </div>
+  </dialog>
+
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="stay-data.js" defer></script>
+  <script src="stay.js" defer></script>
+</body>
+</html>

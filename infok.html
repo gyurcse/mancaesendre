@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="hu" data-invite="fri-sat">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWMEY06HQK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWMEY06HQK');
+  </script>
+  <script>
+    (function () {
+      var html = document.documentElement;
+      var SS = 'eskuvo_invite_variant';
+      var CK = 'eskuvo_invite_variant';
+      function readCookie() {
+        try {
+          var m = document.cookie.match(
+            new RegExp('(?:^|; )' + CK.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=(fri-sat|sat-only)(?:;|$)')
+          );
+          return m ? m[1] : '';
+        } catch (e) {
+          return '';
+        }
+      }
+      try {
+        var v = sessionStorage.getItem(SS);
+        if (v === 'fri-sat' || v === 'sat-only') {
+          html.setAttribute('data-invite', v);
+          return;
+        }
+      } catch (e2) {}
+      var fromCookie = readCookie();
+      if (fromCookie === 'fri-sat' || fromCookie === 'sat-only') {
+        html.setAttribute('data-invite', fromCookie);
+        try { sessionStorage.setItem(SS, fromCookie); } catch (e3) {}
+        return;
+      }
+      html.setAttribute('data-invite', 'fri-sat');
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="infoDocTitle">Tudnivalók – Manca &amp; Endre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#3d6a87">
+</head>
+<body class="page-info">
+  <div class="site-chrome" aria-hidden="false">
+    <div class="site-chrome__controls">
+      <div class="lang-switch" role="group" aria-label="Nyelv választása">
+        <button type="button" class="lang-switch__btn lang-switch__btn--hu is-active" data-set-lang="hu" data-i18n-aria="langHu" data-i18n-title="langHu" title="Magyar" aria-label="Magyar" aria-pressed="true">
+          <span class="lang-switch__glyph" aria-hidden="true">A</span>
+          <span class="lang-switch__abbr" aria-hidden="true">HU</span>
+        </button>
+        <button type="button" class="lang-switch__btn lang-switch__btn--en" data-set-lang="en" data-i18n-aria="langEn" data-i18n-title="langEn" title="English" aria-label="English" aria-pressed="false">
+          <span class="lang-switch__glyph lang-switch__glyph--en" aria-hidden="true">🌐</span>
+          <span class="lang-switch__abbr" aria-hidden="true">EN</span>
+        </button>
+      </div>
+      <nav class="site-nav" id="site-nav" aria-label="Ugrás egy szakaszra" data-i18n-aria="navSiteAria">
+        <button type="button" class="site-nav__toggle" id="site-nav-toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Menü megnyitása">
+          <span class="site-nav__burger" aria-hidden="true">
+            <span class="site-nav__line"></span>
+            <span class="site-nav__line"></span>
+            <span class="site-nav__line"></span>
+          </span>
+        </button>
+        <div class="site-nav__backdrop" id="site-nav-backdrop" aria-hidden="true"></div>
+        <div class="site-nav__drawer" id="site-nav-menu" role="dialog" aria-modal="true" aria-labelledby="site-nav-drawer-heading" aria-hidden="true">
+          <div class="site-nav__drawer-top">
+            <p id="site-nav-drawer-heading" class="site-nav__drawer-title script-title" data-i18n="navDrawerTitle">Menü</p>
+            <button type="button" class="site-nav__close" id="site-nav-close" data-i18n-aria="navDrawerCloseAria" aria-label="Bezárás">
+              <span class="site-nav__close-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--accent" href="menu.html" data-i18n="navLinkMenu">Vacsora Menü</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#program" data-i18n="programTitle">Program</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="szallas.html" data-i18n="navLinkStay">Szállások</a></li>
+            <li class="site-nav__item"><a class="site-nav__link is-current" href="infok.html" data-i18n="navLinkInfo" aria-current="page">Tudnivalók</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main-content" class="main-content info-page">
+    <header class="info-hero">
+      <p class="info-hero__kicker"><a href="index.html" data-i18n="navLinkHome">Meghívó</a></p>
+      <h1 class="script-title info-hero__title" data-i18n="infoTitle">Tudnivalók</h1>
+      <p class="info-hero__lead" data-i18n="infoLead">Kontaktok, parkolás, útvonal és ami a hétvégén jól jön.</p>
+    </header>
+
+    <nav class="info-jump" aria-label="Ugrás a témákhoz">
+      <a href="#kontaktok" data-i18n="infoJumpContact">Kontaktok</a>
+      <a href="#parkolas" data-i18n="infoJumpPark">Parkolás</a>
+      <a href="#kaposvar" data-i18n="infoJumpKapos">Kaposvár</a>
+      <a href="#utvonal" data-i18n="infoJumpRoute">Útvonal</a>
+      <a href="#transzfer" data-i18n="infoJumpTransfer">Transzfer</a>
+      <a href="#oltozek" data-i18n="infoJumpDress">Öltözék</a>
+    </nav>
+
+    <section id="kontaktok" class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="infoContactTitle">Fontos kontaktok</h2>
+      <div class="info-card-grid">
+        <article class="contact-card">
+          <p class="contact-card__role" data-i18n="infoContactVenueRole">Helyszín</p>
+          <h3 class="contact-card__name">Keresztes Krisztina</h3>
+          <a class="contact-card__tel" href="tel:+36306138399">+36 30 613 8399</a>
+        </article>
+        <article class="contact-card">
+          <p class="contact-card__role" data-i18n="infoContactProgramRole">Program</p>
+          <h3 class="contact-card__name">Lakatos János</h3>
+          <a class="contact-card__tel" href="tel:+36309720997">+36 30 972 0997</a>
+        </article>
+        <article class="contact-card">
+          <p class="contact-card__role" data-i18n="infoContactTransferRole">Lagzi transzfer</p>
+          <h3 class="contact-card__name">Sáfár Tamás</h3>
+          <a class="contact-card__tel" href="tel:+36307992265">+36 30 799 2265</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="parkolas" class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="infoParkTitle">Parkolás Alsóbogáton</h2>
+      <p class="info-warn" data-i18n="stayNoteGrass">A VILLABOGArT területén tilos a fűre parkolni.</p>
+      <div class="info-card-grid">
+        <article class="info-card">
+          <h3 class="info-card__title" data-i18n="infoParkEstateTitle">VILLABOGArT &amp; Maison</h3>
+          <p data-i18n="stayParkEstate">A kápolnát elhagyva az úton a jobb oldali főkapun közelítsétek meg a szállást. A kapun belül balra van a parkoló.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card__title" data-i18n="infoParkVillageTitle">Falusi házak, tóházak</h3>
+          <p data-i18n="stayParkVillage">A házak előtt vagy a kertben is parkolhattok.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card__title" data-i18n="infoParkZichyTitle">Zichy (kis) Kastély</h3>
+          <p data-i18n="stayParkZichy">A főkapun behajtva 100 méter múlva jobb oldalt lehet parkolni.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="kaposvar" class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="infoKaposTitle">Parkolás Kaposváron</h2>
+      <p class="info-block__intro" data-i18n="infoKaposLead">A székesegyház a sétálóutcában van. Ezek a parkolók mind rövid sétára vannak a templomtól — érdemes pár perccel korábban érkezni.</p>
+      <div class="park-grid">
+        <article class="park-card">
+          <p class="park-card__num">1</p>
+          <div>
+            <h3 class="park-card__title">Városház utcai parkoló</h3>
+            <p class="park-card__meta" data-i18n="infoPark1Meta">7400 Kaposvár, Városház u. 2. · kb. 90 m</p>
+            <a class="btn-map btn-map--venue" href="https://www.google.com/maps/search/?api=1&amp;query=V%C3%A1rosh%C3%A1z%20u.%202%2C%207400%20Kaposv%C3%A1r" target="_blank" rel="noopener noreferrer" data-i18n="venueMapBtn">Maps megnyitása</a>
+          </div>
+        </article>
+        <article class="park-card">
+          <p class="park-card__num">2</p>
+          <div>
+            <h3 class="park-card__title" data-i18n="infoPark2Title">Fizető parkoló – Széchenyi tér</h3>
+            <p class="park-card__meta" data-i18n="infoPark2Meta">7400 Kaposvár, Széchenyi tér 3. · kb. 230 m</p>
+            <a class="btn-map btn-map--venue" href="https://www.google.com/maps/search/?api=1&amp;query=Sz%C3%A9chenyi%20t%C3%A9r%203%2C%207400%20Kaposv%C3%A1r" target="_blank" rel="noopener noreferrer" data-i18n="venueMapBtn">Maps megnyitása</a>
+          </div>
+        </article>
+        <article class="park-card">
+          <p class="park-card__num">3</p>
+          <div>
+            <h3 class="park-card__title">Corso Parkolóház</h3>
+            <p class="park-card__meta" data-i18n="infoPark3Meta">7400 Kaposvár, Korzó utca · kb. 270 m</p>
+            <a class="btn-map btn-map--venue" href="https://www.google.com/maps/search/?api=1&amp;query=Corso%20Parkol%C3%B3h%C3%A1z%20Kaposv%C3%A1r" target="_blank" rel="noopener noreferrer" data-i18n="venueMapBtn">Maps megnyitása</a>
+          </div>
+        </article>
+        <article class="park-card">
+          <p class="park-card__num">4</p>
+          <div>
+            <h3 class="park-card__title">Kapos Parkolóház</h3>
+            <p class="park-card__meta" data-i18n="infoPark4Meta">7400 Kaposvár, Kontrássy köz · kb. 320 m</p>
+            <a class="btn-map btn-map--venue" href="https://www.google.com/maps/search/?api=1&amp;query=Kapos%20Parkol%C3%B3h%C3%A1z%20Kontr%C3%A1ssy%20k%C3%B6z%20Kaposv%C3%A1r" target="_blank" rel="noopener noreferrer" data-i18n="venueMapBtn">Maps megnyitása</a>
+          </div>
+        </article>
+      </div>
+      <p class="info-block__intro" data-i18n="infoKaposMore">További fizetőhelyek: Teleki utca, Irányi Dániel utca, Zárda utca, Ady Endre utcai tömbbelső, Kossuth tér.</p>
+      <p class="info-more">
+        <a href="https://otthon.kaposvar.hu/hu/lakossagi-informaciok/kozlekedes/parkolas/parkolasi-tajekoztato/" target="_blank" rel="noopener noreferrer" data-i18n="infoKaposOfficial">Kaposvár hivatalos parkolási tájékoztatója</a>
+      </p>
+    </section>
+
+    <section id="utvonal" class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="infoRouteTitle">Útvonal Alsóbogátra</h2>
+      <p class="info-block__intro" data-i18n="faq2p">Három útvonalat javasolunk:</p>
+      <ol class="route-list">
+        <li data-i18n="faq2l1">M7-esről Balatonszemesnél át kell térni a 67-es útra, majd Mernyeszentmiklósnál letérve egy kövezett úton át Somogygesztin keresztül eljutni Alsóbogát központjába, onnan legurulni a domboldalról és megérkezni a Magtárhoz;</li>
+        <li data-i18n="faq2l2">vagy továbbmenni a 67-es úton egészen Kaposfüredig, ott egy körforgalomból kitérve Juta–Somogyjád útvonalon elérve Alsóbogátot a táblánál jobbra fordulva megérkezni a Magtárhoz;</li>
+        <li data-i18n="faq2l3">vagy az M7-esről a 142-es km-nél letérve Lengyeltóti–Somogyvár–Osztopán–Somogyjád falvakon keresztül érnek el Alsóbogátra (ez a leghosszabb, de a legjobb minőségű út a falvak között).</li>
+      </ol>
+      <a class="btn-map btn-map--venue" href="https://www.google.com/maps/search/?api=1&amp;query=Szabads%C3%A1g%20utca%204%2C%207443%20Als%C3%B3bog%C3%A1t" target="_blank" rel="noopener noreferrer" data-i18n="venueMapBtn">Maps megnyitása</a>
+    </section>
+
+    <section id="transzfer" class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="infoTransferTitle">Transzfer a lagzin</h2>
+      <p data-i18n="infoTransferBody">Ha a lagziban megfáradtál, és nincs kedved sétálni a szállásodhoz: kisbusz vár a kápolna előtt.</p>
+      <p class="info-transfer-name">Sáfár Tamás · <a href="tel:+36307992265">+36 30 799 2265</a></p>
+    </section>
+
+    <section id="helyszinek" class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="infoPlacesTitle">Helyszínek a hétvégén</h2>
+      <div class="info-card-grid">
+        <article class="info-card info-only-fri">
+          <p class="info-card__kicker" data-i18n="programDayFriLabel">Péntek</p>
+          <h3 class="info-card__title" data-i18n="infoPlaceTennis">Tenisz &amp; piknik</h3>
+          <p data-i18n="infoPlaceTennisMeta">Teniszpálya / park</p>
+        </article>
+        <article class="info-card info-only-fri">
+          <p class="info-card__kicker" data-i18n="programDayFriLabel">Péntek</p>
+          <h3 class="info-card__title" data-i18n="infoPlaceCivil">Polgári ceremónia</h3>
+          <p data-i18n="infoPlaceCivilMeta">Találkozó a Maison és a Villabogart között, séta az Odvas fához.</p>
+        </article>
+        <article class="info-card">
+          <p class="info-card__kicker" data-i18n="programDaySatLabel">Szombat</p>
+          <h3 class="info-card__title" data-i18n="venueChurchName">Nagyboldogasszony székesegyház</h3>
+          <p data-i18n="venueChurchAddress">7400 Kaposvár, Kossuth tér 3.</p>
+        </article>
+        <article class="info-card">
+          <p class="info-card__kicker" data-i18n="infoPlaceMealsKicker">Reggeli &amp; ebéd</p>
+          <h3 class="info-card__title" data-i18n="infoPlaceGarage">Veterángarázs</h3>
+        </article>
+      </div>
+    </section>
+
+    <section id="oltozek" class="info-block animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="infoDressTitle">Öltözék</h2>
+      <div class="info-card-grid">
+        <article class="info-card info-only-fri">
+          <h3 class="info-card__title" data-i18n="infoDressFriTitle">Péntek · polgári</h3>
+          <p data-i18n="infoDressFri">Summer garden formal. Magassarkút a parkban ajánlott mellőzni.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card__title" data-i18n="infoDressSatTitle">Szombat</h3>
+          <p data-i18n="infoDressSat">Elegáns, színes. Kerüljétek a fehér, fekete és piros viseletet. A vacsora és a buli kint lesz, esténként hűvös lehet — hozzatok meleg ruhát. Magassarkút ajánlott kerülni.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="hozz" class="info-block info-only-fri animate-on-scroll">
+      <h2 class="info-block__title" data-i18n="infoBringTitle">Péntekre hozd magaddal</h2>
+      <ul class="info-points">
+        <li data-i18n="infoBring1">Fényvédő, szúnyogspray</li>
+        <li data-i18n="infoBring2">Teniszütő és teniszruha, ha játszol</li>
+        <li data-i18n="infoBring3">Pléd vagy pokróc, ha tudsz</li>
+        <li data-i18n="infoBring4">Kerti játékok (tollas, labda, kártya…)</li>
+        <li data-i18n="infoBring5">A piknikétel, amit hozol</li>
+      </ul>
+    </section>
+
+    <p class="info-more">
+      <a href="szallas.html" data-i18n="infoToStay">Szállásod keresése →</a>
+    </p>
+
+    <div class="section-divider section-divider--footer" aria-hidden="true"><span class="section-divider-icon">✦</span></div>
+    <footer class="footer"><p>Manca &amp; Endre · 2026</p></footer>
+  </main>
+
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

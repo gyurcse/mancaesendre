@@ -312,15 +312,19 @@
   }
 
   function initImageLightbox() {
-    var trigger = document.querySelector('.faq-plan-trigger');
+    var triggers = document.querySelectorAll('.js-lightbox-trigger, .faq-plan-trigger');
     var dialog = document.getElementById('faq-plan-lightbox');
-    if (!trigger || !dialog || typeof dialog.showModal !== 'function') return;
+    if (!triggers.length || !dialog || typeof dialog.showModal !== 'function') return;
 
     var panel = dialog.querySelector('.image-lightbox__panel');
     var closeBtn = dialog.querySelector('.image-lightbox__close');
 
-    trigger.addEventListener('click', function () {
+    function openBox() {
       dialog.showModal();
+    }
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener('click', openBox);
     });
 
     if (closeBtn) {

@@ -116,13 +116,9 @@
           </div>
           <ul class="site-nav__list">
             <li class="site-nav__item"><a class="site-nav__link site-nav__link--accent" href="menu.html" data-i18n="navLinkMenu">Vacsora Menü</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="#countdown" data-i18n="navLinkCountdown">Visszaszámlálás</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="#welcome" data-i18n="welcomeTitle">Szeretettel várunk</a></li>
             <li class="site-nav__item"><a class="site-nav__link" href="#program" data-i18n="programTitle">Program</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="#venue" data-i18n="venueTitle">Helyszín</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="#faq" data-i18n="faqTitle">Gyakori kérdések</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="#gallery" data-i18n="galleryTitle">Galéria</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="#rsvp" data-i18n="navLinkRsvp">RSVP</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="szallas.html" data-i18n="navLinkStay">Szállások</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="infok.html" data-i18n="navLinkInfo">Tudnivalók</a></li>
           </ul>
         </div>
       </nav>
@@ -292,9 +288,14 @@
           <h3 class="program-day-title" data-i18n="programDayFriLabel">Péntek (augusztus 21.)</h3>
           <ul class="program-list">
             <li class="program-item program-item--fri-only">
+              <span class="program-icon" aria-hidden="true">🏡</span>
+              <span class="time" data-i18n="programFri0Time">10:00-tól</span>
+              <div><strong data-i18n="programFri0t">Érkezés, szállások elfoglalása</strong></div>
+            </li>
+            <li class="program-item program-item--fri-only">
               <span class="program-icon" aria-hidden="true">🎾</span>
-              <span class="time" data-i18n="programFri1Time">11:00–14:00</span>
-              <div><strong data-i18n="programFri1t">Tenisz bajnokság</strong></div>
+              <span class="time" data-i18n="programFri1Time">11:00</span>
+              <div><strong data-i18n="programFri1t">Teniszbajnokság – átöltözve a pályán</strong></div>
             </li>
             <li class="program-item program-item--fri-only">
               <span class="program-icon" aria-hidden="true">🧺</span>
@@ -302,14 +303,24 @@
               <div><strong data-i18n="programFri2t">Piknik a parkban</strong></div>
             </li>
             <li class="program-item program-item--fri-only">
+              <span class="program-icon" aria-hidden="true">🚶</span>
+              <span class="time" data-i18n="programFriMeetTime">15:30</span>
+              <div><strong data-i18n="programFriMeet">Találkozó Maison és Villabogart között, közös séta</strong></div>
+            </li>
+            <li class="program-item program-item--fri-only">
               <span class="program-icon" aria-hidden="true">🌳</span>
               <span class="time" data-i18n="programFri3Time">16:00</span>
-              <div><strong data-i18n="programFri3t">Polgári ceremónia az Odvas fánál</strong></div>
+              <div><strong data-i18n="programFri3t">Polgári esküvő az Odvas fánál</strong></div>
+            </li>
+            <li class="program-item program-item--fri-only">
+              <span class="program-icon" aria-hidden="true">🥂</span>
+              <span class="time" data-i18n="programFriToastTime">16:30</span>
+              <div><strong data-i18n="programFriToast">Koccintás</strong></div>
             </li>
             <li class="program-item program-item--fri-only">
               <span class="program-icon" aria-hidden="true">🍲</span>
               <span class="time" data-i18n="programFri4Time">18:00</span>
-              <div><strong data-i18n="programFri4t">Bogrács vacsora a Maison teraszán</strong></div>
+              <div><strong data-i18n="programFri4t">Bográcsgulyás a Maison teraszán</strong></div>
             </li>
           </ul>
         </div>
@@ -323,28 +334,38 @@
           <ul class="program-list program-list--sat">
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">🍳</span>
-              <span class="time" data-i18n="programSat1Time">08:00–10:00</span>
+              <span class="time" data-i18n="programSat1Time">09:00–10:30</span>
               <div><strong data-i18n="programSat1t">Reggeli a Veterángarázsban</strong></div>
             </li>
             <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🍕</span>
+              <span class="program-icon" aria-hidden="true">☀️</span>
+              <span class="time" data-i18n="programSatFreeTime">10:30–14:00</span>
+              <div><strong data-i18n="programSatFree">Szabad program és készülődés</strong></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🥪</span>
               <span class="time" data-i18n="programSat2Time">12:00–13:00</span>
-              <div><strong data-i18n="programSat2t">Pizza ebéd a Veterángarázsban</strong></div>
+              <div><strong data-i18n="programSat2t">Szendvicsebéd a Veterángarázsban</strong></div>
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">🚗</span>
-              <span class="time" data-i18n="programSat3Time">14:15</span>
-              <div><strong data-i18n="programSat3t">Indulás Kaposvárra</strong></div>
+              <span class="time" data-i18n="programSat3Time">14:00</span>
+              <div><strong data-i18n="programSat3t">Násznép indulás Kaposvárra</strong></div>
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">⛪</span>
-              <span class="time" data-i18n="programSat4Time">15:00–16:00</span>
-              <div><strong data-i18n="programSat4t">Nászmise a Kaposvári Nagyboldogasszony templomban</strong></div>
+              <span class="time" data-i18n="programSatChurchTime">14:45</span>
+              <div><strong data-i18n="programSatChurch">Násznép a templomban</strong></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">⛪</span>
+              <span class="time" data-i18n="programSat4Time">15:00</span>
+              <div><strong data-i18n="programSat4t">Egyházi nászmise a Nagyboldogasszony Székesegyházban</strong></div>
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">🥂</span>
               <span class="time" data-i18n="programSat5Time">17:00</span>
-              <div><strong data-i18n="programSat5t">Vendégvárás Alsóbogáton</strong></div>
+              <div><strong data-i18n="programSat5t">Vendégvárás Alsóbogáton a Kastélynál</strong></div>
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">📷</span>
@@ -363,13 +384,13 @@
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">💃</span>
-              <span class="time" data-i18n="programSat9Time">22:00</span>
-              <div><strong data-i18n="programSat9t">Nyitótánc és buli hajnalig</strong></div>
+              <span class="time" data-i18n="programSat9Time">22:30</span>
+              <div><strong data-i18n="programSat9t">Elsőtánc</strong></div>
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">🌙</span>
               <span class="time" data-i18n="programSat10Time">24:00</span>
-              <div><strong data-i18n="programSat10t">Éjféli menü</strong></div>
+              <div><strong data-i18n="programSat10t">Éjféli töltött káposzta és hajnalig buli</strong></div>
             </li>
           </ul>
         </div>
@@ -383,8 +404,13 @@
           <ul class="program-list program-list--sun">
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">🍳</span>
-              <span class="time" data-i18n="programSun1Time">08:30–12:00</span>
-              <div><strong data-i18n="programSun1t">Reggeli</strong></div>
+              <span class="time" data-i18n="programSun1Time">09:00–12:00</span>
+              <div><strong data-i18n="programSun1t">Reggeli a Veterángarázsban</strong></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🔑</span>
+              <span class="time" data-i18n="programSun2Time">11:00-tól</span>
+              <div><strong data-i18n="programSun2t">Szállás elhagyása – kulcs a zárba</strong></div>
             </li>
           </ul>
         </div>
@@ -394,14 +420,24 @@
           <h3 class="program-day-title" data-i18n="programDaySatLabel">Szombat (augusztus 22.)</h3>
           <ul class="program-list program-list--sat">
             <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🏡</span>
+              <span class="time" data-i18n="programSatArriveTime">11:00</span>
+              <div><strong data-i18n="programSatArrive">Érkezés és szállás elfoglalása</strong></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🥪</span>
+              <span class="time" data-i18n="programSat2Time">12:00–13:00</span>
+              <div><strong data-i18n="programSat2t">Szendvicsebéd a Veterángarázsban</strong></div>
+            </li>
+            <li class="program-item">
               <span class="program-icon" aria-hidden="true">⛪</span>
-              <span class="time" data-i18n="programSat4Time">15:00–16:00</span>
-              <div><strong data-i18n="programSat4t">Nászmise a Kaposvári Nagyboldogasszony templomban</strong></div>
+              <span class="time" data-i18n="programSat4Time">15:00</span>
+              <div><strong data-i18n="programSat4t">Egyházi nászmise a Nagyboldogasszony Székesegyházban</strong></div>
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">🥂</span>
               <span class="time" data-i18n="programSat5Time">17:00</span>
-              <div><strong data-i18n="programSat5t">Vendégvárás Alsóbogáton</strong></div>
+              <div><strong data-i18n="programSat5t">Vendégvárás Alsóbogáton a Kastélynál</strong></div>
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">📷</span>
@@ -420,13 +456,13 @@
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">💃</span>
-              <span class="time" data-i18n="programSat9Time">22:00</span>
-              <div><strong data-i18n="programSat9t">Nyitótánc és buli hajnalig</strong></div>
+              <span class="time" data-i18n="programSat9Time">22:30</span>
+              <div><strong data-i18n="programSat9t">Elsőtánc</strong></div>
             </li>
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">🌙</span>
               <span class="time" data-i18n="programSat10Time">24:00</span>
-              <div><strong data-i18n="programSat10t">Éjféli menü</strong></div>
+              <div><strong data-i18n="programSat10t">Éjféli töltött káposzta és hajnalig buli</strong></div>
             </li>
           </ul>
         </div>
@@ -440,8 +476,13 @@
           <ul class="program-list program-list--sun">
             <li class="program-item">
               <span class="program-icon" aria-hidden="true">🍳</span>
-              <span class="time" data-i18n="programSun1Time">08:30–12:00</span>
-              <div><strong data-i18n="programSun1t">Reggeli</strong></div>
+              <span class="time" data-i18n="programSun1Time">09:00–12:00</span>
+              <div><strong data-i18n="programSun1t">Reggeli a Veterángarázsban</strong></div>
+            </li>
+            <li class="program-item">
+              <span class="program-icon" aria-hidden="true">🔑</span>
+              <span class="time" data-i18n="programSun2Time">11:00-tól</span>
+              <div><strong data-i18n="programSun2t">Szállás elhagyása – kulcs a zárba</strong></div>
             </li>
           </ul>
         </div>
