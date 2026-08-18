@@ -755,27 +755,54 @@ body:has(#main-content.content-hidden) .site-nav {
   font-size: 0.9em;
 }
 
-.hero-cta {
-  display: inline-block;
-  margin-top: 1.2rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #fff;
-  text-decoration: none;
-  background: linear-gradient(135deg, var(--color-blue-dark), var(--color-blue));
-  border: 1px solid rgba(255,255,255,0.28);
-  padding: 0.72rem 1.15rem;
-  border-radius: 999px;
-  box-shadow: 0 8px 24px rgba(28, 57, 78, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+.hero-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+  margin-top: 1.05rem;
+  text-shadow: none;
 }
 
-.hero-cta:hover {
-  background: linear-gradient(135deg, #3b6885, #4f87a8);
+.hero-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.12rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(58, 95, 120, 0.92), rgba(74, 124, 158, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 8px 24px rgba(28, 57, 78, 0.35);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.hero-link:hover {
   transform: translateY(-2px);
+  background: linear-gradient(135deg, #3b6885, #4f87a8);
   box-shadow: 0 12px 28px rgba(28, 57, 78, 0.4);
+}
+
+.hero-link__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.hero-link__text {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (min-width: 480px) {
+  .hero-links {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .hero-scroll {
@@ -2299,8 +2326,7 @@ body:has(#main-content.content-hidden) .site-nav {
     padding: 1.4rem 1.8rem 1.7rem;
   }
 
-  .hero-badge,
-  .hero-cta {
+  .hero-badge {
     color: rgba(255,255,255,0.95);
   }
 
@@ -2759,12 +2785,12 @@ body:has(#main-content.content-hidden) .site-nav {
 }
 
 .site-nav__link--accent {
-  margin-top: 0.5rem;
+  margin-top: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-transform: none;
   text-align: center;
   color: #fff;
   background: linear-gradient(135deg, #3a5f78 0%, #4a7c9e 100%);
