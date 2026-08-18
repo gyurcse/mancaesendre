@@ -1918,6 +1918,15 @@ body:has(#main-content.content-hidden) .site-nav {
   letter-spacing: 0.02em;
 }
 
+.footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--color-blue-dark);
+}
+
 /* ===== Menü oldal – 3 étkezés = 3 kártya, egymás mellett ===== */
 .page-menu {
   --menu-accent: #a6843a;
@@ -2764,20 +2773,30 @@ body.site-nav--open {
 }
 
 .info-hero__kicker {
-  margin: 0 0 0.45rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  margin: 0 0 0.75rem;
 }
 
-.info-hero__kicker a {
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(74, 124, 158, 0.2);
+  box-shadow: 0 2px 10px rgba(74, 124, 158, 0.08);
   color: var(--color-blue-dark);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-decoration: none;
+  text-transform: none;
 }
 
-.info-hero__kicker a:hover {
+.page-back:hover {
   color: var(--color-yellow-dark);
+  border-color: rgba(184, 146, 63, 0.45);
 }
 
 .info-hero__title {
