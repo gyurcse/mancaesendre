@@ -2437,6 +2437,7 @@ body:has(#main-content.content-hidden) .site-nav {
     order: 0;
     margin: 0;
     justify-self: start;
+    grid-column: 1;
   }
 
   .program-day-block--fri .program-item .program-icon {
@@ -2444,28 +2445,18 @@ body:has(#main-content.content-hidden) .site-nav {
     margin-top: 0;
     width: 40px;
     height: 40px;
+    grid-column: 2;
   }
 
   .program-day-block--fri .program-item div {
     order: 0;
     text-align: left;
     font-size: 0.92rem;
+    grid-column: 3;
   }
 
   .program-day-block--fri .program-item:hover {
     padding: 0.8rem 0.35rem;
-  }
-
-  /* Péntek: két programpont */
-  .program-day-block:not(.program-day-block--sat):not(.program-day-block--sun) .program-list {
-    grid-template-columns: 1fr;
-    max-width: 34rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .program-day-block:not(.program-day-block--sat):not(.program-day-block--sun) .program-item {
-    max-width: none;
   }
 
   /* Vasárnap: egy pont, középen */
