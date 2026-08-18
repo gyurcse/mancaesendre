@@ -22,7 +22,7 @@
     falusi80: 'https://www.google.com/maps/place/Als%C3%B3bog%C3%A1t,+V%C3%B6r%C3%B6smarty+u.+77,+7443/@46.5115682,17.7471256,151m/data=!3m1!1e3!4m9!1m2!2m1!1zVsO2csO2c21hcnR5IHUuIDgw!3m5!1s0x476847c71f138f7d:0xc1dab84cd73c532a!8m2!3d46.5116944!4d17.7475081!16s%2Fg%2F11pztgh42q',
     lila: "https://www.google.com/maps/place/46%C2%B030'37.5%22N+17%C2%B044'53.2%22E/@46.510409,17.7472018,287m/data=!3m2!1e3!4b1!4m13!1m8!3m7!1s0x476847c74f3e430f:0xaa4b0e52e7b1fb63!2zQWxzw7Nib2fDoXQsIFBldMWRZmkgdS4gNCwgNzQ0Mw!3b1!8m2!3d46.51025!4d17.747721!16s%2Fg%2F11csfhqvx8!3m3!8m2!3d46.510409!4d17.748102",
     piros: 'https://www.google.com/maps/place/Piros+h%C3%A1z/@46.5074928,17.7379371,200m/data=!3m1!1e3!4m6!3m5!1s0x476847e921eba29f:0x62b13f73ce17f1d6!8m2!3d46.5075896!4d17.7375967!16s%2Fg%2F11n__78jm2',
-    zold: 'https://www.google.com/maps/search/z%C3%B6ld+h%C3%A1z/@46.5074928,17.7379371,200m/data=!3m1!1e3',
+    zold: 'https://maps.app.goo.gl/PHrF4vRXi7NZ3T7a9',
     majorsagi: "https://www.google.com/maps/place/46%C2%B030'10.8%22N+17%C2%B045'01.5%22E/@46.503179,17.7500377,139m/data=!3m1!1e3!4m4!3m3!8m2!3d46.503009!4d17.75042",
     magtar: "https://www.google.com/maps/place/46%C2%B031'16.3%22N+17%C2%B044'46.4%22E/@46.521181,17.7455268,287m/data=!3m2!1e3!4b1!4m12!1m7!3m6!1s0x476847d01ca25bcf:0xa8b714eba6e35cb5!2sZichy-+(kis-)+kast%C3%A9ly!8m2!3d46.5210784!4d17.7444026!16s%2Fg%2F11g6w5xkmr!3m3!8m2!3d46.521181!4d17.74623",
     portahaz: "https://www.google.com/maps/place/46%C2%B031'12.1%22N+17%C2%B044'47.6%22E/@46.520018,17.7455883,287m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d46.520018!4d17.746554"
