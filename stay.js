@@ -144,7 +144,6 @@
     var f = fold(q);
     if (f.length < 2) {
       showResults([], '');
-      renderGroups('');
       return;
     }
     var rooms = window.ESKUVO_STAY_ROOMS || [];
@@ -153,14 +152,6 @@
       return hay.indexOf(f) !== -1;
     });
     showResults(hits, f);
-    var ids = {};
-    hits.forEach(function (r) { ids[r.group] = true; });
-    var keys = Object.keys(ids);
-    renderGroups(keys.length === 1 ? keys[0] : '');
-    if (keys.length === 1) {
-      var open = document.querySelector('.stay-group[open]');
-      if (open) open.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }
   }
 
   function initStay() {
@@ -176,8 +167,8 @@
     });
     input.addEventListener('search', run);
     window.addEventListener('eskuvo:lang', function () {
+      renderGroups('');
       run();
-      if (!fold(input.value)) renderGroups('');
     });
   }
 

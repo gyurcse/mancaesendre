@@ -3026,6 +3026,7 @@ body.site-nav--open {
   margin-top: 0.9rem;
   display: grid;
   gap: 0.75rem;
+  scroll-margin-top: 5rem;
 }
 
 .stay-empty {
