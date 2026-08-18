@@ -2258,6 +2258,10 @@ body:has(#main-content.content-hidden) .site-nav {
   font-weight: 600;
 }
 
+.site-nav__link--accent.is-current {
+  color: #fff;
+}
+
 @media (min-width: 800px) {
   .menu-page__hero {
     padding: 3rem 0 2.15rem;
@@ -2803,6 +2807,15 @@ body:has(#main-content.content-hidden) .site-nav {
 .site-nav__link:focus-visible {
   outline: 2px solid var(--color-blue);
   outline-offset: 2px;
+}
+
+.site-nav__link.site-nav__link--accent,
+.site-nav__link.site-nav__link--accent:link,
+.site-nav__link.site-nav__link--accent:visited,
+.site-nav__link.site-nav__link--accent:hover,
+.site-nav__link.site-nav__link--accent.is-current {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
 }
 
 .site-nav__link--accent {
