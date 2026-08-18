@@ -3094,6 +3094,10 @@ body.site-nav--open {
   line-height: 1.5;
 }
 
+.info-card .btn-map {
+  margin-top: 0.7rem;
+}
+
 .contact-card__tel {
   display: inline-block;
   margin-top: 0.35rem;
