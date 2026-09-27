@@ -1,6 +1,6 @@
-# Esküvői meghívó weboldal – Manca & Endre
+# Esküvő utáni köszönő oldal – Manca & Endre
 
-Mobilon első megnyitáskor egy boríték animáció jelenik meg; kattintásra kinyílik, majd az oldal láthatóvá válik. A vendég legközelebbi látogatásától már nem jelenik meg a boríték (localStorage).
+Az esküvő után átalakított egyoldalas weboldal: köszönő szöveg, az esküvő óta eltelt idő számlálója, linkek a fotókhoz és egy kérés a Villabogart Google-értékeléséhez.
 
 ## Élő oldal (GitHub Pages)
 
@@ -40,28 +40,23 @@ Mobilos nézet teszteléséhez nyisd meg ugyanazt a címet mobilon (ugyanabban a
 
 ## Fájlok
 
-- `index.html` – tartalom (dummy szövegek, placeholder képek)
-- `styles.css` – stílusok, boríték animáció, reszponzív elrendezés
-- `script.js` – boríték megnyitás (első látogatás, kattintás), localStorage
+- `index.html` – tartalom (köszönő szöveg, eltelt idő számláló, fotó linkek, értékelés kérés)
+- `styles.css` – stílusok, reszponzív elrendezés
+- `script.js` – eltelt idő számláló, scroll animációk, navigáció
+- `i18n.js` – magyar/angol szövegek
 
-## Részvételi űrlap – Google Forms (ingyenes, exportálható)
+## Fotók
 
-A RSVP szekció egy **beágyazott Google űrlapot** mutat. A válaszok a **Google Táblázatokban** gyűlnek; onnan **Fájl → Letöltés → CSV / Excel**.
-
-1. Készíts két űrlapot (vagy egyet, ha ugyanaz a kérdőív): **péntek+szombat** meghívó és **csak szombat** meghívó.
-2. Mindkét űrlapon: **Válaszok** fül → **Táblázat ikon** → hozz létre táblázatot.
-3. **Küldés** (Send) → **<>** Beágyazás → másold a **viewform?embedded=true** linket (vagy a `src` URL-t az iframe-ből).
-4. Az `index.html`-ben a `#rsvp-google-root` elemnél töltsd ki:
-   - `data-form-fri-sat="…viewform?embedded=true"`
-   - `data-form-sat-only="…viewform?embedded=true"`
-
-Ha mindkét attribútum üres, az oldal egy rövid útmutatót jelenít meg a fejlesztőknek.
+A `#photos` szekció kártyái egyelőre mind a fő Pixieset galériára mutatnak
+(`https://emimage75.pixieset.com/mancaendre/`). Ha később külön album-linkek lesznek
+az egyes eseményekhez (tenisz, polgári szertartás, stb.), az `index.html`-ben a
+`.photo-link-card` elemek `href` attribútumát kell egyenként lecserélni.
 
 ## Későbbi módosítások
 
-- Képek: cseréld a `.placeholder-img` osztályú elemeket valódi `<img>` tagre, vagy töltsd fel a háttérképeket.
-- Szövegek: neveket, dátumot, helyszínt, programot közvetlenül az `index.html`-ben tudod módosítani.
-- Boríték újramutatása: mobilon a böngészőben töröld a helyi adatokat az oldalhoz, vagy localStorage-ból töröld a `eskuvo_boritek_megnyitva` kulcsot.
+- Szövegek: az `index.html`-ben közvetlenül módosíthatók, vagy az `i18n.js`-ben
+  (magyar és angol verzió is van, kulcsonként).
+- Az esküvő utáni számláló dátuma a `script.js` tetején, a `WEDDING_DATE` konstansban van.
 
 ## Merge conflict feloldás + hogyan dolgozzunk `main` branchen
 

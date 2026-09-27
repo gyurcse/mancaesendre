@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu" data-invite="chooser">
+<html lang="hu">
 <head>
   <meta charset="UTF-8">
   <!-- Google tag (gtag.js) -->
@@ -10,79 +10,12 @@
     gtag('js', new Date());
     gtag('config', 'G-HWMEY06HQK');
   </script>
-  <script>
-    (function () {
-      var html = document.documentElement;
-      var SS = 'eskuvo_invite_variant';
-      var CK = 'eskuvo_invite_variant';
-      var maxAge = 60 * 60 * 24 * 120; /* 120 nap */
-      var sec = typeof location !== 'undefined' && location.protocol === 'https:' ? '; Secure' : '';
-
-      function setInviteCookie(val) {
-        try {
-          document.cookie =
-            CK + '=' + encodeURIComponent(val) + '; path=/; max-age=' + maxAge + '; SameSite=Lax' + sec;
-        } catch (e0) {}
-      }
-
-      function readInviteCookie() {
-        try {
-          var m = document.cookie.match(
-            new RegExp('(?:^|; )' + CK.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=(fri-sat|sat-only)(?:;|$)')
-          );
-          return m ? m[1] : '';
-        } catch (e1) {
-          return '';
-        }
-      }
-
-      function remember(val) {
-        try {
-          sessionStorage.setItem(SS, val);
-        } catch (e2) {}
-        setInviteCookie(val);
-      }
-
-      try {
-        var v = sessionStorage.getItem(SS);
-        if (v === 'fri-sat' || v === 'sat-only') {
-          html.setAttribute('data-invite', v);
-          return;
-        }
-      } catch (e3) {}
-
-      try {
-        var p = new URLSearchParams(window.location.search).get('meghivo');
-        if (p === 'babakocsi' || p === 'pezsgo' || p === 'tulipan') {
-          html.setAttribute('data-invite', 'fri-sat');
-          remember('fri-sat');
-          return;
-        }
-        if (p === 'gyertya') {
-          html.setAttribute('data-invite', 'sat-only');
-          remember('sat-only');
-          return;
-        }
-      } catch (e4) {}
-
-      var fromCookie = readInviteCookie();
-      if (fromCookie === 'fri-sat' || fromCookie === 'sat-only') {
-        html.setAttribute('data-invite', fromCookie);
-        try {
-          sessionStorage.setItem(SS, fromCookie);
-        } catch (e5) {}
-        return;
-      }
-
-      html.setAttribute('data-invite', 'chooser');
-    })();
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Esküvőnk meghívója</title>
+  <title>Manca & Endre – Köszönjük!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=places1">
+  <link rel="stylesheet" href="styles.css?v=thanks1">
   <meta name="theme-color" content="#3d6a87">
 </head>
 <body>
@@ -116,67 +49,12 @@
           </div>
           <ul class="site-nav__list">
             <li class="site-nav__item"><a class="site-nav__link site-nav__link--accent is-current" href="index.html" data-i18n="navLinkHome" aria-current="page">Főoldal</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="menu.html" data-i18n="navLinkMenu">Vacsora Menü</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="#program" data-i18n="programTitle">Program</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="szallas.html" data-i18n="navLinkStay">Szállások</a></li>
-            <li class="site-nav__item"><a class="site-nav__link" href="infok.html" data-i18n="navLinkInfo">Tudnivalók</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="#thanks" data-i18n="navLinkThanks">Köszönet</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="#photos" data-i18n="navLinkPhotos">Fotók</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="#review" data-i18n="navLinkReview">Értékelés</a></li>
           </ul>
         </div>
       </nav>
-    </div>
-  </div>
-  <!-- Gyökér: válaszd ki, melyik szimbólum szerepel a meghívódon -->
-  <div id="invite-landing" class="invite-landing" hidden aria-hidden="true">
-    <div class="invite-landing__inner">
-      <h1 class="invite-landing__title" data-i18n="inviteChoiceTitle">Melyik jel van a meghívódon?</h1>
-      <div class="invite-landing__grid" role="group" data-i18n-aria="inviteChoiceGroupAria" aria-label="Meghívó típus választása">
-        <button type="button" class="invite-landing__card" id="invite-choice-fri-sat" data-invite-choice="fri-sat" data-i18n-aria="inviteChoicePezsgoAria">
-          <span class="invite-landing__icon-wrap invite-landing__icon-wrap--landing-fixed invite-landing__icon-wrap--invite-img invite-landing__icon-wrap--pezsgo" aria-hidden="true">
-            <img
-              class="invite-landing__img invite-landing__img--pezsgo"
-              src="Fotok/invite-pezsgo.png"
-              alt=""
-              width="120"
-              height="120"
-              loading="eager"
-              decoding="async"
-            />
-          </span>
-          <span class="invite-landing__card-kicker" data-i18n="inviteChoicePezsgoKicker">Pezsgő</span>
-        </button>
-        <button type="button" class="invite-landing__card" id="invite-choice-sat-only" data-invite-choice="sat-only" data-i18n-aria="inviteChoiceGyertyaAria">
-          <span class="invite-landing__icon-wrap invite-landing__icon-wrap--landing-fixed invite-landing__icon-wrap--invite-img" aria-hidden="true">
-            <img
-              class="invite-landing__img"
-              src="Fotok/invite-gyertya.png"
-              alt=""
-              width="120"
-              height="120"
-              loading="eager"
-              decoding="async"
-            />
-          </span>
-          <span class="invite-landing__card-kicker" data-i18n="inviteChoiceGyertyaKicker">Gyertya</span>
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- Boríték overlay – csak mobilon, első megnyitáskor -->
-  <div id="envelope-overlay" class="envelope-overlay" aria-hidden="true">
-    <div class="envelope-container">
-      <div class="envelope">
-        <div class="envelope-body"></div>
-        <div class="envelope-letter" aria-hidden="true">
-          <span class="envelope-letter-names">Manca & Endre</span>
-          <span class="envelope-letter-date" data-i18n="heroDate">2026. augusztus 22.</span>
-        </div>
-        <div class="envelope-flap"></div>
-        <div class="envelope-seal-wrapper" aria-hidden="true">
-          <div class="envelope-seal"><span class="envelope-seal-initials">M & E</span></div>
-        </div>
-        <div class="envelope-front"></div>
-      </div>
-      <p class="envelope-text" data-i18n-html="envelopeText">Ez a meghívó csak Neked szól.<br>Érintsd meg a megnyitáshoz.</p>
     </div>
   </div>
 
@@ -184,30 +62,29 @@
     <!-- Hero / Címsor -->
     <header id="hero" class="hero animate-in">
       <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80" alt="" class="hero-bg-img" referrerpolicy="no-referrer" />
+        <img src="Fotok/new-hero.jpg" alt="" class="hero-bg-img" />
       </div>
       <div class="hero-content">
-        <p class="hero-badge" data-i18n="heroBadge">ÖSSZEHÁZASODUNK</p>
+        <p class="hero-badge" data-i18n="heroBadge">KÖSZÖNJÜK!</p>
         <h1><span class="hero-name hero-name-a">Manca</span> <span class="hero-amp">&</span> <span class="hero-name hero-name-b">Endre</span></h1>
         <p class="hero-date"><span class="hero-star" aria-hidden="true">✦</span> <span data-i18n="heroDate">2026. augusztus 22.</span></p>
         <div class="hero-links">
-          <a class="hero-link" href="szallas.html">
-            <span class="hero-link__title" data-i18n="navLinkStay">Szállások</span>
-            <span class="hero-link__text" data-i18n="homeCtaStay">Keresd a neved – megmutatjuk, hol alszol.</span>
+          <a class="hero-link" href="#photos">
+            <span class="hero-link__title" data-i18n="heroLinkPhotosTitle">Fotók</span>
+            <span class="hero-link__text" data-i18n="heroLinkPhotosText">Nézd meg a hétvége képeit.</span>
           </a>
-          <a class="hero-link" href="infok.html">
-            <span class="hero-link__title" data-i18n="navLinkInfo">Tudnivalók</span>
-            <span class="hero-link__text" data-i18n="homeCtaInfo">Parkolás, kontaktok, útvonal, transzfer.</span>
+          <a class="hero-link" href="#review">
+            <span class="hero-link__title" data-i18n="heroLinkReviewTitle">Értékelés</span>
+            <span class="hero-link__text" data-i18n="heroLinkReviewText">Segíts egy jó szóval a Villabogartnak.</span>
           </a>
         </div>
-        <a href="#countdown" class="hero-scroll" data-i18n-aria="heroScrollAria" aria-label="Visszaszámlálás részhez">⌄</a>
+        <a href="#elapsed" class="hero-scroll" data-i18n-aria="heroScrollAria" aria-label="Ugrás az eltelt idő számlálóhoz">⌄</a>
       </div>
     </header>
 
-
-    <!-- Countdown -->
-    <section id="countdown" class="section countdown-section animate-on-scroll">
-      <h2 class="script-title script-title--countdown" data-i18n="countdownTitle">Visszaszámlálás a nagy napig</h2>
+    <!-- Eltelt idő a nagy nap óta -->
+    <section id="elapsed" class="section countdown-section animate-on-scroll">
+      <h2 class="script-title script-title--countdown" data-i18n="elapsedTitle">Ennyi ideje vagyunk házasok</h2>
       <div class="countdown-grid">
         <div class="countdown-block">
           <span class="countdown-num" id="countdown-days">—</span>
@@ -226,448 +103,97 @@
           <span class="countdown-label" data-i18n="countdownSecs">másodperc</span>
         </div>
       </div>
-      <a href="#program" class="countdown-detail-link" data-i18n="countdownDetails">Részletek</a>
     </section>
 
-    <!-- Vacsora menü – átvezető blokk -->
-    <section id="menu-teaser" class="section menu-teaser animate-on-scroll">
-      <a href="menu.html" class="menu-teaser__plate" data-i18n-aria="menuTeaserCta" aria-label="Menü megtekintése">
-        <span class="menu-teaser__cutlery menu-teaser__cutlery--fork" aria-hidden="true">
-          <svg viewBox="0 0 24 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 2v22M12 2v22M18 2v22M6 24h12v6c0 4-3 7-6 7s-6-3-6-7v-6z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 37v49" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="menu-teaser__dish">
-          <span class="menu-teaser__dish-rim" aria-hidden="true"></span>
-          <span class="menu-teaser__dish-inner">
-            <span class="menu-teaser__title" data-i18n="menuTeaserTitle">Vacsora Menü</span>
-          </span>
-        </span>
-        <span class="menu-teaser__cutlery menu-teaser__cutlery--knife" aria-hidden="true">
-          <svg viewBox="0 0 24 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 2c8 10 10 22 10 34H8c0-12 0-24 2-34z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M12 36v50" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </span>
-      </a>
-    </section>
-
-    <!-- Üdvözlő szöveg -->
-    <section id="welcome" class="section welcome animate-on-scroll">
-      <h2 class="script-title" data-i18n="welcomeTitle">Szeretettel várunk</h2>
+    <!-- Köszönő levél -->
+    <section id="thanks" class="section welcome animate-on-scroll">
+      <h2 class="script-title" data-i18n="thanksTitle">Drága Családunk és Barátaink!</h2>
       <div class="welcome-image-wrap">
-        <img src="Fotok/welcome-manca-endre.png" alt="Manca és Endre" data-i18n-alt="welcomeImgAlt" class="welcome-image" loading="lazy" />
+        <img src="Fotok/welcome-manca-endre.jpg" alt="Manca és Endre" data-i18n-alt="welcomeImgAlt" class="welcome-image" loading="lazy" />
       </div>
-      <div class="intro intro--invite-split">
-        <div class="intro-variant intro-variant--fri-sat">
-          <p data-i18n="welcomeIntroFriSat1">Kedves Vendégeink!</p>
-          <p data-i18n="welcomeIntroFriSat2">
-            Nagy örömmel hívunk Benneteket, hogy velünk ünnepeljétek életünk egyik legszebb hétvégéjét.
-          </p>
-          <p data-i18n="welcomeIntroFriSat3">
-            Csatlakozzatok hozzánk a pénteki közös hangolódásra és a szombati nagy napunkra is, hogy együtt élhessük át ezeket a
-            különleges pillanatokat.
-          </p>
-          <p data-i18n="welcomeIntroFriSat4">Szeretettel várunk Benneteket egy felejthetetlen ünneplésre!</p>
-        </div>
-        <div class="intro-variant intro-variant--sat-only">
-          <p data-i18n="welcomeIntroSatOnly1">Kedves Vendégeink!</p>
-          <p data-i18n="welcomeIntroSatOnly2">
-            Nagy örömmel hívunk Benneteket, hogy velünk ünnepeljétek életünk egyik legszebb napját.
-          </p>
-          <p data-i18n="welcomeIntroSatOnly3">
-            Csatlakozzatok hozzánk a nagy napunkra, hogy együtt élhessük át ezeket a különleges pillanatokat.
-          </p>
-          <p data-i18n="welcomeIntroSatOnly4">Szeretettel várunk Benneteket egy felejthetetlen ünneplésre!</p>
-        </div>
+      <div class="thanks-text">
+        <p data-i18n="thanksP1">Immár egy hónapja, hogy együtt ünnepeltük életünk egybekötését :)</p>
+        <p data-i18n="thanksP2">
+          Szeretnénk megköszönni mindent! Végtelenül hálásak vagyunk, hogy ott voltatok, egyenként és közösen is egy
+          tökéletes násznépet alkotva. A szeretet és boldogság, amit kaptunk a hétvége folyamán, a felhők fölé emelt
+          minket.
+        </p>
+        <p data-i18n="thanksP3">
+          Nagyon reméljük, hogy mindenki jól érezte magát, és ha nem is emlékszik mindenre, van legalább egy
+          ismerőse, aki segít kiegészíteni a sötét foltokat :)
+        </p>
+        <p class="thanks-signature" data-i18n="thanksSignature">Hálásan, Manca & Endre</p>
       </div>
     </section>
 
-    <!-- Program (mint a Boda Mar & Jaume „Programa del dia”) -->
-    <section id="program" class="section program animate-on-scroll">
-      <h2 class="script-title" data-i18n="programTitle">Program</h2>
-      <div class="program-ornament" aria-hidden="true">
-        <span class="program-ornament__line"></span>
-        <span class="program-ornament__star">✦</span>
-        <span class="program-ornament__line"></span>
+    <!-- Fotók -->
+    <section id="photos" class="section photos animate-on-scroll">
+      <h2 class="script-title" data-i18n="photosTitle">Fotók a hétvégéről</h2>
+      <p class="photos-intro" data-i18n="photosIntro">
+        Az updatelt weboldalunkon (itt!) megtaláljátok a képeket az alábbi eseményekről, egyelőre:
+      </p>
+      <ul class="photo-links">
+        <li>
+          <a class="photo-link-card" href="https://drive.google.com/drive/folders/1UiMU0kr9WMVm99Mq0KQg4B-HFdR7Enr2" target="_blank" rel="noopener">
+            <span class="photo-link-card__icon" aria-hidden="true">🎾</span>
+            <span class="photo-link-card__label" data-i18n="photoCat1">Tenisz és piknik</span>
+          </a>
+        </li>
+        <li>
+          <a class="photo-link-card" href="https://drive.google.com/drive/folders/1tV5vZOU5dy7vgAYCrY-FMOY6wys3PilV" target="_blank" rel="noopener">
+            <span class="photo-link-card__icon" aria-hidden="true">🌳</span>
+            <span class="photo-link-card__label" data-i18n="photoCat2">Polgári szertartás és bográcsozás</span>
+          </a>
+        </li>
+        <li>
+          <a class="photo-link-card" href="https://emimage75.pixieset.com/mancaendre/templomiszertartas/" target="_blank" rel="noopener">
+            <span class="photo-link-card__icon" aria-hidden="true">⛪</span>
+            <span class="photo-link-card__label" data-i18n="photoCatChurch">Templomi szertartás</span>
+          </a>
+        </li>
+        <li>
+          <a class="photo-link-card" href="https://visionphotoevent12.pixieset.com/mancaandendre/" target="_blank" rel="noopener">
+            <span class="photo-link-card__icon" aria-hidden="true">🤳</span>
+            <span class="photo-link-card__label" data-i18n="photoCat3">Selfie Booth</span>
+          </a>
+        </li>
+        <li>
+          <a class="photo-link-card" href="https://emimage75.pixieset.com/mancaendre/buli/" target="_blank" rel="noopener">
+            <span class="photo-link-card__icon" aria-hidden="true">💃</span>
+            <span class="photo-link-card__label" data-i18n="photoCat4">Szombati lagzi</span>
+          </a>
+        </li>
+        <li>
+          <a class="photo-link-card" href="https://emimage75.pixieset.com/mancaendre/csoportkepekvacsora/" target="_blank" rel="noopener">
+            <span class="photo-link-card__icon" aria-hidden="true">📷</span>
+            <span class="photo-link-card__label" data-i18n="photoCat6">Csoportképek</span>
+          </a>
+        </li>
+      </ul>
+      <div class="photos-cta">
+        <a class="btn-map btn-map--big" href="https://emimage75.pixieset.com/mancaendre/" target="_blank" rel="noopener" data-i18n="photosCta">Összes kép megnyitása</a>
       </div>
-      <div class="program-invite program-invite--fri-sat" id="program-invite-fri-sat">
-        <div class="program-day-block program-day-block--fri">
-          <h3 class="program-day-title" data-i18n="programDayFriLabel">Péntek (augusztus 21.)</h3>
-          <ul class="program-list">
-            <li class="program-item program-item--fri-only">
-              <span class="program-icon" aria-hidden="true">🏡</span>
-              <span class="time" data-i18n="programFri0Time">10:00-tól</span>
-              <div><strong data-i18n="programFri0t">Érkezés, szállások elfoglalása</strong></div>
-            </li>
-            <li class="program-item program-item--fri-only">
-              <span class="program-icon" aria-hidden="true">🎾</span>
-              <span class="time" data-i18n="programFri1Time">11:00</span>
-              <div><strong data-i18n="programFri1t">Teniszbajnokság kezdődik, már átöltözve a játékosok</strong></div>
-            </li>
-            <li class="program-item program-item--fri-only">
-              <span class="program-icon" aria-hidden="true">🧺</span>
-              <span class="time" data-i18n="programFri2Time">12:00</span>
-              <div><strong data-i18n="programFri2t">Piknik a parkban</strong></div>
-            </li>
-            <li class="program-item program-item--fri-only">
-              <span class="program-icon" aria-hidden="true">🚶</span>
-              <span class="time" data-i18n="programFriMeetTime">15:30</span>
-              <div><strong data-i18n="programFriMeet">Találkozó Maison és Villabogart között, közös séta a polgári helyszínre</strong></div>
-            </li>
-            <li class="program-item program-item--fri-only">
-              <span class="program-icon" aria-hidden="true">🌳</span>
-              <span class="time" data-i18n="programFri3Time">16:00</span>
-              <div><strong data-i18n="programFri3t">Polgári esküvő az Odvas Fánál</strong></div>
-            </li>
-            <li class="program-item program-item--fri-only">
-              <span class="program-icon" aria-hidden="true">🥂</span>
-              <span class="time" data-i18n="programFriToastTime">16:30</span>
-              <div><strong data-i18n="programFriToast">Koccintás</strong></div>
-            </li>
-            <li class="program-item program-item--fri-only">
-              <span class="program-icon" aria-hidden="true">🍲</span>
-              <span class="time" data-i18n="programFri4Time">18:00</span>
-              <div><strong data-i18n="programFri4t">Bográcsgulyás vacsora a Maison teraszon</strong></div>
-            </li>
-          </ul>
-        </div>
-        <div class="program-day-divider" aria-hidden="true">
-          <span class="program-day-divider__line"></span>
-          <span class="program-day-divider__mark"></span>
-          <span class="program-day-divider__line"></span>
-        </div>
-        <div class="program-day-block program-day-block--sat">
-          <h3 class="program-day-title" data-i18n="programDaySatLabel">Szombat (augusztus 22.)</h3>
-          <ul class="program-list program-list--sat">
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🍳</span>
-              <span class="time" data-i18n="programSat1Time">09:00–10:30</span>
-              <div><strong data-i18n="programSat1t">Reggeli a Veterángarázsban</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">☀️</span>
-              <span class="time" data-i18n="programSatFreeTime">10:30–14:00</span>
-              <div><strong data-i18n="programSatFree">Szabad program és készülődés</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🥪</span>
-              <span class="time" data-i18n="programSat2Time">12:00–13:00</span>
-              <div><strong data-i18n="programSat2t">Szendvicsebéd a Veterángarázsban</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🚗</span>
-              <span class="time" data-i18n="programSat3Time">14:00</span>
-              <div><strong data-i18n="programSat3t">Násznép indulás Kaposvárra</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">⛪</span>
-              <span class="time" data-i18n="programSatChurchTime">14:45</span>
-              <div><strong data-i18n="programSatChurch">Násznép a templomban</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">⛪</span>
-              <span class="time" data-i18n="programSat4Time">15:00</span>
-              <div><strong data-i18n="programSat4t">Egyházi nászmise a Nagyboldogasszony Székesegyházban</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🥂</span>
-              <span class="time" data-i18n="programSat5Time">17:00</span>
-              <div><strong data-i18n="programSat5t">Vendégvárás Alsóbogáton a Kastélynál</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">📷</span>
-              <span class="time" data-i18n="programSat6Time">18:00</span>
-              <div><strong data-i18n="programSat6t">Csoportképek</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🍽</span>
-              <span class="time" data-i18n="programSat7Time">19:00</span>
-              <div><strong data-i18n="programSat7t">Vacsora</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🎂</span>
-              <span class="time" data-i18n="programSat8Time">21:30</span>
-              <div><strong data-i18n="programSat8t">Torta</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">💃</span>
-              <span class="time" data-i18n="programSat9Time">22:30</span>
-              <div><strong data-i18n="programSat9t">Elsőtánc</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🌙</span>
-              <span class="time" data-i18n="programSat10Time">24:00</span>
-              <div><strong data-i18n="programSat10t">Éjféli töltött káposzta és hajnalig buli</strong></div>
-            </li>
-          </ul>
-        </div>
-        <div class="program-day-divider" aria-hidden="true">
-          <span class="program-day-divider__line"></span>
-          <span class="program-day-divider__mark"></span>
-          <span class="program-day-divider__line"></span>
-        </div>
-        <div class="program-day-block program-day-block--sun">
-          <h3 class="program-day-title" data-i18n="programDaySunLabel">Vasárnap (augusztus 23.)</h3>
-          <ul class="program-list program-list--sun">
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🍳</span>
-              <span class="time" data-i18n="programSun1Time">09:00–12:00</span>
-              <div><strong data-i18n="programSun1t">Reggeli a Veterángarázsban</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🔑</span>
-              <span class="time" data-i18n="programSun2Time">11:00-tól</span>
-              <div><strong data-i18n="programSun2t">Szállás elhagyása – kulcs a zárba</strong></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="program-invite program-invite--sat-only" id="program-invite-sat-only">
-        <div class="program-day-block program-day-block--sat">
-          <h3 class="program-day-title" data-i18n="programDaySatLabel">Szombat (augusztus 22.)</h3>
-          <ul class="program-list program-list--sat">
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🏡</span>
-              <span class="time" data-i18n="programSatArriveTime">11:00</span>
-              <div><strong data-i18n="programSatArrive">Érkezés és szállás elfoglalása</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🥪</span>
-              <span class="time" data-i18n="programSat2Time">12:00–13:00</span>
-              <div><strong data-i18n="programSat2t">Szendvicsebéd a Veterángarázsban</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">⛪</span>
-              <span class="time" data-i18n="programSat4Time">15:00</span>
-              <div><strong data-i18n="programSat4t">Egyházi nászmise a Nagyboldogasszony Székesegyházban</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🥂</span>
-              <span class="time" data-i18n="programSat5Time">17:00</span>
-              <div><strong data-i18n="programSat5t">Vendégvárás Alsóbogáton a Kastélynál</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">📷</span>
-              <span class="time" data-i18n="programSat6Time">18:00</span>
-              <div><strong data-i18n="programSat6t">Csoportképek</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🍽</span>
-              <span class="time" data-i18n="programSat7Time">19:00</span>
-              <div><strong data-i18n="programSat7t">Vacsora</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🎂</span>
-              <span class="time" data-i18n="programSat8Time">21:30</span>
-              <div><strong data-i18n="programSat8t">Torta</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">💃</span>
-              <span class="time" data-i18n="programSat9Time">22:30</span>
-              <div><strong data-i18n="programSat9t">Elsőtánc</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🌙</span>
-              <span class="time" data-i18n="programSat10Time">24:00</span>
-              <div><strong data-i18n="programSat10t">Éjféli töltött káposzta és hajnalig buli</strong></div>
-            </li>
-          </ul>
-        </div>
-        <div class="program-day-divider" aria-hidden="true">
-          <span class="program-day-divider__line"></span>
-          <span class="program-day-divider__mark"></span>
-          <span class="program-day-divider__line"></span>
-        </div>
-        <div class="program-day-block program-day-block--sun">
-          <h3 class="program-day-title" data-i18n="programDaySunLabel">Vasárnap (augusztus 23.)</h3>
-          <ul class="program-list program-list--sun">
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🍳</span>
-              <span class="time" data-i18n="programSun1Time">09:00–12:00</span>
-              <div><strong data-i18n="programSun1t">Reggeli a Veterángarázsban</strong></div>
-            </li>
-            <li class="program-item">
-              <span class="program-icon" aria-hidden="true">🔑</span>
-              <span class="time" data-i18n="programSun2Time">11:00-tól</span>
-              <div><strong data-i18n="programSun2t">Szállás elhagyása – kulcs a zárba</strong></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <p class="program-disclaimer" data-i18n="programDisclaimer">A programváltoztatás jogát fenntartjuk.</p>
-
+      <p class="photos-note" data-i18n="photosNote">
+        A szombati képek már fent vannak, a videó hamarosan érkezik!
+      </p>
     </section>
 
-    <!-- Helyszín -->
-    <section id="venue" class="section venue animate-on-scroll">
-      <h2 class="script-title" data-i18n="venueTitle">Helyszín</h2>
-      <div class="venue-list">
-        <article class="venue-card venue-card--church">
-          <header class="venue-card__head">
-            <span class="venue-card__icon" aria-hidden="true">⛪</span>
-            <div class="venue-card__titles">
-              <p class="venue-card__kind" data-i18n="venueChurchKind">Nászmise</p>
-              <h3 class="venue-card__name" data-i18n="venueChurchName">Nagyboldogasszony székesegyház</h3>
-            </div>
-          </header>
-          <p class="venue-address" data-i18n="venueChurchAddress">7400 Kaposvár, Kossuth tér 3.</p>
-          <div class="venue-map-wrap">
-            <iframe
-              class="venue-map"
-              src="https://maps.google.com/maps?q=Nagyboldogasszony-székesegyház+Kaposvár&amp;hl=hu&amp;z=16&amp;output=embed"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              data-i18n-title="venueMap"
-              title="Térkép – Nagyboldogasszony székesegyház"
-            ></iframe>
-          </div>
-          <a
-            href="https://www.google.com/maps/search/?api=1&amp;query=46.3566879,17.7885865"
-            target="_blank"
-            rel="noopener"
-            class="btn-map btn-map--venue"
-            data-i18n="venueMapBtn"
-            >Maps megnyitása</a
-          >
-        </article>
-        <article class="venue-card venue-card--reception">
-          <header class="venue-card__head">
-            <span class="venue-card__icon" aria-hidden="true">📍</span>
-            <div class="venue-card__titles">
-              <p class="venue-card__kind" data-i18n="venueLagziKind">Lagzi</p>
-              <h3 class="venue-card__name" data-i18n="venueLagziName">Villabogart</h3>
-            </div>
-          </header>
-          <p class="venue-address" data-i18n="venueLagziAddress">7443 Alsóbogát, Szabadság utca 4.</p>
-          <div class="venue-map-wrap">
-            <iframe
-              class="venue-map"
-              src="https://maps.google.com/maps?q=Szabads%C3%A1g+utca+4,+7443+Als%C3%B3bog%C3%A1t&amp;hl=hu&amp;z=16&amp;output=embed"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              data-i18n-title="venueMap"
-              title="Térkép – Villabogart"
-            ></iframe>
-          </div>
-          <a
-            href="https://www.google.com/maps/search/?api=1&amp;query=Szabads%C3%A1g+utca+4,+7443+Als%C3%B3bog%C3%A1t"
-            target="_blank"
-            rel="noopener"
-            class="btn-map btn-map--venue"
-            data-i18n="venueMapBtn"
-            >Maps megnyitása</a
-          >
-        </article>
-      </div>
-    </section>
-
-    <!-- GYIK (mint Preguntas frecuentes) -->
-    <section id="faq" class="section faq animate-on-scroll">
-      <span class="section-icon faq-icon" aria-hidden="true">?</span>
-      <h2 class="script-title" data-i18n="faqTitle">Gyakori kérdések</h2>
-      <img src="Fotok/IMG_5486.jpg" alt="Gyakori kérdések – hangulatkép" data-i18n-alt="faqLeadAlt" class="section-lead-image" loading="lazy" />
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary class="faq-question" data-i18n="faq1q">Hol helyezkednek el a szállások a kastélyhoz képest?</summary>
-          <div class="faq-answer">
-            <p data-i18n="faq1a">
-              A VILLABOGArT birtokon található szálláshelyek, mint a VILLABOGArT Vendégház és a Maison BOGArT, mindössze néhány perces sétára helyezkednek el a Magtártól. A Falusi Házak, Tóházak és Majorsági szállások esetében a távolság átlagosan 8–10 perc séta, míg autóval mindössze 3–4 perc.
-            </p>
-            <button
-              type="button"
-              class="faq-plan-trigger"
-              data-i18n-aria="faq1MapZoomAria"
-              aria-controls="faq-plan-lightbox"
-            >
-              <img
-                src="Fotok/bogatterv.png"
-                alt="Villabogart birtok térképe – szállások és épületek"
-                data-i18n-alt="faq1MapAlt"
-                class="faq-plan-image"
-                loading="lazy"
-              />
-            </button>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-question" data-i18n="faq2q">Hogyan lehet a leggyorsabban, legjobban eljutni a Villabogart-hoz?</summary>
-          <div class="faq-answer">
-            <p data-i18n="faq2p">Három útvonalat javasolunk:</p>
-            <ul class="faq-route-list">
-              <li data-i18n="faq2l1">M7-esről Balatonszemesnél át kell térni a 67-es útra, majd Mernyeszentmiklósnál letérve egy kövezett úton át Somogygesztin keresztül eljutni Alsóbogát központjába, onnan legurulni a domboldalról és megérkezni a Magtárhoz;</li>
-              <li data-i18n="faq2l2">vagy továbbmenni a 67-es úton egészen Kaposfüredig, ott egy körforgalomból kitérve Juta–Somogyjád útvonalon elérve Alsóbogátot a táblánál jobbra fordulva megérkezni a Magtárhoz;</li>
-              <li data-i18n="faq2l3">vagy az M7-esről a 142-es km-nél letérve Lengyeltóti–Somogyvár–Osztopán–Somogyjád falvakon keresztül érnek el Alsóbogátra (ez a leghosszabb, de a legjobb minőségű út a falvak között).</li>
-            </ul>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-question" data-i18n="faq3q">Milyen öltözék a megfelelő?</summary>
-          <p class="faq-answer" data-i18n="faq3a">Elegáns, színes öltözékre gondolunk — kérjük, kerüljétek a sötét színeket.</p>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-question" data-i18n="faq4q">Milyen nászajándékot fogadtok szívesen?</summary>
-          <p class="faq-answer" data-i18n="faq4a">
-            Háztartásunk teljes, nem is vágyunk másra, csak közös életünk kezdetén egy kis támogatásra.
-          </p>
-        </details>
-      </div>
-    </section>
-
-    <!-- Galéria -->
-    <section id="gallery" class="section gallery animate-on-scroll">
-      <h2 class="script-title" data-i18n="galleryTitle">Galéria</h2>
-      <p class="gallery-note" data-i18n="galleryNote">Közös pillanatok.</p>
-      <div class="gallery-grid">
-        <img src="Fotok/kep5.jpg" alt="Galéria 1." data-i18n-alt="galleryAlt1" class="gallery-item" loading="lazy" />
-        <img src="Fotok/IMG_0402.jpg" alt="Galéria 2." data-i18n-alt="galleryAlt2" class="gallery-item" loading="lazy" />
-        <img src="Fotok/IMG_1416.jpg" alt="Galéria 3." data-i18n-alt="galleryAlt3" class="gallery-item" loading="lazy" />
-        <img src="Fotok/IMG_3560.jpg" alt="Galéria 4." data-i18n-alt="galleryAlt4" class="gallery-item gallery-item--anchor-top" loading="lazy" />
-        <img src="Fotok/IMG_6127.jpg" alt="Galéria 5." data-i18n-alt="galleryAlt5" class="gallery-item" loading="lazy" />
-        <img src="Fotok/IMG_7336.jpg" alt="Galéria 6." data-i18n-alt="galleryAlt6" class="gallery-item gallery-item--anchor-top" loading="lazy" />
-      </div>
-    </section>
-
-    <!-- RSVP (gépes: sötét sáv, krémes kártya, két oszlop checkbox, üzenet mező) -->
-    <section id="rsvp" class="section rsvp animate-on-scroll">
-      <div class="rsvp-banner"></div>
-      <div class="rsvp-inner">
-        <!--
-          Google Forms: hozz létre két űrlapot (péntek+szombat vs. csak szombat), majd a „Küldés” fülön
-          „<>” Beágyazás → másold a viewform?embedded=true URL-t ide. Válaszok → Táblázat: CSV / Excel export.
-        -->
-        <div
-          id="rsvp-google-root"
-          class="rsvp-google-root"
-          data-form-fri-sat="https://forms.gle/ADUMX5karPfQXKnJ8"
-          data-form-sat-only="https://docs.google.com/forms/d/e/1FAIpQLSeTBma8F5yfqxQ1Ia_rfKHM9K4_4u7EtAD6YxRiZUEVpzac8w/viewform"
+    <!-- Értékelés -->
+    <section id="review" class="section review animate-on-scroll">
+      <h2 class="script-title" data-i18n="reviewTitle">Egy apró szívesség</h2>
+      <div class="review-card">
+        <p data-i18n="reviewText">
+          Mint helyszín, szeretnénk megkérni titeket, hogy hagyjatok egy pozitív értékelést a Villabogart
+          Google-oldalán — ezzel segítve a feleség és az após munkáját :)
+        </p>
+        <a
+          class="btn-map"
+          href="https://www.google.com/maps/search/?api=1&amp;query=Szabads%C3%A1g+utca+4,+7443+Als%C3%B3bog%C3%A1t"
+          target="_blank"
+          rel="noopener"
+          data-i18n="reviewCta"
+          >Villabogart értékelése</a
         >
-          <iframe
-            id="rsvp-google-iframe"
-            class="rsvp-google-iframe"
-            hidden
-            data-i18n-title="rsvpIframeTitle"
-            title="RSVP űrlap"
-            loading="lazy"
-          ></iframe>
-          <div id="rsvp-google-fallback" class="rsvp-google-fallback" hidden>
-            <p data-i18n="rsvpGoogleMissing">Állítsd be a Google űrlap beágyazási linkjeit az index.html fájlban (data-form-fri-sat és data-form-sat-only).</p>
-          </div>
-          <p class="rsvp-google-external" hidden>
-            <a
-              id="rsvp-google-open"
-              class="rsvp-google-external-link"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="rsvpGoogleOpenNewTab"
-              >Megnyitás új lapon</a
-            >
-          </p>
-        </div>
       </div>
     </section>
 
@@ -677,23 +203,6 @@
       <p>Manca & Endre · 2026</p>
     </footer>
   </main>
-
-  <dialog id="faq-plan-lightbox" class="image-lightbox" aria-labelledby="faq-plan-lightbox-title">
-    <div class="image-lightbox__panel">
-      <p id="faq-plan-lightbox-title" class="image-lightbox__title" data-i18n="faq1MapLightboxTitle">
-        Villabogart birtok térképe
-      </p>
-      <button type="button" class="image-lightbox__close" data-i18n-aria="imageLightboxClose" aria-label="Bezárás">
-        <span aria-hidden="true">×</span>
-      </button>
-      <img
-        src="Fotok/bogatterv.png"
-        alt=""
-        data-i18n-alt="faq1MapAlt"
-        class="image-lightbox__img"
-      />
-    </div>
-  </dialog>
 
   <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>

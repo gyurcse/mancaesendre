@@ -1,67 +1,8 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'eskuvo_boritek_megnyitva';
-  var overlay = document.getElementById('envelope-overlay');
-  var mainContent = document.getElementById('main-content');
-
-  /* 2026. augusztus 22., szombat 15:00 (helyi idő) */
+  /* 2026. augusztus 22., szombat 15:00 (helyi idő) – az esküvő napja */
   var WEDDING_DATE = new Date(2026, 7, 22, 15, 0, 0);
-
-  function marMegnyitottak() {
-    try {
-      return localStorage.getItem(STORAGE_KEY) === '1';
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function megnyitvaMent() {
-    try {
-      localStorage.setItem(STORAGE_KEY, '1');
-    } catch (e) {}
-  }
-
-  function mutasdAzOldalt() {
-    overlay.classList.add('open');
-    mainContent.classList.remove('content-hidden');
-    mainContent.classList.add('content-zoom-in');
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        mainContent.classList.add('zoom-done');
-      });
-    });
-    setTimeout(function () {
-      overlay.classList.add('zoom-phase');
-    }, 450);
-    setTimeout(function () {
-      overlay.classList.add('hidden');
-      overlay.setAttribute('aria-hidden', 'true');
-      overlay.classList.remove('zoom-phase');
-      mainContent.classList.remove('content-zoom-in', 'zoom-done');
-    }, 1700);
-    megnyitvaMent();
-  }
-
-  function initEnvelope() {
-    if (document.documentElement.getAttribute('data-invite') === 'chooser') return;
-    if (!overlay || !mainContent) return;
-
-    /* Mobilon és gépen is: első látogatáskor boríték, utána már az oldal */
-    if (marMegnyitottak()) {
-      overlay.style.display = 'none';
-      mainContent.classList.remove('content-hidden');
-      return;
-    }
-
-    mainContent.classList.add('content-hidden');
-    overlay.setAttribute('aria-hidden', 'false');
-
-    overlay.addEventListener('click', function handleOpen() {
-      overlay.removeEventListener('click', handleOpen);
-      mutasdAzOldalt();
-    });
-  }
 
   function initScrollAnimations() {
     var sections = document.querySelectorAll('.animate-on-scroll');
@@ -87,21 +28,10 @@
     return n < 10 ? '0' + n : String(n);
   }
 
-  function updateCountdown() {
+  function updateElapsed() {
     try {
       var now = new Date();
-      if (now >= WEDDING_DATE) {
-        var elD = document.getElementById('countdown-days');
-        var elH = document.getElementById('countdown-hours');
-        var elM = document.getElementById('countdown-mins');
-        var elS = document.getElementById('countdown-secs');
-        if (elD) elD.textContent = '0';
-        if (elH) elH.textContent = '00';
-        if (elM) elM.textContent = '00';
-        if (elS) elS.textContent = '00';
-        return;
-      }
-      var diff = WEDDING_DATE - now;
+      var diff = Math.max(0, now - WEDDING_DATE);
       var days = Math.floor(diff / (1000 * 60 * 60 * 24));
       var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -111,16 +41,16 @@
       var elHours = document.getElementById('countdown-hours');
       var elMins = document.getElementById('countdown-mins');
       var elSecs = document.getElementById('countdown-secs');
-      if (elDays) elDays.textContent = isNaN(days) ? '—' : days;
-      if (elHours) elHours.textContent = isNaN(hours) ? '—' : pad(hours);
-      if (elMins) elMins.textContent = isNaN(mins) ? '—' : pad(mins);
-      if (elSecs) elSecs.textContent = isNaN(secs) ? '—' : pad(secs);
+      if (elDays) elDays.textContent = days;
+      if (elHours) elHours.textContent = pad(hours);
+      if (elMins) elMins.textContent = pad(mins);
+      if (elSecs) elSecs.textContent = pad(secs);
     } catch (e) {}
   }
 
-  function initCountdown() {
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+  function initElapsed() {
+    updateElapsed();
+    setInterval(updateElapsed, 1000);
   }
 
   function buildFallbackSvg() {
@@ -167,82 +97,6 @@
         }
       });
     });
-  }
-
-  function ensureGoogleFormEmbeddedUrl(raw) {
-    var u = (raw || '').trim();
-    if (!u) return '';
-    try {
-      var url = new URL(u, window.location.href);
-      url.searchParams.set('embedded', 'true');
-      return url.toString();
-    } catch (e) {
-      if (/\bembedded=true\b/i.test(u)) return u;
-      return u + (u.indexOf('?') === -1 ? '?' : '&') + 'embedded=true';
-    }
-  }
-
-  function googleFormOpenUrl(raw) {
-    var u = (raw || '').trim();
-    if (!u) return '';
-    try {
-      var url = new URL(u, window.location.href);
-      url.searchParams.delete('embedded');
-      var s = url.toString();
-      return s.replace(/\?$/, '');
-    } catch (e2) {
-      return u.replace(/[?&]embedded=true\b/gi, '').replace(/\?$/, '');
-    }
-  }
-
-  function syncRsvpGoogleEmbed() {
-    var root = document.getElementById('rsvp-google-root');
-    if (!root) return;
-    var iframe = document.getElementById('rsvp-google-iframe');
-    var fb = document.getElementById('rsvp-google-fallback');
-    var openA = document.getElementById('rsvp-google-open');
-    var extRow = document.querySelector('.rsvp-google-external');
-    var v = document.documentElement.getAttribute('data-invite') || 'fri-sat';
-
-    if (v === 'chooser') {
-      if (iframe) {
-        iframe.removeAttribute('src');
-        iframe.hidden = true;
-      }
-      if (fb) fb.hidden = true;
-      if (extRow) extRow.hidden = true;
-      return;
-    }
-
-    var urlFri = (root.getAttribute('data-form-fri-sat') || '').trim();
-    var urlSat = (root.getAttribute('data-form-sat-only') || '').trim();
-    var url = v === 'sat-only' ? urlSat : urlFri;
-
-    if (!url) {
-      if (iframe) {
-        iframe.removeAttribute('src');
-        iframe.hidden = true;
-      }
-      if (fb) fb.hidden = false;
-      if (extRow) extRow.hidden = true;
-      if (openA) openA.setAttribute('href', '#');
-      return;
-    }
-
-    var embed = ensureGoogleFormEmbeddedUrl(url);
-    if (iframe) {
-      iframe.hidden = false;
-      if (iframe.getAttribute('src') !== embed) iframe.setAttribute('src', embed);
-    }
-    if (fb) fb.hidden = true;
-    if (extRow) extRow.hidden = false;
-    if (openA) openA.setAttribute('href', googleFormOpenUrl(url));
-  }
-
-  function initInviteVariant() {
-    var v = document.documentElement.getAttribute('data-invite') || 'fri-sat';
-    if (v === 'chooser') return;
-    syncRsvpGoogleEmbed();
   }
 
   function initSiteNav() {
@@ -311,113 +165,14 @@
     });
   }
 
-  function initImageLightbox() {
-    var triggers = document.querySelectorAll('.js-lightbox-trigger, .faq-plan-trigger');
-    var dialog = document.getElementById('faq-plan-lightbox');
-    if (!triggers.length || !dialog || typeof dialog.showModal !== 'function') return;
-
-    var panel = dialog.querySelector('.image-lightbox__panel');
-    var closeBtn = dialog.querySelector('.image-lightbox__close');
-
-    function openBox() {
-      dialog.showModal();
-    }
-
-    triggers.forEach(function (trigger) {
-      trigger.addEventListener('click', openBox);
-    });
-
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function () {
-        dialog.close();
-      });
-    }
-
-    dialog.addEventListener('click', function (e) {
-      if (panel && !panel.contains(e.target)) {
-        dialog.close();
-      }
-    });
-
-    dialog.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        dialog.close();
-      }
-    });
-  }
-
-  function initCoreAfterInvite() {
-    initInviteVariant();
-    initEnvelope();
-    initScrollAnimations();
-    initCountdown();
-    initImageFallbacks();
-    initSiteNav();
-    initImageLightbox();
-  }
-
-  function initInviteLanding() {
-    var html = document.documentElement;
-    if (html.getAttribute('data-invite') !== 'chooser') return false;
-
-    var land = document.getElementById('invite-landing');
-    var mainContent = document.getElementById('main-content');
-    var envelope = document.getElementById('envelope-overlay');
-    if (!land) return false;
-
-    land.hidden = false;
-    land.setAttribute('aria-hidden', 'false');
-    if (mainContent) mainContent.classList.add('content-hidden');
-    if (envelope) envelope.style.display = 'none';
-
-    function unlock(variant) {
-      try {
-        sessionStorage.setItem('eskuvo_invite_variant', variant);
-      } catch (e) {}
-      try {
-        var maxAge = 60 * 60 * 24 * 120;
-        var sec = typeof location !== 'undefined' && location.protocol === 'https:' ? '; Secure' : '';
-        document.cookie =
-          'eskuvo_invite_variant=' +
-          encodeURIComponent(variant) +
-          '; path=/; max-age=' +
-          maxAge +
-          '; SameSite=Lax' +
-          sec;
-      } catch (eCookie) {}
-      html.setAttribute('data-invite', variant);
-      land.hidden = true;
-      land.setAttribute('aria-hidden', 'true');
-      if (envelope) envelope.style.display = '';
-      try {
-        if (window.EskuvoI18n && typeof window.EskuvoI18n.apply === 'function') {
-          window.EskuvoI18n.apply(window.EskuvoI18n.getLang());
-        }
-      } catch (e2) {}
-      initCoreAfterInvite();
-    }
-
-    var b1 = document.getElementById('invite-choice-fri-sat');
-    var b2 = document.getElementById('invite-choice-sat-only');
-    if (b1) b1.addEventListener('click', function () { unlock('fri-sat'); });
-    if (b2) b2.addEventListener('click', function () { unlock('sat-only'); });
-
-    return true;
-  }
-
   function init() {
     if (window.EskuvoI18n && typeof window.EskuvoI18n.init === 'function') {
       window.EskuvoI18n.init();
     }
-    if (initInviteLanding()) {
-      try {
-        if (window.EskuvoI18n && typeof window.EskuvoI18n.apply === 'function') {
-          window.EskuvoI18n.apply(window.EskuvoI18n.getLang());
-        }
-      } catch (e3) {}
-      return;
-    }
-    initCoreAfterInvite();
+    initScrollAnimations();
+    initElapsed();
+    initImageFallbacks();
+    initSiteNav();
   }
 
   if (document.readyState === 'loading') {
